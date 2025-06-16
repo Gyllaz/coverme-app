@@ -1,13 +1,12 @@
-import ClaimButton from './claimButton'
-import TopUp from './TopUp'
-import ThisMonth from './ThisMonth'
-import Benefits from './Benefits'
-import LevelUp from './LevelUp'
+import Benefits from './Benefits';
+import ClaimButton from './claimButton';
+import Growth from './Growth';
+import LevelUp from './LevelUp';
+import ThisMonth from './ThisMonth';
+import TopUp from './TopUp';
+import UpArrow from './upArrow';
+import DownArrow from './DownArrow';
 
 export {
-  ClaimButton,
-  TopUp,
-  ThisMonth,
-  Benefits,
-  LevelUp
-}
+  Benefits, ClaimButton, Growth, LevelUp, ThisMonth, TopUp, UpArrow, DownArrow
+};

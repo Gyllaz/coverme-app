@@ -1,12 +1,16 @@
 import { View, Text } from 'react-native';
 import { transactions } from '../constants/accountInfo';
 
+
 export default function ThisMonth() {
   if (transactions.length === 0) {
     return (
       <View className="min-w-44 h-[8rem] pt-[0.5rem] rounded-[7px] border-[3px] border-[#5050c2] flex justify-center items-center gap-1">
-        <Text className="text-4xl text-[#5050c2] font-semibold tracking-[0.2rem]">No Data</Text>
-        <Text className="text-2xl text-[#5050c2] font-medium">This Month</Text>
+        <View>
+          <Text className="text-2xl text-[#5050c2] font-medium">No Data</Text>
+          <Text className="text-2xl text-[#5050c2] font-medium">This Month</Text>
+
+        </View>
       </View>
     );
   }

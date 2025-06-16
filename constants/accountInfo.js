@@ -14,6 +14,11 @@ export const banking = {
   currentBalance: 12345
 }
 
+export const investment = {
+  growth: 350,
+
+}
+
 export const policy = {
   memberNo: '920231004',
   policyName: 'Basic Extras Only',
@@ -51,6 +56,6 @@ export const claims = [
 
 export const savingsGoals = {
   target: 900,
-  current: 345,
+  current: 465,
   reward: 'Unlock the hopsital cover add-on to your policy'
 }
