@@ -1,17 +1,29 @@
-import { View, Text } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import { transactions } from '../constants/accountInfo';
+import { useRouter } from 'expo-router';
 
 
 export default function ThisMonth() {
+
+    const router = useRouter();
+
   if (transactions.length === 0) {
     return (
-      <View className="min-w-44 h-[8rem] pt-[0.5rem] rounded-[7px] border-[3px] border-[#5050c2] flex justify-center items-center gap-1">
-        <View>
-          <Text className="text-2xl text-[#5050c2] font-medium">No Data</Text>
-          <Text className="text-2xl text-[#5050c2] font-medium">This Month</Text>
+ 
+        <TouchableOpacity >
+          <View className='shadow-md bg-[#5050C2] rounded-[7px]'>
+            <View className="min-w-44 h-[8rem] pt-[0.5rem] rounded-[7px] border-[3px] border-[#5050c2] flex justify-center items-center gap-1">
+              <View>
+                <Text className="text-2xl text-white font-medium">No Data</Text>
+                <Text className="text-2xl text-white font-medium">This Month</Text>
 
-        </View>
-      </View>
+              </View>
+            </View>
+
+          </View>
+
+        </TouchableOpacity>
+
     );
   }
 
@@ -41,11 +53,19 @@ export default function ThisMonth() {
   }, 0);
 
   return (
-    <View className="min-w-44 h-[8rem] rounded-[7px] border-[3px] border-[#5050c2] flex justify-center items-center gap-1">
-      <Text className={`text-[#5050c2] font-semibold ${net > 99 || net < -99 ? 'text-[2.5rem]' : ' text-5xl tracking-[0.1rem]'}`}>
-        {net >= 0 ? '+' : '-'} ${Math.abs(net).toLocaleString()}
-      </Text>
-      <Text className="text-2xl text-[#5050c2] font-medium">This Month</Text>
-    </View>
+
+      <TouchableOpacity >
+        <View className='shadow-md bg-[#5050C2] rounded-[7px]'>
+          <View className="min-w-44 h-[8rem] rounded-[7px] border-[3px] border-[#5050c2] flex justify-center items-center gap-1">
+            <Text className={`text-white font-semibold ${net > 99 || net < -99 ? 'text-[2.5rem]' : ' text-5xl tracking-[0.1rem]'}`}>
+              {net >= 0 ? '+' : '-'} ${Math.abs(net).toLocaleString()}
+            </Text>
+            <Text className="text-2xl text-white font-medium">This Month</Text>
+          </View>
+
+        </View>
+
+      </TouchableOpacity>
+
   );
 }

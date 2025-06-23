@@ -1,15 +1,15 @@
 
 export const account = {
   firstname: 'Poluk',
-  lastname: 'Doe',
+  lastname: 'Ikbal',
   DOB: '23/05/1995',
 }
 
 export const banking = {
-  accountName: 'J Doe',
-  BSB: '123456',
-  accountNo: '123456789',
-  payID: 'jdoe@coverme.com.co',
+  accountName: 'Asif Ikbal Poluk',
+  BSB: '123 456',
+  accountNo: '123 456 789',
+  payID: 'asifpoluk@coverme.com.co',
   cardNo: '4399102376890614',
   currentBalance: 12345
 }
