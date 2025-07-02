@@ -12,7 +12,7 @@ export default function LevelUp() {
   const router = useRouter();
 
   return (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={() => router.push('/savings')}>
       <View className='shadow-md bg-[#5050C2] rounded-[7px]'>
 
         <View className="min-w-44 h-[14rem] rounded-[7px] border-[3px] border-[#5050c2] justify-center flex gap-3">
