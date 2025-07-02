@@ -7,7 +7,7 @@ export default function ClaimButton() {
     const router = useRouter();
 
   return (
-    <TouchableOpacity >
+    <TouchableOpacity onPress={() => router.push('/claim')}>
       <View className="shadow-md bg-[#5050C2] rounded-[7px]">
         <View className="min-w-44 h-[5rem] rounded-[7px] border-[3px] border-[#5050c2] flex flex-row justify-center items-center gap-3" >
           <Svg width="40" height="111" viewBox="0 0 171 111" fill="none">

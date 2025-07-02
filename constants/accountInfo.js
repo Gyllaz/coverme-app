@@ -19,18 +19,20 @@ export const investment = {
 
 }
 
-export const policy = {
+export const policyInfo = {
   memberNo: '920231004',
+  policyPerson: ['Asif Ikbal Poluk'],
   policyName: 'Basic Extras Only',
+  startYear: '2025',
   monthlyTotal: '$35',
   monthlyDeposit: '$35',
   monthlyPolicy: 'FREE',
   totalBenefits: 500,
-  remainBenefits: 500,
+  remainBenefits: 300,
 }
 
 
-export const transactions = [
+export const transactionsHistory = [
   { date: '25/05/25', type: 'Deposit', label: 'Premium Deposit', amount: 35 },
   { date: '22/05/25', type: 'Expense', label: 'Tooth Extraction', amount: 180 },
   { date: '20/05/25', type: 'Deposit', label: 'Top Up', amount: 100 },
@@ -47,12 +49,32 @@ export const transactions = [
 
 
 
-export const claims = [
-  { date: '12/05/24', status: 'CLAIM', label: 'Dental Filling', requested: 150 },
-  { date: '28/04/24', status: 'CLAIM', label: 'Physio Appointment', requested: 100 },
-  { date: '16/04/24', status: 'CLAIM', label: 'Eye Test', requested: 75 },
-  { date: '08/04/24', status: 'CLAIM', label: 'Tooth Cleaning', requested: 90 },
+export const claimsHistory = [
+  { date: '12/05/25', type: 'CLAIM', label: 'Dental Filling', amount: 150 },
+  { date: '28/04/25', type: 'CLAIM', label: 'Physio Appointment', amount: 100 },
+  { date: '16/04/25', type: 'CLAIM', label: 'Eye Test', amount: 75 },
+  { date: '08/04/25', type: 'CLAIM', label: 'Tooth Cleaning', amount: 90 },
 ];
+
+export function getEmoji(label) {
+  const emojiMap = {
+    "🦷": ["Dental Filling", "Tooth Extraction", "Root Canal", "Tooth Cleaning", "Checkup & Clean"],
+    "💪": ["Physio Appointment"],
+    "👓": ["Glasses", "Eye Test", "Glasses Purchase"],
+    "💸": ["Premium Deposit", "Top Up"],
+    "📄": ["Claim Submission"],
+    "🏥": ["Hospital Visit"]
+  };
+
+  for (const [emoji, labels] of Object.entries(emojiMap)) {
+    if (labels.includes(label)) {
+      return emoji;
+    }
+  }
+
+  return "💳"; // Default emoji for unknown transactions
+}
+
 
 export const savingsGoals = {
   target: 900,

@@ -10,7 +10,8 @@ import BackArrow from './BackArrow';
 import ShareSVG from './ShareSVG';
 import CopySVG from './CopySVG';
 import CopyOptionsModal from './CopyOptionsModal';
+import Logo from './Logo';
 
 export {
-  Benefits, ClaimButton, Growth, LevelUp, ThisMonth, TopUp, UpArrow, DownArrow, BackArrow, ShareSVG, CopySVG, CopyOptionsModal,
+  Benefits, ClaimButton, Growth, LevelUp, ThisMonth, TopUp, UpArrow, DownArrow, BackArrow, ShareSVG, CopySVG, CopyOptionsModal, Logo,
 };  

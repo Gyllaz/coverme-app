@@ -1,5 +1,5 @@
 import { View, Text, TouchableOpacity } from 'react-native';
-import { transactions } from '../constants/accountInfo';
+import { transactionsHistory } from '../constants/accountInfo';
 import { useRouter } from 'expo-router';
 
 
@@ -7,10 +7,10 @@ export default function ThisMonth() {
 
     const router = useRouter();
 
-  if (transactions.length === 0) {
+  if (transactionsHistory.length === 0) {
     return (
  
-        <TouchableOpacity >
+        <TouchableOpacity onPress={() => router.push('/transactions')}>
           <View className='shadow-md bg-[#5050C2] rounded-[7px]'>
             <View className="min-w-44 h-[8rem] pt-[0.5rem] rounded-[7px] border-[3px] border-[#5050c2] flex justify-center items-center gap-1">
               <View>
@@ -34,7 +34,7 @@ export default function ThisMonth() {
   };
 
   // Step 1: Find the most recent transaction by date
-  const sorted = [...transactions].sort(
+  const sorted = [...transactionsHistory].sort(
     (a, b) => parseDate(b.date).getTime() - parseDate(a.date).getTime()
   );
   const latestDate = parseDate(sorted[0].date);
@@ -42,7 +42,7 @@ export default function ThisMonth() {
   const latestYear = latestDate.getFullYear();
 
   // Step 2: Filter all transactions from that month
-  const thisMonthTx = transactions.filter((tx) => {
+  const thisMonthTx = transactionsHistory.filter((tx) => {
     const d = parseDate(tx.date);
     return d.getMonth() === latestMonth && d.getFullYear() === latestYear;
   });
@@ -54,7 +54,7 @@ export default function ThisMonth() {
 
   return (
 
-      <TouchableOpacity >
+      <TouchableOpacity onPress={() => router.push('/transactions')}>
         <View className='shadow-md bg-[#5050C2] rounded-[7px]'>
           <View className="min-w-44 h-[8rem] rounded-[7px] border-[3px] border-[#5050c2] flex justify-center items-center gap-1">
             <Text className={`text-white font-semibold ${net > 99 || net < -99 ? 'text-[2.5rem]' : ' text-5xl tracking-[0.1rem]'}`}>
