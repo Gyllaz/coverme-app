@@ -10,6 +10,7 @@ export default function RootLayout() {
       <Stack.Screen name="policy" options={{title: "Policy"}} />
       <Stack.Screen name="transactions" options={{title: "Transactions"}} />
       <Stack.Screen name="savings" options={{title: "Savings"}} />
+      <Stack.Screen name="investments" options={{title: "Investments"}} />
     </Stack>
   );
 }

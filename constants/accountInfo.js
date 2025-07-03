@@ -81,3 +81,18 @@ export const savingsGoals = {
   current: 465,
   reward: 'Unlock the hopsital cover add-on to your policy'
 }
+
+export const investmentReturns = [
+  { date: '2024-07-01', invested: 1000, return: 12, balance: 1012 },
+  { date: '2024-08-01', invested: 500, return: 8, balance: 1520 },
+  { date: '2024-09-01', invested: 0, return: -5, balance: 1515 },
+  { date: '2024-10-01', invested: 1000, return: 20, balance: 2535 },
+  { date: '2024-11-01', invested: 500, return: 15, balance: 3050 },
+  { date: '2024-12-01', invested: 0, return: 10, balance: 3060 },
+  { date: '2025-01-01', invested: 500, return: 25, balance: 3585 },
+  { date: '2025-02-01', invested: 500, return: -10, balance: 4075 },
+  { date: '2025-03-01', invested: 0, return: 30, balance: 4105 },
+  { date: '2025-04-01', invested: 1000, return: 40, balance: 5145 },
+  { date: '2025-05-01', invested: 0, return: 22, balance: 5167 },
+  { date: '2025-06-01', invested: 500, return: 18, balance: 5685 },
+];

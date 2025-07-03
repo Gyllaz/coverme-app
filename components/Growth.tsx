@@ -13,7 +13,7 @@ export default function Growth() {
 
   if (growth !== 0) {
     return (
-      <TouchableOpacity >
+      <TouchableOpacity onPress={() => router.push('/investments')}>
         <View className='shadow-md bg-[#5050C2] rounded-[7px]'>
           <View className="min-w-44 h-[9rem] pt-[0.2rem] pl-[1rem] rounded-[7px] border-[3px] border-[#5050c2] justify-center flex overflow-hidden">
             
