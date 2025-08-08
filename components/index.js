@@ -11,7 +11,9 @@ import ShareSVG from './ShareSVG';
 import CopySVG from './CopySVG';
 import CopyOptionsModal from './CopyOptionsModal';
 import Logo from './Logo';
+import MiniArrow from './MiniArrow';
+import EnterArrow from './EnterArrow';
 
 export {
-  Benefits, ClaimButton, Growth, LevelUp, ThisMonth, TopUp, UpArrow, DownArrow, BackArrow, ShareSVG, CopySVG, CopyOptionsModal, Logo,
+  Benefits, ClaimButton, Growth, LevelUp, ThisMonth, TopUp, UpArrow, DownArrow, BackArrow, ShareSVG, CopySVG, CopyOptionsModal, Logo, MiniArrow, EnterArrow,
 };  
