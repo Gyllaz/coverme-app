@@ -13,7 +13,11 @@ import CopyOptionsModal from './CopyOptionsModal';
 import Logo from './Logo';
 import MiniArrow from './MiniArrow';
 import EnterArrow from './EnterArrow';
+import ScanSVG from './ScanSVG';
+import PullUpDrawer from './PullUpDrawer';
+import NavBar from './NavBar';
+import HomeSVG from './HomeSVG';
 
 export {
-  Benefits, ClaimButton, Growth, LevelUp, ThisMonth, TopUp, UpArrow, DownArrow, BackArrow, ShareSVG, CopySVG, CopyOptionsModal, Logo, MiniArrow, EnterArrow,
+  Benefits, ClaimButton, Growth, LevelUp, ThisMonth, TopUp, UpArrow, DownArrow, BackArrow, ShareSVG, CopySVG, CopyOptionsModal, Logo, MiniArrow, EnterArrow, ScanSVG, PullUpDrawer, NavBar, HomeSVG, 
 };  

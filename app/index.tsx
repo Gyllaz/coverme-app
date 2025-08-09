@@ -1,8 +1,10 @@
 import { Text, View, Image, TouchableOpacity } from "react-native";
 import { Link } from 'expo-router';
 import { Svg, Path, Rect } from 'react-native-svg';
-import { MiniArrow, EnterArrow } from "../components";
+import { MiniArrow, EnterArrow, ScanSVG, NavBar } from "../components";
 import { account, banking } from "@/constants/accountInfo";
+import AiAnimation from "../scripts/TypeAnimation"
+import { Shadow } from 'react-native-shadow-2';
 
 const { firstname } = account;
 const { currentBalance } = banking;
@@ -31,9 +33,12 @@ export default function Index() {
         </TouchableOpacity>
       </View>
 
-      <View className="mt-[4rem] flex align-content justify-between px-7 ">
+      <View className="mt-[4rem] flex align-content gap-[2rem] px-7 ">
         <TouchableOpacity>
-          <View className="w-full rounded-full h-[5rem] bg-[#A5A5E5]  flex flex-row justify-end">
+          <View className="w-full rounded-full h-[5rem] bg-[#A5A5E5] flex flex-row justify-between">
+            <View className="flex flex-row justify-center self-center ml-[1.5rem]">
+              <AiAnimation />
+            </View>
             <View className="w-[4.6rem] h-[90%] flex flex-row justify-center rounded-full bg-white self-center mr-[0.3rem]">
               <View className="">
                 <EnterArrow/>
@@ -43,7 +48,32 @@ export default function Index() {
           </View>
 
         </TouchableOpacity>
+
+        <View className="w-full h-[40%] rounded-[1.5rem] bg-white flex gap-[1.3rem] px-[1rem] py-[1.5rem]"
+          style={{
+            shadowColor: '#000',
+            shadowOffset: { width: 0, height: 8 },
+            shadowOpacity: 0.38,
+            shadowRadius: 16,
+            elevation: 10, // Android
+          }}
+        >
+          <Text className="text-[1.7rem] px-[1rem] font-light text-[#5050c2]">Need to claim a receipt? take a photo and we’ll process it.</Text>
+
+          <TouchableOpacity className="w-full h-[45%] bg-[#5050c2] rounded-[1rem] flex flex-row justify-center gap-[0.7rem]">
+            <View className="self-center">
+              <ScanSVG/>
+            </View>
+
+            <Text className="self-center text-white text-[1.3rem]">Claim a receipt</Text>
+          </TouchableOpacity>
+        </View>
+
+
       </View>
+
+
+      <NavBar />
 
 
     </View>
