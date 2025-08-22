@@ -1,6 +1,6 @@
 import { Text, View, ScrollView } from "react-native";
 import { useState, useRef, useEffect } from "react";
-import { BackArrow } from '../components';
+import { BackArrow } from '@/components';
 import { policyInfo } from "@/constants/accountInfo";
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
 

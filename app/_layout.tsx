@@ -1,16 +1,17 @@
-import { Stack } from "expo-router";
-import "../global.css"
+import { Stack } from 'expo-router';
+import '../global.css';
 
 export default function RootLayout() {
   return (
-    <Stack>
-      <Stack.Screen name="index" options={{ title: 'Home' }} />
-      <Stack.Screen name="info" options={{ title: 'Info' }} />
-      <Stack.Screen name="claim" options={{title: "Claim"}} />
-      <Stack.Screen name="policy" options={{title: "Policy"}} />
-      <Stack.Screen name="transactions" options={{title: "Transactions"}} />
-      <Stack.Screen name="savings" options={{title: "Savings"}} />
-      <Stack.Screen name="investments" options={{title: "Investments"}} />
+    <Stack screenOptions={{ headerShown: false }}>
+      {/* This item renders the tab navigator (its own layout lives inside the group) */}
+      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+
+      {/* Non-tab screens (push onto stack above tabs) */}
+      <Stack.Screen name="info" />
+      <Stack.Screen name="claim" />
+      <Stack.Screen name="savings" />
+      <Stack.Screen name="investments" />
     </Stack>
   );
 }
