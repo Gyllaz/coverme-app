@@ -13,8 +13,8 @@ export default function TabIcon({
   return (
     <View
       style={{
-        width: 56,
-        height: 56,
+        width: 150,
+        height: 150,
         alignItems: 'center',
         justifyContent: 'center',
         position: 'relative',

@@ -18,7 +18,7 @@ const percentProgress = Math.round((remainBenefits/totalBenefits)*100)
 export default function policy() {
   return (
    <View
-      className="bg-white h-full flex gap-[0.1rem]"
+      className="bg-white h-full flex gap-[0.1rem] pt-[10%]"
     >
       <BackArrow />
       

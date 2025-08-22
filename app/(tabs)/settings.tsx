@@ -3,7 +3,7 @@ import React from 'react'
 
 const settings = () => {
   return (
-    <View>
+    <View className='pt-[10%]'>
       <Text>settings</Text>
     </View>
   )
