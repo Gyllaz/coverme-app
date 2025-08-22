@@ -1,10 +1,7 @@
 import { Text, View, Image, TouchableOpacity } from "react-native";
-import { Link } from 'expo-router';
-import { Svg, Path, Rect } from 'react-native-svg';
-import { MiniArrow, EnterArrow, ScanSVG, NavBar } from "../components";
+import { MiniArrow, EnterArrow, ScanSVG } from "@/components";
 import { account, banking } from "@/constants/accountInfo";
-import AiAnimation from "../scripts/TypeAnimation"
-import { Shadow } from 'react-native-shadow-2';
+import AiAnimation from "@/scripts/TypeAnimation"
 
 const { firstname } = account;
 const { currentBalance } = banking;
@@ -14,11 +11,11 @@ const { currentBalance } = banking;
 export default function Index() {
   return (
     <View
-      className="bg-white h-full flex"
+      className="bg-white h-full flex pt-[17%]"
     >
       <View className="mt-12 pl-10 flex flex-row">
         <Text className="font-poppins font-semibold text-4xl text-[#5050c2]">Hi {firstname}</Text>
-        <Image source={require('../assets/images/CoverMe.png')} className="w-9 h-9 ml-3"></Image>
+        <Image source={require('@/assets/images/CoverMe.png')} className="w-9 h-9 ml-3"></Image>
       </View>
 
       <View className="mt-[2rem] pl-10">
@@ -49,7 +46,7 @@ export default function Index() {
 
         </TouchableOpacity>
 
-        <View className="w-full h-[40%] rounded-[1.5rem] bg-white flex gap-[1.3rem] px-[1rem] py-[1.5rem]"
+        <View className="w-full h-fit rounded-[1.5rem] bg-white flex gap-[1.3rem] px-[1rem] py-[1rem]"
           style={{
             shadowColor: '#000',
             shadowOffset: { width: 0, height: 8 },
@@ -60,7 +57,7 @@ export default function Index() {
         >
           <Text className="text-[1.7rem] px-[1rem] font-light text-[#5050c2]">Need to claim a receipt? take a photo and we’ll process it.</Text>
 
-          <TouchableOpacity className="w-full h-[45%] bg-[#5050c2] rounded-[1rem] flex flex-row justify-center gap-[0.7rem]">
+          <TouchableOpacity className="w-full h-[4rem] bg-[#5050c2] rounded-[1rem] flex flex-row justify-center gap-[0.7rem]">
             <View className="self-center">
               <ScanSVG/>
             </View>
@@ -72,8 +69,6 @@ export default function Index() {
 
       </View>
 
-
-      <NavBar />
 
 
     </View>

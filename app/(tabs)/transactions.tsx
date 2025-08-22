@@ -1,6 +1,6 @@
 import { Text, View, TextInput, ScrollView } from "react-native";
 import { useState, useMemo } from "react";
-import { BackArrow } from '../components';
+import { BackArrow } from '@/components';
 import { transactionsHistory, claimsHistory, getEmoji } from "@/constants/accountInfo";
 
 function parseDate(dateString: string) {
