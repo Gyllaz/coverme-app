@@ -17,7 +17,13 @@ import ScanSVG from './ScanSVG';
 import PullUpDrawer from './PullUpDrawer';
 import NavBar from './NavBar';
 import HomeSVG from './HomeSVG';
+import ChartSVG from './ChartSVG';
+import ClaimSVG from './ClaimSVG';
+import SettingsSVG from './SettingsSVG';
+import TabIcon from './TabIcon';
+
 
 export {
-  Benefits, ClaimButton, Growth, LevelUp, ThisMonth, TopUp, UpArrow, DownArrow, BackArrow, ShareSVG, CopySVG, CopyOptionsModal, Logo, MiniArrow, EnterArrow, ScanSVG, PullUpDrawer, NavBar, HomeSVG, 
+  Benefits, ClaimButton, Growth, LevelUp, ThisMonth, TopUp, UpArrow, DownArrow, BackArrow, ShareSVG, CopySVG, CopyOptionsModal, Logo, MiniArrow, EnterArrow, ScanSVG, PullUpDrawer, NavBar, HomeSVG, ChartSVG, ClaimSVG,
+  SettingsSVG, TabIcon, 
 };  
