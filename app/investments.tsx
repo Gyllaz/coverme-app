@@ -1,8 +1,9 @@
-import { Text, View, ScrollView, Dimensions } from "react-native";
-import { useState, useEffect } from "react";
-import { BackArrow } from '../components';
 import { investmentReturns } from "@/constants/accountInfo";
+import { useEffect, useState } from "react";
+import { Dimensions, ScrollView, Text, View } from "react-native";
 import { LineChart } from "react-native-chart-kit";
+import { SegmentedButtons } from 'react-native-paper';
+import { BackArrow } from '../components';
 
 export default function Investments() {
   // Prepare data
@@ -13,6 +14,48 @@ export default function Investments() {
   const initialInvestment = investmentReturns.reduce((sum, e) => sum + e.invested, 0);
   const totalReturn = balances[balances.length - 1] - initialInvestment;
   const percentageReturn = ((totalReturn / initialInvestment) * 100).toFixed(1);
+
+  const chartConfig = {
+    backgroundGradientFrom: "#1E2923",
+    backgroundGradientFromOpacity: 0,
+    backgroundGradientTo: "#08130D",
+    backgroundGradientToOpacity: 0.5,
+    color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+    strokeWidth: 3, // optional, default 3
+    barPercentage: 0.5,
+    useShadowColorFromDataset: false, // optional
+  };
+
+  const [tooltip, setTooltip] = useState({
+    visible: false,
+    x: 0,
+    y: 0,
+    value: 0 as number,
+  });
+
+  const [view, setView] = useState<'week' | 'month' | '1Y'>('1Y');
+
+  // Filter data based on view
+  let filteredLabels = labels;
+  let filteredBalances = balances;
+  if (view === 'week') {
+    filteredLabels = labels.slice(-7);
+    filteredBalances = balances.slice(-7);
+  } else if (view === 'month') {
+    filteredLabels = labels.slice(-30);
+    filteredBalances = balances.slice(-30);
+  } else if (view === '1Y') {
+    filteredLabels = labels.slice(-60);
+    filteredBalances = balances.slice(-30);
+  }
+
+  // Hide tooltip after 2 seconds
+  useEffect(() => {
+    if (tooltip.visible) {
+      const timeout = setTimeout(() => setTooltip(t => ({ ...t, visible: false })), 2000);
+      return () => clearTimeout(timeout);
+    }
+  }, [tooltip.visible]);
 
   return (
     <View className="bg-white h-full flex gap-[0.1rem]">
@@ -59,35 +102,68 @@ export default function Investments() {
                 Here's the growth of your health fund over the time you've been with us
               </Text>
 
-              <LineChart
-                data={{
-                  labels,
-                  datasets: [
-                    {
-                      data: balances,
-                      strokeWidth: 2,
-                    },
-                  ],
-                }}
-                width={Dimensions.get("window").width * 0.82}
-                height={240}
-                yAxisLabel="$"
-                chartConfig={{
-                  backgroundColor: "#5050c2",
-                  backgroundGradientFrom: "#5050c2",
-                  backgroundGradientTo: "#5050c2",
-                  decimalPlaces: 0,
-                  color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-                  labelColor: () => "white",
-                  propsForDots: {
-                    r: "4",
-                    strokeWidth: "2",
-                    stroke: "#ffffff",
-                  },
-                }}
-                bezier
-                style={{ marginVertical: 8, borderRadius: 16 }}
-              />
+              <View className="flex flex-row justify-center gap-2 mb-2">
+                <SegmentedButtons
+                  value={view}
+                  onValueChange={setView}
+                  buttons={[
+                    { value: 'week', label: '1 Week' },
+                    { value: 'month', label: '1 Month' },
+                    { value: '1Y', label: '1 Year' },
+                  ]}
+                  style={{ width: 320, alignSelf: 'center' }}
+                />
+              </View>
+              <View className="w-full flex justify-center items-center">
+                  <LineChart
+                    data={{
+                      labels: filteredLabels,
+                      datasets: [
+                        {
+                          data: filteredBalances,
+                          strokeWidth: 4,
+                        },
+                      ],
+                    }}
+                    width={Dimensions.get("window").width * 0.9}
+                    height={260}
+                    yAxisLabel="$"
+                    chartConfig={chartConfig}
+                    bezier
+                    style={{ marginVertical: 8, borderRadius: 16, paddingRight: 20, paddingLeft: 20}}
+                    withHorizontalLabels={false}
+                    withVerticalLabels={false}
+                    withDots={true}
+                    withInnerLines={false}
+                    withOuterLines={false}
+                    onDataPointClick={({ value, x, y }) => {
+                      setTooltip({
+                        visible: true,
+                        x,
+                        y,
+                        value: value as number,
+                      });
+                    }}
+                  />
+                  {tooltip.visible && (
+                    <View
+                      style={{
+                        position: 'absolute',
+                        left: tooltip.x - 30, // center the tooltip
+                        top: tooltip.y - 40, // above the point
+                        backgroundColor: 'rgba(0,0,0,0.8)',
+                        paddingHorizontal: 8,
+                        paddingVertical: 4,
+                        borderRadius: 6,
+                        zIndex: 10,
+                      }}
+                    >
+                      <Text style={{ color: 'white', fontSize: 14 }}>
+                        ${tooltip.value}
+                      </Text>
+                    </View>
+                  )}
+                </View>
             </View>
           </View>
         </View>
