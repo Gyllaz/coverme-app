@@ -72,7 +72,7 @@ export function getEmoji(label) {
     }
   }
 
-  return "💳"; // Default emoji for unknown transactions
+  return "💳"; 
 }
 
 
@@ -96,3 +96,7 @@ export const investmentReturns = [
   { date: '2025-05-01', invested: 0, return: 22, balance: 5167 },
   { date: '2025-06-01', invested: 500, return: 18, balance: 5685 },
 ];
+
+export const insuranceColour = {
+
+}

@@ -1,7 +1,6 @@
 import { Tabs } from 'expo-router';
 import { View } from 'react-native';
 import { HomeSVG, ChartSVG, ClaimSVG, SettingsSVG, TabIcon } from '@/components';
-import FontAwesome from '@expo/vector-icons/FontAwesome';
 
 export default function TabLayout() {
   return (
@@ -15,6 +14,13 @@ export default function TabLayout() {
           height: 90,
           paddingBottom: 20,
           paddingTop: 15,
+          borderWidth: 0,
+          borderColor: '#5050C2',
+          shadowColor: '#000',
+          shadowOffset: { width: 0, height: 8 },
+          shadowOpacity: 0.50,
+          shadowRadius: 30,
+          elevation: 10, // Android
         },
         tabBarItemStyle: { width: '8%' , alignItems: 'center', justifyContent: 'center' },
         tabBarIconStyle: { marginHorizontal: -8 },
@@ -76,6 +82,7 @@ export default function TabLayout() {
           ),
         }}
       />
+
     </Tabs>
   );
 }
