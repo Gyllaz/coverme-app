@@ -10,7 +10,7 @@ const secureNo = cardNo.slice(-4)
 export default function BankCard() {
   return (
     <View>
-            <Animated.View
+        <Animated.View
         className='w-full h-[18rem] bg-white rounded-l-[10px] rounded-br-[10px] rounded-tr-[70px] shadow-xl overflow-hidden'>
           <LinearGradient 
             colors={['#40C431', '#C4F500', '#E4E4F7']}

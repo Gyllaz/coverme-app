@@ -97,6 +97,8 @@ export const investmentReturns = [
   { date: '2025-06-01', invested: 500, return: 18, balance: 5685 },
 ];
 
-export const insuranceColour = {
-
-}
+export const notificationAlerts = [
+  {emoji: '🎉', header: 'Welcome to CoverMe!', subheading: 'Your wallet and your health will thank you...'},
+  {emoji: '🤖', header: 'Got any question?', subheading: 'Ask your AI assistant anything you want...'},
+  {emoji: '⁉️', header: 'We’d love to hear from you!', subheading: 'Got any feedback? Let us know how to ma'}
+]
