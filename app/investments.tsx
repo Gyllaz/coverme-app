@@ -42,8 +42,8 @@ export default function Investments() {
     filteredLabels = labels.slice(-7);
     filteredBalances = balances.slice(-7);
   } else if (view === 'month') {
-    filteredLabels = labels.slice(-30);
-    filteredBalances = balances.slice(-30);
+    filteredLabels = labels.slice(-12);
+    filteredBalances = balances.slice(-12);
   } else if (view === '1Y') {
     filteredLabels = labels.slice(-60);
     filteredBalances = balances.slice(-30);
@@ -102,68 +102,86 @@ export default function Investments() {
                 Here's the growth of your health fund over the time you've been with us
               </Text>
 
-              <View className="flex flex-row justify-center gap-2 mb-2">
+                <View className="flex flex-row justify-center gap-2 mb-2">
                 <SegmentedButtons
                   value={view}
                   onValueChange={setView}
                   buttons={[
-                    { value: 'week', label: '1 Week' },
-                    { value: 'month', label: '1 Month' },
-                    { value: '1Y', label: '1 Year' },
+                  { value: 'week', label: '1 Week', labelStyle: { color: 'white' }},
+                  { value: 'month', label: '1 Month', labelStyle: { color: 'white' } },
+                  { value: '1Y', label: 'YTD', labelStyle: { color: 'white' } },
                   ]}
-                  style={{ width: 320, alignSelf: 'center' }}
+                  style={{ width: 320, alignSelf: 'center'}}
+                  theme={{ colors: { primary: 'white', onSurface: 'white', onPrimary: 'white' } }}
                 />
-              </View>
-              <View className="w-full flex justify-center items-center">
-                  <LineChart
-                    data={{
-                      labels: filteredLabels,
-                      datasets: [
-                        {
-                          data: filteredBalances,
-                          strokeWidth: 4,
-                        },
-                      ],
-                    }}
-                    width={Dimensions.get("window").width * 0.9}
-                    height={260}
-                    yAxisLabel="$"
-                    chartConfig={chartConfig}
-                    bezier
-                    style={{ marginVertical: 8, borderRadius: 16, paddingRight: 20, paddingLeft: 20}}
-                    withHorizontalLabels={false}
-                    withVerticalLabels={false}
-                    withDots={true}
-                    withInnerLines={false}
-                    withOuterLines={false}
-                    onDataPointClick={({ value, x, y }) => {
-                      setTooltip({
-                        visible: true,
-                        x,
-                        y,
-                        value: value as number,
-                      });
-                    }}
-                  />
-                  {tooltip.visible && (
-                    <View
-                      style={{
-                        position: 'absolute',
-                        left: tooltip.x - 30, // center the tooltip
-                        top: tooltip.y - 40, // above the point
-                        backgroundColor: 'rgba(0,0,0,0.8)',
-                        paddingHorizontal: 8,
-                        paddingVertical: 4,
-                        borderRadius: 6,
-                        zIndex: 10,
-                      }}
-                    >
-                      <Text style={{ color: 'white', fontSize: 14 }}>
-                        ${tooltip.value}
-                      </Text>
-                    </View>
-                  )}
                 </View>
+              <View style={{ position: 'relative', width: '100%', alignItems: 'center' }}>
+                {/* Top-left text box overlay */}
+                <View
+                  style={{
+                    position: 'absolute',
+                    top: 8,
+                    left: 8,
+                    backgroundColor: 'rgba(80,80,194,0.95)',
+                    paddingHorizontal: 12,
+                    paddingVertical: 6,
+                    borderRadius: 8,
+                    zIndex: 20,
+                  }}
+                >
+                  <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 15 }}>
+                    Fund Growth
+                  </Text>
+                </View>
+                <LineChart
+                  data={{
+                    labels: filteredLabels,
+                    datasets: [
+                      {
+                        data: filteredBalances,
+                        strokeWidth: 4,
+                      },
+                    ],
+                  }}
+                  width={Dimensions.get("window").width * 0.9}
+                  height={260}
+                  yAxisLabel="$"
+                  chartConfig={chartConfig}
+                  bezier
+                  style={{ marginVertical: 8, borderRadius: 16, paddingRight: 20, paddingLeft: 20 }}
+                  withHorizontalLabels={false}
+                  withVerticalLabels={false}
+                  withDots={true}
+                  withInnerLines={false}
+                  withOuterLines={false}
+                  onDataPointClick={({ value, x, y }) => {
+                    setTooltip({
+                      visible: true,
+                      x,
+                      y,
+                      value: value as number,
+                    });
+                  }}
+                />
+                {tooltip.visible && (
+                  <View
+                    style={{
+                      position: 'absolute',
+                      left: tooltip.x - 30,
+                      top: tooltip.y - 40,
+                      backgroundColor: 'rgba(0,0,0,0.8)',
+                      paddingHorizontal: 8,
+                      paddingVertical: 4,
+                      borderRadius: 6,
+                      zIndex: 10,
+                    }}
+                  >
+                    <Text style={{ color: 'white', fontSize: 14 }}>
+                      ${tooltip.value}
+                    </Text>
+                  </View>
+                )}
+              </View>
             </View>
           </View>
         </View>

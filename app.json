@@ -9,14 +9,23 @@
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "coverme-app",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      },
+      "runtimeVersion": "1.0.0"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "runtimeVersion": {
+        "policy": "appVersion"
+      },
+      "package": "com.covermeapp"
     },
     "web": {
       "bundler": "metro",
@@ -37,6 +46,15 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "4007d6e5-c697-4f47-ba15-8d306689bf6b"
+      }
+    },
+    "updates": {
+      "url": "https://u.expo.dev/4007d6e5-c697-4f47-ba15-8d306689bf6b"
     }
   }
 }
