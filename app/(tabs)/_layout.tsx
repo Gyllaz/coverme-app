@@ -5,6 +5,7 @@ import { HomeSVG, ChartSVG, ClaimSVG, SettingsSVG, TabIcon } from '@/components'
 export default function TabLayout() {
   return (
     <Tabs
+      initialRouteName="home"
       screenOptions={{
         headerShown: false,
         tabBarActiveTintColor: '#5050C2',
@@ -28,7 +29,7 @@ export default function TabLayout() {
       }}
     >
       <Tabs.Screen
-        name="index"
+        name="home"
         options={{
           title: '',
           tabBarIcon: ({ focused }) => (

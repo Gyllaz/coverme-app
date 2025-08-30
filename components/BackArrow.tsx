@@ -8,7 +8,7 @@ export default function BackArrow() {
 
   return (
     <View className="w-full h-[2rem] flex flex-row pl-[1.5rem]">
-      <TouchableOpacity onPress={() => router.push('/')}>
+      <TouchableOpacity onPress={() => router.push('/home')}>
         <Svg width="35" height="56" viewBox="0 0 96 56" fill="none">
           <Path d="M95.7661 27.873C33.0152 27.873 9.33743 27.873 5.04783 27.873M5.04783 27.873L28.388 4.84C28.7039 4.52823 29.2392 4.75203 29.2392 5.19589V50.5503C29.2392 50.9942 28.7039 51.218 28.388 50.9062L5.04783 27.873ZM5.04783 27.873C3.76205 27.873 3.98517 27.873 5.04783 27.873Z" stroke="#5050C2" strokeWidth="8"/>
           <Ellipse cx="14" cy="28" rx="14" ry="6" fill="#5050C2"/>

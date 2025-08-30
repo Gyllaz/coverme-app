@@ -4,6 +4,7 @@ import { account, banking } from "@/constants/accountInfo";
 import AiAnimation from "@/scripts/TypeAnimation"
 import { useState } from "react";
 import Animated, { FadeIn, FadeOut, Easing } from "react-native-reanimated";
+import { useRouter } from 'expo-router';
 
 const { firstname } = account;
 const { currentBalance } = banking;
@@ -11,6 +12,8 @@ const { currentBalance } = banking;
 
 
 export default function Index() {
+
+  const router = useRouter();
 
   const [active, setActive] = useState(false);
 
@@ -52,7 +55,9 @@ export default function Index() {
           <View className="mt-[2rem] pl-10">
             <Text className="text-3xl text-[#1E1E1E]">Your Health Savings</Text>
             <Text className={`pt-7 ${currentBalance > 99999 ? "text-7xl" : "text-8xl" } text-[#55C47C]`}>${currentBalance.toLocaleString()}</Text>
-            <TouchableOpacity className="mt-[0.7rem] ml-[0.7rem] max-w-[50%] flex flex-row gap-[1rem] border-b-[2px] border-[#5050c2]">
+            <TouchableOpacity 
+            onPress={() => router.push('/home/info')}
+            className="mt-[0.7rem] ml-[0.7rem] max-w-[50%] flex flex-row gap-[1rem] border-b-[2px] border-[#5050c2]">
               <Text className="text-xl font-medium w-fit">Account Information</Text>
               <View className="h-[30px] w-fit pb-[0.4rem] flex justify-center align-content">
                 <MiniArrow/>

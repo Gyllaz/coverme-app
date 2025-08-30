@@ -7,11 +7,6 @@ export default function RootLayout() {
       {/* This item renders the tab navigator (its own layout lives inside the group) */}
       <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
 
-      {/* Non-tab screens (push onto stack above tabs) */}
-      <Stack.Screen name="info" />
-      <Stack.Screen name="claim" />
-      <Stack.Screen name="savings" />
-      <Stack.Screen name="investments" />
     </Stack>
   );
 }
