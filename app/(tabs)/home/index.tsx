@@ -67,7 +67,7 @@ export default function Index() {
           </View>
 
           <View className="mt-[4rem] flex align-content gap-[2rem] px-7 ">
-            <TouchableOpacity>
+            <TouchableOpacity id='AiChat' onPress={() => router.push('/chat')}>
               <View className="w-full rounded-full h-[5rem] bg-[#A5A5E5] flex flex-row justify-between">
                 <View className="flex flex-row justify-center self-center ml-[1.5rem]">
                   <AiAnimation />
