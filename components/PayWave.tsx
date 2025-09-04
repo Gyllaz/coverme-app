@@ -1,5 +1,5 @@
 import { View, Text } from 'react-native'
-import { Svg, Path, Ellipse, Mask, Rect } from 'react-native-svg';
+import { Svg, Path } from 'react-native-svg';
 
 type SVGprops = {
   colour: string;

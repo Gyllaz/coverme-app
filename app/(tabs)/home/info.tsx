@@ -217,12 +217,6 @@ export default function Info() {
       )}
 
 
-      <CopyOptionsModal
-        visible={showModal}
-        onClose={() => setShowModal(false)}
-        onSelect={handleCopyAccountInfo}
-      />
-
     </View>
   );
 }

@@ -20,8 +20,20 @@ import MastercardSVG from './MastercardSVG';
 import NotificationSVG from './NotificationSVG';
 import CloseSVG from './CloseSVG';
 import Notifications from './Notifications';
+import ChangeSVG from './ChangeSVG';
+import PaymentSVG from './PaymentSVG';
+import StatementSVG from './StatementSVG';
+import MemberSVG from './MemberSVG';
+import SecuritySVG from './SecuritySVG';
+import LegalSVG from './LegalSVG';
+import SupportSVG from './SupportSVG';
+import WideSVG from './WideSVG';
+import NarrowSVG from './NarrowSVG';
+import NewBackArrow from './NewBackArrow';
+import BackSpaceSVG from './BackSpaceSVG';
 
 
 export {
-  ClaimButton, BackArrow, ShareSVG, CopySVG, CopyOptionsModal, Logo, MiniArrow, EnterArrow, ScanSVG, PullUpDrawer, HomeSVG, ChartSVG, ClaimSVG,SettingsSVG, TabIcon, PayWave, BankCard, InsuranceCard, MastercardSVG, NotificationSVG, CloseSVG, Notifications,
+  ClaimButton, BackArrow, ShareSVG, CopySVG, CopyOptionsModal, Logo, MiniArrow, EnterArrow, ScanSVG, PullUpDrawer, HomeSVG, ChartSVG, ClaimSVG,SettingsSVG, TabIcon, PayWave, BankCard, InsuranceCard, MastercardSVG, NotificationSVG, CloseSVG, Notifications, ChangeSVG, PaymentSVG, StatementSVG, MemberSVG,
+  SecuritySVG, LegalSVG, SupportSVG, WideSVG, NarrowSVG, NewBackArrow, BackSpaceSVG,
 };  
