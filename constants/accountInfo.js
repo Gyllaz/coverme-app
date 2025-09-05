@@ -1,4 +1,3 @@
-
 export const account = {
   firstname: 'John',
   lastname: 'Conner',
@@ -104,6 +103,31 @@ export const investmentReturns = [
   { date: '2025-04-01', invested: 1000, return: 40, balance: 5145 },
   { date: '2025-05-01', invested: 0, return: 22, balance: 5167 },
   { date: '2025-06-01', invested: 500, return: 18, balance: 5685 },
+  { date: '2025-07-01', invested: 1000, return: 35, balance: 6720 },
+  { date: '2025-08-01', invested: 500, return: 20, balance: 7240 },
+  { date: '2025-09-01', invested: 0, return: 15, balance: 7255 },
+  { date: '2025-10-01', invested: 1000, return: 28, balance: 8283 },
+  { date: '2025-11-01', invested: 500, return: 12, balance: 8795 },
+  { date: '2025-12-01', invested: 0, return: 18, balance: 8813 },
+  { date: '2026-01-01', invested: 500, return: 22, balance: 9335 },
+  { date: '2026-02-01', invested: 500, return: -8, balance: 9827 },
+  { date: '2026-03-01', invested: 0, return: 25, balance: 9852 },
+  { date: '2026-04-01', invested: 1000, return: 38, balance: 10890 },
+  { date: '2026-05-01', invested: 0, return: 20, balance: 10910 },
+  { date: '2026-06-01', invested: 500, return: 16, balance: 11426 },
+  { date: '2025-06-01', invested: 500, return: 18, balance: 11430 },
+  { date: '2025-07-01', invested: 1000, return: 35, balance: 11500 },
+  { date: '2025-08-01', invested: 500, return: 20, balance: 11560 },
+  { date: '2025-09-01', invested: 0, return: 15, balance: 12000 },
+  { date: '2025-10-01', invested: 1000, return: 28, balance: 12500 },
+  { date: '2025-11-01', invested: 500, return: 12, balance: 14000 },
+  { date: '2025-12-01', invested: 0, return: 18, balance: 14500 },
+  { date: '2026-01-01', invested: 500, return: 22, balance: 15000 },
+  { date: '2026-02-01', invested: 500, return: -8, balance: 16000 },
+  { date: '2026-03-01', invested: 0, return: 25, balance: 16200 },
+  { date: '2026-04-01', invested: 1000, return: 38, balance: 17000 },
+  { date: '2026-05-01', invested: 0, return: 20, balance: 20000 },
+  { date: '2026-06-01', invested: 500, return: 16, balance: 19006 },
 ];
 
 export const notificationAlerts = [

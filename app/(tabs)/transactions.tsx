@@ -2,6 +2,7 @@ import { Text, View, TextInput, ScrollView } from "react-native";
 import { useState, useMemo } from "react";
 import { BackArrow } from '@/components';
 import { transactionsHistory, claimsHistory, getEmoji } from "@/constants/accountInfo";
+import { Link } from 'expo-router';
 
 function parseDate(dateString: string) {
   const [day, month, year] = dateString.split("/").map(Number);
@@ -56,6 +57,7 @@ export default function Transactions() {
         <Text className="text-[#5050c2] font-poppins text-[2.5rem] font-medium">
           Transactions
         </Text>
+        <Link href="/investments">View growth</Link>
       </View>
 
       <View className="flex flex-row pt-[1rem] pb-[1rem] gap-[1.5rem] w-full px-[2rem]">
