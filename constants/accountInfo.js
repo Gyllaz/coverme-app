@@ -26,10 +26,14 @@ export const investment = {
 
 export const policyInfo = {
   memberNo: '920231004',
-  policyPerson: ['Asif Ikbal Poluk'],
+  policyPerson: ['John Conner'],
   policyName: 'Basic Extras Only',
   startYear: '2025',
+  joined: '19th Jan 2025',
   monthlyTotal: '$35',
+  frequency: 'Monthly',
+  invoice: '15th May 2025',
+  payment: 'Direct Debit',
   monthlyDeposit: '$35',
   monthlyPolicy: 'FREE',
   totalBenefits: 500,

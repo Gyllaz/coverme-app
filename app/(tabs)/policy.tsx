@@ -1,100 +1,64 @@
-import { Text, View, ScrollView } from "react-native";
-import { useState, useRef, useEffect } from "react";
-import { BackArrow } from '@/components';
-import { policyInfo } from "@/constants/accountInfo";
-import { AnimatedCircularProgress } from 'react-native-circular-progress';
-
-const { 
-  monthlyTotal, 
-  monthlyDeposit, 
-  monthlyPolicy, 
-  totalBenefits, 
-  remainBenefits,
-  policyName } = policyInfo;
-
-const percentProgress = Math.round((remainBenefits/totalBenefits)*100)
+// policy.tsx
+import { Text, View, ScrollView, TouchableOpacity } from 'react-native';
+import { BlurView } from 'expo-blur';
+import { MonthlyPay, Benefits, DocSVG, Details } from '@/components';
 
 
-export default function policy() {
+// Height of your glass header (adjust as needed)
+const HEADER_H = 96;
+
+export default function Policy() {
   return (
-   <View
-      className="bg-white h-full flex gap-[0.1rem] pt-[10%]"
-    >
-      <BackArrow />
-      
-      <View className="flex flex-row pt-[2.5rem] pb-[1rem] gap-[1.5rem] w-full pl-[2rem]">
-        <Text className="text-[#5050c2] font-poppins text-[2.5rem] font-medium">Your Policy</Text>
+    <View className="bg-white h-full">
+      {/* Glass header OVERLAY */}
+      <View
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          height: HEADER_H,
+          zIndex: 10,
+          // Android elevation for overlay ordering
+          elevation: 10,
+        }}
+        pointerEvents="box-none"
+        className='h-[10rem]'
+      >
+        <BlurView
+          intensity={30}            // 0–100 (higher = stronger blur)
+          tint="light"              // 'light' | 'dark' | 'default'
+          style={{
+            backgroundColor: 'rgba(255,255,255,0.15)',
+            borderBottomWidth: 1,
+            borderColor: 'rgba(255,255,255,0.35)',
+          }}
+          className='pt-[3rem] pb-[1rem]'
+        >
+          <Text className='text-[#5050c2] pb-[3rem] pt-[1.5rem] pl-[2rem] text-[2.5rem]'>Your Policy</Text>
+
+        </BlurView>
       </View>
-      <ScrollView>
-        <View className="flex gap-[2rem] pt-[1.5rem] pb-[4rem]">
-          <View className=" w-full flex justify-center items-center">
-            <View className="bg-[#5050C2] w-[90%] border-[3px] border-[#5050c2] flex gap-[1rem] py-[2rem] px-[2rem] rounded-[15px]">
-              <View className="flex flex-row justify-between">
-                <Text className="font-poppins text-[1.7rem] tracking-[0.1rem] text-white font-medium">
-                  Monthly Payments
-                </Text>
 
-                <View className="pt-[0.1rem]">
+      {/* Content scrolls UNDER the glass header */}
+      <ScrollView
+        contentContainerStyle={{ paddingBottom: 32 }}
+        // Push content down so it doesn't render under the header initially
+        className='py-[35%] '
+      >
+        {/* Cards */}
+        <View className="gap-[24px] px-[16px] pt-[16px]">
+          {/* Monthly Payments */}
+          <MonthlyPay />
 
-                </View>
+          {/* Benefits */}
+          <Benefits/>
 
-              </View>
-              <View>
-              <View className="flex gap-[1rem]">
-                <View className="pt-[0.1rem] w-full flex flex-row justify-between">
-                  <Text className="font-poppins text-[1.3rem] text-white font-light">Wallet Deposit</Text>
-                  <Text className="font-poppins text-[1.3rem] text-white">{ monthlyDeposit }</Text>
-                </View>
-                <View className="pt-[0.1rem] w-full flex flex-row justify-between">
-                  <Text className="pt-[0.1rem] font-poppins text-[1.3rem] text-white font-light">Policy Financing</Text>
-                  <Text className="font-poppins text-[1.3rem] text-white">{ monthlyPolicy }</Text>
-                </View>
-                <View className="pt-[0.7rem] w-full flex flex-row justify-between border-t-[1px] border-white">
-                  <Text className="font-poppins text-[1.3rem] text-white font-light">Total</Text>
-                  <Text className="font-poppins text-[1.3rem] text-white">{ monthlyTotal }</Text>
-                </View>
-              </View>
 
-              </View>
-
-              </View>
-          </View>
-
-          <View className="w-full flex justify-center items-center">
-            <View className=" bg-[#5050c2] w-[90%] border-[3px] border-[#5050c2] flex gap-[1rem] py-[2rem] px-[2rem] rounded-[15px]">
-              <View className="flex gap-[0.7rem]">
-                <Text className="font-poppins text-[1.7rem] tracking-[0.1rem] text-white font-medium">
-                  Benefits
-                </Text>
-                <Text className="font-poppins text-[1.3rem] text-white font-light">{ policyName }</Text>
-              </View>
-
-              <View className="w-full h-fit">
-                <View className="w-full flex flex justify-center items-center pt-[1.5rem] ">
-                  <AnimatedCircularProgress 
-                    size={320}
-                    width={15}
-                    backgroundWidth={15}
-                    fill={percentProgress}
-                    rotation={0}
-                    lineCap="round"
-                    tintColor="#55C47C"
-                    backgroundColor="#C9F8D9"
-                    duration={3000}/>
-                </View>
-                <View className="absolute w-full h-full justify-center items-center">
-                  <Text className="font-poppins text-[3.7rem] tracking-[0.1rem] text-white font-medium">${remainBenefits}</Text>
-                  <Text className="font-poppins text-[1.7rem] tracking-[0.1rem] text-white font-medium">Remaining</Text>
-                </View>
-
-              </View>
-              <Text className="pt-[1rem] font-poppins text-[1rem] text-white font-me font-light">Your benefits including; dental, optical, physio and more, have a shared limit</Text>
-            </View>
-          </View>
+          <Details />
 
         </View>
-        
       </ScrollView>
-  </View>
-  )
+    </View>
+  );
 }

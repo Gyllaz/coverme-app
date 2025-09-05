@@ -36,7 +36,7 @@ export default function index() {
   const router = useRouter();
 
   return (
-    <View className="pt-[17%] w-full h-full pl-[1rem] pr-[3rem]">
+    <View className="pt-[17%] bg-white w-full h-full pl-[1rem] pr-[3rem]">
 
       <View className="pb-[3rem] pl-[1rem]">
         <Text className="text-[2.5rem] text-[#5050C2] ">Settings</Text>
