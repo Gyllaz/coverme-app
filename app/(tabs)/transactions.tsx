@@ -50,7 +50,7 @@ export default function Transactions() {
   }, [filteredTransactions]);
 
   return (
-    <View className="bg-white h-full flex gap-[0.1rem]">
+    <View className="bg-white h-full flex gap-[0.1rem] pt-[10%]">
       <BackArrow />
 
       <View className="flex flex-row pt-[2.5rem] pb-[1rem] gap-[1.5rem] w-full pl-[2rem]">

@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.Cardgradient {
+  background-image: linear-gradient(
+    45deg,
+    hsl(240deg 100% 50%) 1%,
+    hsl(238deg 99% 62%) 39%,
+    hsl(237deg 98% 67%) 47%,
+    hsl(236deg 96% 71%) 50%,
+    hsl(235deg 94% 74%) 51%,
+    hsl(234deg 92% 76%) 51%,
+    hsl(232deg 89% 79%) 50%,
+    hsl(230deg 86% 81%) 49%,
+    hsl(228deg 82% 83%) 49%,
+    hsl(224deg 77% 85%) 50%,
+    hsl(219deg 71% 87%) 53%,
+    hsl(212deg 63% 88%) 61%,
+    hsl(200deg 53% 90%) 99%
+  );
+}

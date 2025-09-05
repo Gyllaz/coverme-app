@@ -1,14 +1,19 @@
 export const account = {
-  firstname: 'Poluk',
-  lastname: 'Ikbal',
+  firstname: 'John',
+  lastname: 'Conner',
+  userId: '@John123',
   DOB: '23/05/1995',
+  email: 'johnconner@gmail.com',
+  phone: '0412 345 678',
+  address: '123 Sesame St',
+  authentication: 1234,
 }
 
 export const banking = {
-  accountName: 'Asif Ikbal Poluk',
+  accountName: 'John Conner',
   BSB: '123 456',
   accountNo: '123 456 789',
-  payID: 'asifpoluk@coverme.com.co',
+  payID: 'john123@coverme.com.co',
   cardNo: '4399102376890614',
   currentBalance: 12345
 }
@@ -20,10 +25,14 @@ export const investment = {
 
 export const policyInfo = {
   memberNo: '920231004',
-  policyPerson: ['Asif Ikbal Poluk'],
+  policyPerson: ['John Conner'],
   policyName: 'Basic Extras Only',
   startYear: '2025',
+  joined: '19th Jan 2025',
   monthlyTotal: '$35',
+  frequency: 'Monthly',
+  invoice: '15th May 2025',
+  payment: 'Direct Debit',
   monthlyDeposit: '$35',
   monthlyPolicy: 'FREE',
   totalBenefits: 500,
@@ -71,7 +80,7 @@ export function getEmoji(label) {
     }
   }
 
-  return "💳"; // Default emoji for unknown transactions
+  return "💳"; 
 }
 
 
@@ -120,3 +129,9 @@ export const investmentReturns = [
   { date: '2026-05-01', invested: 0, return: 20, balance: 20000 },
   { date: '2026-06-01', invested: 500, return: 16, balance: 19006 },
 ];
+
+export const notificationAlerts = [
+  {emoji: '🎉', header: 'Welcome to CoverMe!', subheading: 'Your wallet and your health will thank you...'},
+  {emoji: '🤖', header: 'Got any question?', subheading: 'Ask your AI assistant anything you want...'},
+  {emoji: '⁉️', header: 'We’d love to hear from you!', subheading: 'Got any feedback? Let us know how to ma'}
+]
