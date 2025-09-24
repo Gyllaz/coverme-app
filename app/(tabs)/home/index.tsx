@@ -50,7 +50,7 @@ export default function Index() {
             </TouchableOpacity>
           </View>
           <View className="mt- pl-10 flex flex-row">
-            <Text className="font-poppins font-semibold text-4xl text-[#5050c2]">Hi {firstname}</Text>
+            <Text className="font-poppins font-semibold text-4xl text-[#5050c2]">hi {firstname}</Text>
             <Image source={require('@/assets/images/CoverMe.png')} className="w-9 h-9 ml-3"></Image>
           </View>
 
