@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "coverme-app",
-    "slug": "coverme-app",
+    "slug": "coverme-b2c",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -10,7 +10,7 @@
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "coverme-app",
+      "bundleIdentifier": "com.covermeapp",
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false
       },
@@ -34,6 +34,7 @@
     },
     "plugins": [
       "expo-router",
+      "expo-dev-client",
       [
         "expo-splash-screen",
         {
@@ -50,11 +51,12 @@
     "extra": {
       "router": {},
       "eas": {
-        "projectId": "4007d6e5-c697-4f47-ba15-8d306689bf6b"
+        "projectId": "d251cf42-b3de-43d1-bd6a-c50876d29300"
       }
     },
     "updates": {
-      "url": "https://u.expo.dev/4007d6e5-c697-4f47-ba15-8d306689bf6b"
-    }
+      "url": "https://u.expo.dev/d251cf42-b3de-43d1-bd6a-c50876d29300"
+    },
+    "owner": "gyllaz"
   }
 }
