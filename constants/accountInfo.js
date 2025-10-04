@@ -135,3 +135,10 @@ export const notificationAlerts = [
   {emoji: '🤖', header: 'Got any question?', subheading: 'Ask your AI assistant anything you want...'},
   {emoji: '⁉️', header: 'We’d love to hear from you!', subheading: 'Got any feedback? Let us know how to ma'}
 ]
+
+export const receipts = [
+  {type: 'Dental', status: 'Processing', date: '06/10/25', members: 'John Connor', charge: 199.75, benefits: 114.63,},
+  {type: 'Psychology', status: 'Processing', date: '03/10/25', members: 'John Connor', charge: 199.75, benefits: 114.63,},
+  {type: 'Physio', status: 'Claimed', date: '25/09/25', members: 'John Connor', charge: 99.95, benefits: 45.55,},
+  {type: 'Optical', status: 'Claimed', date: '13/05/25', members: 'John Connor', charge: 99.95, benefits: 45.55,}
+]

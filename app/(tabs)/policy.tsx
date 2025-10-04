@@ -1,64 +1,129 @@
-// policy.tsx
-import { Text, View, ScrollView, TouchableOpacity } from 'react-native';
+// app/(tabs)/policy.tsx
+import { Policy1, Policy2 } from '@/components';
 import { BlurView } from 'expo-blur';
-import { MonthlyPay, Benefits, DocSVG, Details } from '@/components';
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { Dimensions, FlatList, NativeScrollEvent, NativeSyntheticEvent, Pressable, View, } from 'react-native';
 
 
-// Height of your glass header (adjust as needed)
-const HEADER_H = 96;
+const { width } = Dimensions.get('window');
+
+// A tiny wrapper so each page gets the full screen width
+function PageContainer({ children }: { children: React.ReactNode }) {
+  return <View style={{ width, height: '100%' }}>{children}</View>;
+}
 
 export default function Policy() {
+  const listRef = useRef<FlatList<number>>(null);
+
+  // 0 => Policy1, 1 => Policy2
+  const [index, setIndex] = useState(0);
+
+  // Only two pages for now
+  const pages = useMemo(() => [0, 1], []);
+
+  const scrollTo = useCallback((i: number) => {
+    if (!listRef.current) return;
+    const clamped = Math.max(0, Math.min(i, pages.length - 1));
+    listRef.current.scrollToIndex({ index: clamped, animated: true });
+    setIndex(clamped);
+  }, [pages.length]);
+
+  const onNext = useCallback(() => scrollTo(index + 1), [index, scrollTo]);
+  const onPrev = useCallback(() => scrollTo(index - 1), [index, scrollTo]);
+
+  // Keep index in sync when user swipes
+  const onMomentumEnd = useCallback((e: NativeSyntheticEvent<NativeScrollEvent>) => {
+    const newIndex = Math.round(e.nativeEvent.contentOffset.x / width);
+    if (newIndex !== index) setIndex(newIndex);
+  }, [index]);
+
+  const getItemLayout = useCallback(
+    (_: any, i: number) => ({ length: width, offset: width * i, index: i }),
+    []
+  );
+
+  const renderItem = useCallback(({ item }: { item: number }) => {
+    return (
+      <PageContainer>
+        {item === 0 ? <Policy1 /> : <Policy2 />}
+      </PageContainer>
+    );
+  }, []);
+
   return (
-    <View className="bg-white h-full">
-      {/* Glass header OVERLAY */}
-      <View
+    <View style={{ flex: 1, backgroundColor: '#fff' }}>
+      {/* Horizontal stories-like pager */}
+      <FlatList
+        ref={listRef}
+        data={pages}
+        keyExtractor={(i) => String(i)}
+        renderItem={renderItem}
+        horizontal
+        pagingEnabled
+        showsHorizontalScrollIndicator={false}
+        bounces={false}
+        getItemLayout={getItemLayout}
+        onMomentumScrollEnd={onMomentumEnd}
+        // Helps nested vertical ScrollViews inside each page
+        // (RN handles it pretty well without extra props, but this avoids glitches)
+        removeClippedSubviews
+        initialNumToRender={2}
+        windowSize={2}
+      />
+
+      {/* Left / right tap zones (like IG stories) */}
+      <Pressable
+        onPress={onPrev}
         style={{
           position: 'absolute',
-          top: 0,
           left: 0,
-          right: 0,
-          height: HEADER_H,
-          zIndex: 10,
-          // Android elevation for overlay ordering
-          elevation: 10,
+          top: 0,
+          bottom: 0,
+          width: '15%',
         }}
-        pointerEvents="box-none"
-        className='h-[10rem]'
-      >
-        <BlurView
-          intensity={30}            // 0–100 (higher = stronger blur)
-          tint="light"              // 'light' | 'dark' | 'default'
-          style={{
-            backgroundColor: 'rgba(255,255,255,0.15)',
-            borderBottomWidth: 1,
-            borderColor: 'rgba(255,255,255,0.35)',
-          }}
-          className='pt-[3rem] pb-[1rem]'
-        >
-          <Text className='text-[#5050c2] pb-[3rem] pt-[1.5rem] pl-[2rem] text-[2.5rem]'>Your Policy</Text>
+        android_ripple={{ color: 'rgba(0,0,0,0.05)' }}
+      />
+      <Pressable
+        onPress={onNext}
+        style={{
+          position: 'absolute',
+          right: 0,
+          top: 0,
+          bottom: 0,
+          width: '15%',
+        }}
+        android_ripple={{ color: 'rgba(0,0,0,0.05)' }}
+      />
 
-        </BlurView>
-      </View>
+      {/* Page indicator */}
+      <View className='w-full h-fit flex flex-row justify-center absolute bottom-[1.5rem]'>
+        <View 
+        className='rounded-[1rem] overflow-hidden flex flex-row justify-center'>
 
-      {/* Content scrolls UNDER the glass header */}
-      <ScrollView
-        contentContainerStyle={{ paddingBottom: 32 }}
-        // Push content down so it doesn't render under the header initially
-        className='py-[35%] '
-      >
-        {/* Cards */}
-        <View className="gap-[24px] px-[16px] pt-[16px]">
-          {/* Monthly Payments */}
-          <MonthlyPay />
-
-          {/* Benefits */}
-          <Benefits/>
-
-
-          <Details />
-
+          <BlurView
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'center',
+              borderRadius: 30,
+              gap: 8,
+            }}
+            className='w-[7rem] h-fit px-[0.5rem] py-[0.5rem] justify-self-center rounded-[10px]'
+          >
+            {[0, 1].map((i) => (
+              <View
+                key={i}
+                style={{
+                  width: 30,
+                  height: 8,
+                  borderRadius: 4,
+                  backgroundColor: index === i ? '#5050C2' : '#D6D6F0',
+                }}
+              />
+            ))}
+          </BlurView>
         </View>
-      </ScrollView>
+
+      </View>
     </View>
   );
 }

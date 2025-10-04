@@ -35,10 +35,12 @@ import MonthlyPay from './MonthlyPay';
 import Benefits from './Benefits';
 import DocSVG from './DocSVG';
 import Details from './Details';
+import Policy1 from './Policy1';
+import Policy2 from './Policy2';
+import ReceiptSVG from './ReceiptSVG';
 
 
 export {
   ClaimButton, BackArrow, ShareSVG, CopySVG, CopyOptionsModal, Logo, MiniArrow, EnterArrow, ScanSVG, PullUpDrawer, HomeSVG, ChartSVG, ClaimSVG,SettingsSVG, TabIcon, PayWave, BankCard, InsuranceCard, MastercardSVG, NotificationSVG, CloseSVG, Notifications, ChangeSVG, PaymentSVG, StatementSVG, MemberSVG,
-  SecuritySVG, LegalSVG, SupportSVG, WideSVG, NarrowSVG, NewBackArrow, BackSpaceSVG, MonthlyPay, Benefits,
-  DocSVG, Details,
+  SecuritySVG, LegalSVG, SupportSVG, WideSVG, NarrowSVG, NewBackArrow, BackSpaceSVG, MonthlyPay, Benefits, DocSVG, Details, Policy1, Policy2, ReceiptSVG, 
 };  
