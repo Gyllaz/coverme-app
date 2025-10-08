@@ -5,7 +5,7 @@ import { Svg, Path, Ellipse, Mask, Rect } from 'react-native-svg';
 export default function ShareSVG({ onPress }: { onPress: () => void }) {
   return (
     <View>
-      <TouchableOpacity onPress={onPress}>
+      <TouchableOpacity onPress={onPress} className='w-[2rem] h-[2rem] '>
         <Svg width="25" height="30" viewBox="0 0 96 98" fill="none">
           <Mask id="path-1-inside-1_2022_276" fill="white">
           <Rect y="40" width="96" height="58" rx="7"/>

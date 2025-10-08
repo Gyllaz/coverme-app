@@ -1,119 +1,130 @@
-import { Text, View, TextInput, ScrollView } from "react-native";
-import { useState, useMemo } from "react";
-import { BackArrow } from '@/components';
-import { transactionsHistory, claimsHistory, getEmoji } from "@/constants/accountInfo";
-import { Link } from 'expo-router';
+// app/(tabs)/transactions.tsx
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { Dimensions, FlatList, NativeScrollEvent, NativeSyntheticEvent, Pressable, View } from 'react-native';
+import { BlurView } from 'expo-blur'; // (kept import to match policy file style, OK if unused here)
+import { Transactions1, Transactions2, Transactions3 } from '@/components';
 
-function parseDate(dateString: string) {
-  const [day, month, year] = dateString.split("/").map(Number);
-  return new Date(2000 + year, month - 1, day); // '25' becomes 2025
-}
+const { width } = Dimensions.get('window');
 
-function getMonthYearKey(dateString: string) {
-  const date = parseDate(dateString);
-  return date.toLocaleString("default", { month: "short", year: "numeric" }).toUpperCase(); // e.g. MAY 2025
+// Full-width page wrapper
+function PageContainer({ children }: { children: React.ReactNode }) {
+  return <View style={{ width, height: '100%' }}>{children}</View>;
 }
 
 export default function Transactions() {
-  const [searchQuery, setSearchQuery] = useState("");
+  const listRef = useRef<FlatList<number>>(null);
 
-  const allTransactions = useMemo(() => {
-    return [...transactionsHistory, ...claimsHistory].sort((a, b) =>
-      parseDate(b.date).getTime() - parseDate(a.date).getTime()
-    );
+  // 0 => Transactions1, 1 => Transactions2, 2 => Transactions3
+  const [index, setIndex] = useState(0);
+
+  // Three pages
+  const pages = useMemo(() => [0, 1, 2], []);
+
+  const scrollTo = useCallback(
+    (i: number) => {
+      if (!listRef.current) return;
+      const clamped = Math.max(0, Math.min(i, pages.length - 1));
+      listRef.current.scrollToIndex({ index: clamped, animated: true });
+      setIndex(clamped);
+    },
+    [pages.length]
+  );
+
+  const onNext = useCallback(() => scrollTo(index + 1), [index, scrollTo]);
+  const onPrev = useCallback(() => scrollTo(index - 1), [index, scrollTo]);
+
+  // Keep index in sync when user swipes
+  const onMomentumEnd = useCallback(
+    (e: NativeSyntheticEvent<NativeScrollEvent>) => {
+      const newIndex = Math.round(e.nativeEvent.contentOffset.x / width);
+      if (newIndex !== index) setIndex(newIndex);
+    },
+    [index]
+  );
+
+  const getItemLayout = useCallback(
+    (_: unknown, i: number) => ({ length: width, offset: width * i, index: i }),
+    []
+  );
+
+  const renderItem = useCallback(({ item }: { item: number }) => {
+    let page: React.ReactNode = null;
+    if (item === 0) page = <Transactions1 />;
+    else if (item === 1) page = <Transactions2 />;
+    else page = <Transactions3 />;
+
+    return <PageContainer>{page}</PageContainer>;
   }, []);
 
-  const filteredTransactions = useMemo(() => {
-    const query = searchQuery.toLowerCase();
-    return allTransactions.filter(
-      (tx) =>
-        tx.label.toLowerCase().includes(query) ||
-        tx.date.includes(query)
-    );
-  }, [searchQuery, allTransactions]);
-
-  // Group by month-year
-  const groupedTransactions = useMemo(() => {
-    const groups: { [key: string]: typeof filteredTransactions } = {};
-    filteredTransactions.forEach((tx) => {
-      const key = getMonthYearKey(tx.date);
-      if (!groups[key]) groups[key] = [];
-      groups[key].push(tx);
-    });
-
-    // Preserve order: newest month first
-    return Object.entries(groups).sort(
-      ([a], [b]) =>
-        parseDate(groups[b][0].date).getTime() -
-        parseDate(groups[a][0].date).getTime()
-    );
-  }, [filteredTransactions]);
-
   return (
-    <View className="bg-white h-full flex gap-[0.1rem] pt-[10%]">
-      <BackArrow />
+    <View style={{ flex: 1, backgroundColor: '#fff' }}>
+      {/* Horizontal stories-like pager */}
+      <FlatList
+        ref={listRef}
+        data={pages}
+        keyExtractor={(i) => String(i)}
+        renderItem={renderItem}
+        horizontal
+        pagingEnabled
+        showsHorizontalScrollIndicator={false}
+        bounces={false}
+        getItemLayout={getItemLayout}
+        onMomentumScrollEnd={onMomentumEnd}
+        removeClippedSubviews
+        initialNumToRender={3}
+        windowSize={3}
+      />
 
-      <View className="flex flex-row pt-[2.5rem] pb-[1rem] gap-[1.5rem] w-full pl-[2rem]">
-        <Text className="text-[#5050c2] font-poppins text-[2.5rem] font-medium">
-          Transactions
-        </Text>
-        <Link href="/investments">View growth</Link>
-      </View>
+      {/* Left / right tap zones (like IG stories) */}
+      <Pressable
+        onPress={onPrev}
+        style={{
+          position: 'absolute',
+          left: 0,
+          top: 0,
+          bottom: 0,
+          width: '15%',
+        }}
+        android_ripple={{ color: 'rgba(0,0,0,0.05)' }}
+      />
+      <Pressable
+        onPress={onNext}
+        style={{
+          position: 'absolute',
+          right: 0,
+          top: 0,
+          bottom: 0,
+          width: '15%',
+        }}
+        android_ripple={{ color: 'rgba(0,0,0,0.05)' }}
+      />
 
-      <View className="flex flex-row pt-[1rem] pb-[1rem] gap-[1.5rem] w-full px-[2rem]">
-        <TextInput
-          placeholder="Search by title or date..."
-          placeholderTextColor="#999"
-          value={searchQuery}
-          onChangeText={setSearchQuery}
-          className="border border-[#ccc] w-full rounded-[10px] px-4 py-2 text-[1.1rem] mb-4"
-        />
-      </View>
-
-      <ScrollView>
-        <View className="flex-1 w-full px-[2rem] pb-[7rem]">
-
-          {groupedTransactions.map(([month, txs]) => (
-            <View key={month} className="mb-6">
-              <Text className="text-[#5050c2] text-[1.4rem] font-bold mb-3">
-                {month}
-              </Text>
-
-              {txs.map((tx, index) => (
-                <View
-                  key={index}
-                  className="mb-3 p-4 border border-[#ddd] rounded-[10px] bg-[#f9f9ff]"
-                >
-                  <View className="flex flex-row justify-between items-center">
-                    <Text className="text-[1.2rem] text-[#5050c2] font-semibold">
-                      {getEmoji(tx.label)} {tx.label}
-                    </Text>
-                    <Text
-                      className={`text-[1.1rem] font-bold ${
-                        tx.type === "Deposit" ? "text-green-600" :
-                        tx.type === "Expense" ? "text-red-600" :
-                        "text-blue-600"
-                      }`}
-                    >
-                      {tx.type === "Deposit" ? "+" : "-"}${tx.amount}
-                    </Text>
-                  </View>
-                  <View className="pt-[0.3rem]">
-                    <Text className="text-[1rem] text-[#666]">{tx.date}</Text>
-                    <Text className="text-[0.9rem] text-[#999]">{tx.type}</Text>
-                  </View>
-                </View>
-              ))}
-            </View>
-          ))}
-
-          {filteredTransactions.length === 0 && (
-            <Text className="text-center text-[#999] mt-6">
-              No transactions found.
-            </Text>
-          )}
+      {/* Page indicator — same style, just three dots now */}
+      <View className="w-full h-fit flex flex-row justify-center absolute bottom-[1.5rem]">
+        <View className="rounded-[1rem] overflow-hidden flex flex-row justify-center">
+          <BlurView
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'center',
+              borderRadius: 30,
+              gap: 8,
+            }}
+            className="w-[9rem] h-fit px-[0.5rem] py-[0.5rem] justify-self-center rounded-[10px]"
+          >
+            {[0, 1, 2].map((i) => (
+              <View
+                key={i}
+                style={{
+                  width: 30,
+                  height: 8,
+                  borderRadius: 4,
+                  backgroundColor: index === i ? '#5050C2' : '#D6D6F0',
+                }}
+              />
+            ))}
+          </BlurView>
         </View>
-      </ScrollView>
+      </View>
     </View>
   );
 }

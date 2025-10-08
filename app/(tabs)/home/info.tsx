@@ -1,6 +1,6 @@
 import { Text, View, Share, Alert, Animated, Easing, TouchableOpacity } from "react-native";
 import { useState, useRef, useEffect } from "react";
-import { BackArrow, ShareSVG, CopySVG, CopyOptionsModal } from '@/components';
+import { BackArrow, ShareSVG, CopySVG } from '@/components';
 import { banking } from "@/constants/accountInfo";
 import * as Clipboard from 'expo-clipboard';
 import * as Haptics from 'expo-haptics';
