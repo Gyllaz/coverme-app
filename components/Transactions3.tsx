@@ -1,11 +1,10 @@
-import { View, Text, Dimensions, TouchableOpacity, Share, Alert } from "react-native";
+import { View, Text, Dimensions, TouchableOpacity, Share, Alert, useWindowDimensions } from "react-native";
 import { BlurView } from "expo-blur";
 import { LineGraph, type GraphPoint } from "react-native-graph";
 import { investmentReturns } from "@/constants/accountInfo";
 import { useMemo, useState, useCallback, useEffect } from "react";
 import ShareSVG from "./ShareSVG";
 
-const { width } = Dimensions.get("window");
 
 type RangeKey = "3M" | "6M" | "1Y" | "ALL";
 
@@ -19,6 +18,7 @@ const subMonths = (d: Date, months: number) => {
 };
 
 export default function Transactions3() {
+  const { width } = useWindowDimensions();
   // 1) Clean → sort → de-dupe (full dataset)
   const fullData = useMemo<GraphPoint[]>(() => {
     const pts = investmentReturns

@@ -41,47 +41,160 @@ export const policyInfo = {
 
 
 export const transactionsHistory = [
-  { date: '25/05/25', type: 'Deposit', label: 'Premium Deposit', amount: 35 },
-  { date: '22/05/25', type: 'Expense', label: 'Tooth Extraction', amount: 180 },
-  { date: '20/05/25', type: 'Deposit', label: 'Top Up', amount: 100 },
-  { date: '18/05/25', type: 'Deposit', label: 'Top Up', amount: 500 },
-  { date: '16/05/25', type: 'Expense', label: 'Root Canal', amount: 250 },
-  { date: '12/05/25', type: 'Expense', label: 'Dental Filling', amount: 100 },
-  { date: '07/05/25', type: 'Deposit', label: 'Top Up', amount: 150 },
+  // APR 2025 (weeks starting 07, 14, 21, 28)
+  { date: '07/04/25', type: 'Deposit', label: 'Premium Deposit', amount: 35 },
+  { date: '09/04/25', type: 'Deposit', label: 'Top Up', amount: 120 },
+  { date: '11/04/25', type: 'Expense', label: 'Dental Filling', amount: 95 },
+
+  { date: '14/04/25', type: 'Deposit', label: 'Top Up', amount: 150 },
+  { date: '16/04/25', type: 'Expense', label: 'Glasses Purchase', amount: 140 },
+
+  { date: '21/04/25', type: 'Deposit', label: 'Top Up', amount: 200 },
+  { date: '24/04/25', type: 'Expense', label: 'Physio Appointment', amount: 60 },
+
+  { date: '28/04/25', type: 'Deposit', label: 'Premium Deposit', amount: 35 },
+  { date: '30/04/25', type: 'Expense', label: 'Checkup & Clean', amount: 110 },
+
+  // MAY 2025 (weeks starting 05, 12, 19, 26)
   { date: '05/05/25', type: 'Deposit', label: 'Premium Deposit', amount: 35 },
-  { date: '28/04/25', type: 'Expense', label: 'Physio Appointment', amount: 50 },
-  { date: '20/04/25', type: 'Deposit', label: 'Top Up', amount: 200 },
-  { date: '12/04/25', type: 'Expense', label: 'Glasses Purchase', amount: 120 },
-  { date: '05/04/25', type: 'Deposit', label: 'Premium Deposit', amount: 35 },
+  { date: '06/05/25', type: 'Deposit', label: 'Top Up', amount: 150 },
+  { date: '08/05/25', type: 'Expense', label: 'Root Canal', amount: 260 },
+
+  { date: '12/05/25', type: 'Deposit', label: 'Top Up', amount: 180 },
+  { date: '14/05/25', type: 'Expense', label: 'Dental Filling', amount: 100 },
+
+  { date: '19/05/25', type: 'Deposit', label: 'Top Up', amount: 100 },
+  { date: '21/05/25', type: 'Expense', label: 'Tooth Extraction', amount: 185 },
+
+  { date: '26/05/25', type: 'Deposit', label: 'Premium Deposit', amount: 35 },
+  { date: '28/05/25', type: 'Expense', label: 'Physio Appointment', amount: 70 },
+
+  // JUN 2025 (weeks starting 02, 09, 16, 23, 30)
+  { date: '02/06/25', type: 'Deposit', label: 'Premium Deposit', amount: 35 },
+  { date: '03/06/25', type: 'Deposit', label: 'Top Up', amount: 220 },
+  { date: '05/06/25', type: 'Expense', label: 'Eye Test', amount: 80 },
+
+  { date: '09/06/25', type: 'Deposit', label: 'Top Up', amount: 160 },
+  { date: '12/06/25', type: 'Expense', label: 'Glasses Purchase', amount: 130 },
+
+  { date: '16/06/25', type: 'Deposit', label: 'Top Up', amount: 90 },
+  { date: '18/06/25', type: 'Expense', label: 'Dental Filling', amount: 105 },
+
+  { date: '23/06/25', type: 'Deposit', label: 'Top Up', amount: 140 },
+  { date: '26/06/25', type: 'Expense', label: 'Physio Appointment', amount: 65 },
+
+  { date: '30/06/25', type: 'Deposit', label: 'Premium Deposit', amount: 35 },
+  { date: '30/06/25', type: 'Expense', label: 'Checkup & Clean', amount: 115 },
+
+  // JUL 2025 (weeks starting 07, 14, 21, 28)
+  { date: '07/07/25', type: 'Deposit', label: 'Premium Deposit', amount: 35 },
+  { date: '08/07/25', type: 'Deposit', label: 'Top Up', amount: 180 },
+  { date: '10/07/25', type: 'Expense', label: 'Therapy', amount: 120 },
+
+  { date: '14/07/25', type: 'Deposit', label: 'Top Up', amount: 200 },
+  { date: '16/07/25', type: 'Expense', label: 'Dental Filling', amount: 95 },
+
+  { date: '21/07/25', type: 'Deposit', label: 'Top Up', amount: 130 },
+  { date: '24/07/25', type: 'Expense', label: 'Chiro', amount: 85 },
+
+  { date: '28/07/25', type: 'Deposit', label: 'Premium Deposit', amount: 35 },
+  { date: '30/07/25', type: 'Expense', label: 'Physicial Therapy', amount: 75 },
+
+  // AUG 2025 (weeks starting 04, 11, 18, 25)
+  { date: '04/08/25', type: 'Deposit', label: 'Premium Deposit', amount: 35 },
+  { date: '05/08/25', type: 'Deposit', label: 'Top Up', amount: 150 },
+  { date: '07/08/25', type: 'Expense', label: 'Prescription', amount: 55 },
+
+  { date: '11/08/25', type: 'Deposit', label: 'Top Up', amount: 170 },
+  { date: '13/08/25', type: 'Expense', label: 'GP Visit', amount: 95 },
+
+  { date: '18/08/25', type: 'Deposit', label: 'Top Up', amount: 120 },
+  { date: '20/08/25', type: 'Expense', label: 'Osteopath', amount: 90 },
+
+  { date: '25/08/25', type: 'Deposit', label: 'Premium Deposit', amount: 35 },
+  { date: '28/08/25', type: 'Expense', label: 'Nutritionist', amount: 110 },
+
+  // SEP 2025 (weeks starting 01, 08, 15, 22, 29)
+  { date: '01/09/25', type: 'Deposit', label: 'Premium Deposit', amount: 35 },
+  { date: '02/09/25', type: 'Deposit', label: 'Top Up', amount: 210 },
+  { date: '04/09/25', type: 'Expense', label: 'Dental Filling', amount: 100 },
+
+  { date: '08/09/25', type: 'Deposit', label: 'Top Up', amount: 160 },
+  { date: '11/09/25', type: 'Expense', label: 'Hearing Aids', amount: 150 },
+
+  { date: '15/09/25', type: 'Deposit', label: 'Top Up', amount: 140 },
+  { date: '17/09/25', type: 'Expense', label: 'Therapy', amount: 130 },
+
+  { date: '22/09/25', type: 'Deposit', label: 'Top Up', amount: 100 },
+  { date: '25/09/25', type: 'Expense', label: 'Glasses Purchase', amount: 180 },
+
+  { date: '29/09/25', type: 'Deposit', label: 'Premium Deposit', amount: 35 },
+  { date: '30/09/25', type: 'Expense', label: 'Physio Appointment', amount: 70 },
 ];
 
-
-
 export const claimsHistory = [
-  { date: '12/05/25', type: 'CLAIM', label: 'Dental Filling', amount: 150 },
-  { date: '28/04/25', type: 'CLAIM', label: 'Physio Appointment', amount: 100 },
-  { date: '16/04/25', type: 'CLAIM', label: 'Eye Test', amount: 75 },
+  // APR 2025
   { date: '08/04/25', type: 'CLAIM', label: 'Tooth Cleaning', amount: 90 },
+  { date: '16/04/25', type: 'CLAIM', label: 'Eye Test', amount: 75 },
+  { date: '22/04/25', type: 'CLAIM', label: 'Physio Appointment', amount: 100 },
+  { date: '29/04/25', type: 'CLAIM', label: 'Dental Filling', amount: 120 },
+
+  // MAY 2025
+  { date: '06/05/25', type: 'CLAIM', label: 'Checkup & Clean', amount: 110 },
+  { date: '13/05/25', type: 'CLAIM', label: 'Dental Filling', amount: 150 },
+  { date: '20/05/25', type: 'CLAIM', label: 'Physio Appointment', amount: 90 },
+  { date: '27/05/25', type: 'CLAIM', label: 'Glasses Purchase', amount: 130 },
+
+  // JUN 2025
+  { date: '03/06/25', type: 'CLAIM', label: 'Eye Test', amount: 80 },
+  { date: '10/06/25', type: 'CLAIM', label: 'Physicial Therapy', amount: 95 },
+  { date: '17/06/25', type: 'CLAIM', label: 'Dental Filling', amount: 115 },
+  { date: '24/06/25', type: 'CLAIM', label: 'Checkup & Clean', amount: 105 },
+  { date: '30/06/25', type: 'CLAIM', label: 'GP Visit', amount: 85 },
+
+  // JUL 2025
+  { date: '08/07/25', type: 'CLAIM', label: 'Therapy', amount: 110 },
+  { date: '15/07/25', type: 'CLAIM', label: 'Dental Filling', amount: 95 },
+  { date: '22/07/25', type: 'CLAIM', label: 'Chiro', amount: 80 },
+  { date: '29/07/25', type: 'CLAIM', label: 'Physio Appointment', amount: 90 },
+
+  // AUG 2025
+  { date: '05/08/25', type: 'CLAIM', label: 'Prescription', amount: 45 },
+  { date: '12/08/25', type: 'CLAIM', label: 'GP Visit', amount: 100 },
+  { date: '19/08/25', type: 'CLAIM', label: 'Osteopath', amount: 85 },
+  { date: '26/08/25', type: 'CLAIM', label: 'Nutritionist', amount: 95 },
+
+  // SEP 2025
+  { date: '02/09/25', type: 'CLAIM', label: 'Dental Filling', amount: 120 },
+  { date: '09/09/25', type: 'CLAIM', label: 'Hearing Aids', amount: 200 },
+  { date: '16/09/25', type: 'CLAIM', label: 'Therapy', amount: 120 },
+  { date: '23/09/25', type: 'CLAIM', label: 'Glasses Purchase', amount: 150 },
+  { date: '30/09/25', type: 'CLAIM', label: 'Physio Appointment', amount: 95 },
 ];
 
 export function getEmoji(label) {
   const emojiMap = {
-    "🦷": ["Dental Filling", "Tooth Extraction", "Root Canal", "Tooth Cleaning", "Checkup & Clean"],
-    "💪": ["Physio Appointment"],
-    "👓": ["Glasses", "Eye Test", "Glasses Purchase"],
-    "💸": ["Premium Deposit", "Top Up"],
-    "📄": ["Claim Submission"],
-    "🏥": ["Hospital Visit"]
+    '🦷': ['Dental Filling', 'Tooth Extraction', 'Root Canal', 'Tooth Cleaning', 'Checkup & Clean'],
+    '💪': ['Physio Appointment', 'Physicial Therapy'],
+    '👓': ['Glasses', 'Eye Test', 'Glasses Purchase'],
+    '🦴': ['Chiro', 'Osteopath'],
+    '🌿': ['Naturopath'],
+    '🍎': ['Nutritionist'],
+    '🧠': ['Therapy', 'Counselling', 'Psychologist'],
+    '💊': ['Prescription', 'Pharmacist'],
+    '🩺': ['GP Visit', 'Out-Patient Care'],
+    '🦻': ['Audiologist', 'Hearing Aids'],
+    '💸': ['Premium Deposit', 'Top Up'],
+    '📄': ['Claim Submission'],
+    '🏥': ['Hospital Visit'],
   };
 
   for (const [emoji, labels] of Object.entries(emojiMap)) {
-    if (labels.includes(label)) {
-      return emoji;
-    }
+    if (labels.includes(label)) return emoji;
   }
-
-  return "💳"; 
+  return '💳';
 }
+
 
 
 export const savingsGoals = {
