@@ -1,12 +1,11 @@
 // app/(tabs)/transactions.tsx
 import React, { useCallback, useMemo, useRef, useState } from 'react';
 import { Dimensions, FlatList, NativeScrollEvent, NativeSyntheticEvent, Pressable, View } from 'react-native';
-import { BlurView } from 'expo-blur'; // (kept import to match policy file style, OK if unused here)
-import { Transactions1, Transactions2, Transactions3 } from '@/components';
+import { BlurView } from 'expo-blur';
+import { Transactions1, Transactions3 } from '@/components';
 
 const { width } = Dimensions.get('window');
 
-// Full-width page wrapper
 function PageContainer({ children }: { children: React.ReactNode }) {
   return <View style={{ width, height: '100%' }}>{children}</View>;
 }
@@ -14,11 +13,11 @@ function PageContainer({ children }: { children: React.ReactNode }) {
 export default function Transactions() {
   const listRef = useRef<FlatList<number>>(null);
 
-  // 0 => Transactions1, 1 => Transactions2, 2 => Transactions3
+  // 0 => Transactions1, 1 => Transactions3
   const [index, setIndex] = useState(0);
 
-  // Three pages
-  const pages = useMemo(() => [0, 1, 2], []);
+  // Only two pages now
+  const pages = useMemo(() => [0, 1], []);
 
   const scrollTo = useCallback(
     (i: number) => {
@@ -33,7 +32,6 @@ export default function Transactions() {
   const onNext = useCallback(() => scrollTo(index + 1), [index, scrollTo]);
   const onPrev = useCallback(() => scrollTo(index - 1), [index, scrollTo]);
 
-  // Keep index in sync when user swipes
   const onMomentumEnd = useCallback(
     (e: NativeSyntheticEvent<NativeScrollEvent>) => {
       const newIndex = Math.round(e.nativeEvent.contentOffset.x / width);
@@ -50,7 +48,6 @@ export default function Transactions() {
   const renderItem = useCallback(({ item }: { item: number }) => {
     let page: React.ReactNode = null;
     if (item === 0) page = <Transactions1 />;
-    else if (item === 1) page = <Transactions2 />;
     else page = <Transactions3 />;
 
     return <PageContainer>{page}</PageContainer>;
@@ -58,7 +55,7 @@ export default function Transactions() {
 
   return (
     <View style={{ flex: 1, backgroundColor: '#fff' }}>
-      {/* Horizontal stories-like pager */}
+      {/* Horizontal pager */}
       <FlatList
         ref={listRef}
         data={pages}
@@ -71,11 +68,11 @@ export default function Transactions() {
         getItemLayout={getItemLayout}
         onMomentumScrollEnd={onMomentumEnd}
         removeClippedSubviews
-        initialNumToRender={3}
-        windowSize={3}
+        initialNumToRender={2}
+        windowSize={2}
       />
 
-      {/* Left / right tap zones (like IG stories) */}
+      {/* Left / right tap zones */}
       <Pressable
         onPress={onPrev}
         style={{
@@ -99,7 +96,7 @@ export default function Transactions() {
         android_ripple={{ color: 'rgba(0,0,0,0.05)' }}
       />
 
-      {/* Page indicator — same style, just three dots now */}
+      {/* Page indicator — only two dots now */}
       <View className="w-full h-fit flex flex-row justify-center absolute bottom-[1.5rem]">
         <View className="rounded-[1rem] overflow-hidden flex flex-row justify-center">
           <BlurView
@@ -109,16 +106,16 @@ export default function Transactions() {
               borderRadius: 30,
               gap: 8,
             }}
-            className="w-[9rem] h-fit px-[0.5rem] py-[0.5rem] justify-self-center rounded-[10px]"
+            className="w-[7rem] h-fit px-[0.5rem] py-[0.5rem] justify-self-center rounded-[10px]"
           >
-            {[0, 1, 2].map((i) => (
+            {[0, 1].map((i) => (
               <View
                 key={i}
                 style={{
                   width: 30,
                   height: 8,
                   borderRadius: 4,
-                  backgroundColor: index === i ? '#5050C2' : '#D6D6F0',
+                  backgroundColor: index === i ? '#105E49' : '#D6D6F0',
                 }}
               />
             ))}

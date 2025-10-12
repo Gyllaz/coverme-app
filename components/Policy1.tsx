@@ -35,7 +35,7 @@ export default function Policy1() {
           }}
           className='pt-[3rem] pb-[1rem]'
         >
-          <Text className='text-[#5050c2] pb-[3rem] pt-[1.5rem] pl-[2rem] text-[2.5rem]'>Your Policy</Text>
+          <Text className='text-[#105E49] pb-[3rem] pt-[1.5rem] pl-[2rem] text-[2.5rem]'>Your Policy</Text>
 
         </BlurView>
       </View>

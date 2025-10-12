@@ -77,7 +77,7 @@ export default function Pin() {
   );
 
   return (
-    <View className="bg-[#5050C2] h-full w-full pt-[12%]">
+    <View className="bg-[#105E49] h-full w-full pt-[12%]">
       {/* Top bar */}
       <View className="flex-row justify-end pr-[1.5rem]">
         <TouchableOpacity onPress={onClose} accessibilityLabel="Close">
@@ -111,10 +111,10 @@ export default function Pin() {
                 className="w-[3.5rem] h-[3.6rem] rounded-[10px] bg-[#E4E4F7] justify-center items-center"
                 style={{
                   borderWidth: 2,
-                  borderColor: error ? '#FF6B6B' : '#5050C2',
+                  borderColor: error ? '#FF6B6B' : '#105E49',
                 }}
               >
-                <Text className="text-[2.5rem] text-[#5050C2] ">
+                <Text className="text-[2.5rem] text-[#105E49] ">
                   {filled ? '•' : ' '}
                 </Text>
               </View>
@@ -157,7 +157,7 @@ export default function Pin() {
                     {isBack ? (
                       <BackSpaceSVG />
                     ) : (
-                      <Text className="text-[1.9rem] text-[#5050C2] font-semibold">{key}</Text>
+                      <Text className="text-[1.9rem] text-[#105E49] font-semibold">{key}</Text>
                     )}
 
                   </View>

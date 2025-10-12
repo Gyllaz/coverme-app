@@ -116,7 +116,7 @@ export default function Policy() {
                   width: 30,
                   height: 8,
                   borderRadius: 4,
-                  backgroundColor: index === i ? '#5050C2' : '#D6D6F0',
+                  backgroundColor: index === i ? '#105E49' : '#D6D6F0',
                 }}
               />
             ))}

@@ -70,8 +70,8 @@ export default function Transactions1() {
       (a, b) => a.weekStart.getTime() - b.weekStart.getTime()
     );
 
-    const cDeposit = '#55C47C';
-    const cClaim = '#4F7BFF';
+    const cDeposit = '#E5EF68';
+    const cClaim = '#8AC3F9';
     const cExpense = '#E24C4B';
 
     return weeks.map((w, i) => ({
@@ -150,7 +150,7 @@ export default function Transactions1() {
           }}
           className="pt-[3rem] pb-[1rem]"
         >
-          <Text className="text-[#5050c2] pb-[1rem] pt-[1.5rem] pl-[2rem] text-[2.5rem]">
+          <Text className="text-[#105E49] pb-[1rem] pt-[1.5rem] pl-[2rem] text-[2.5rem]">
             Transactions
           </Text>
 
@@ -161,12 +161,12 @@ export default function Transactions1() {
               placeholderTextColor="#999"
               value={searchQuery}
               onChangeText={setSearchQuery}
-              className="border border-[#5050c2] w-full rounded-[10px] px-4 py-2 text-[1.1rem]"
+              className="border border-[#105E49] w-full rounded-[10px] px-4 py-2 text-[1.1rem]"
             />
             <View
               style={{
                 borderWidth: 1,
-                borderColor: '#5050C2',
+                borderColor: '#105E49',
                 borderRadius: 10,
                 overflow: 'hidden',
               }}
@@ -176,14 +176,14 @@ export default function Transactions1() {
                 <Picker
                   selectedValue={selectedMonth}
                   onValueChange={(v) => { setSelectedMonth(v); setActiveBar(null); }}
-                  dropdownIconColor="#5050C2"
+                  dropdownIconColor="#105E49"
                 >
                   {monthOptions.map((m) => (
                     <Picker.Item
                       key={m}
                       label={m === 'ALL' ? 'All Transactions' : m}
                       value={m}
-                      color="#5050C2"
+                      color="#105E49"
                     />
                   ))}
                 </Picker>
@@ -198,13 +198,13 @@ export default function Transactions1() {
           {/* Legend */}
           <View className="flex flex-row gap-[16px] mb-3 items-center">
             {[
-              { label: 'Deposits', color: '#55C47C' },
-              { label: 'Claims', color: '#4F7BFF' },
+              { label: 'Deposits', color: '#E5EF68' },
+              { label: 'Claims', color: '#8AC3F9' },
               { label: 'Expenses', color: '#E24C4B' },
             ].map((l) => (
               <View key={l.label} className="flex flex-row items-center gap-[6px]">
                 <View style={{ width: 12, height: 12, borderRadius: 3, backgroundColor: l.color }} />
-                <Text className="text-[#5050C2]">{l.label}</Text>
+                <Text className="text-[#1E1E1E]">{l.label}</Text>
               </View>
             ))}
           </View>
@@ -223,7 +223,7 @@ export default function Transactions1() {
               // hideXAxisText={true}
               hideYAxisText={false}
               yAxisLabelPrefix="$"
-              yAxisTextStyle={{ color: '#8A8AC9', }}
+              yAxisTextStyle={{ color: '#1E1E1E', }}
               xAxisThickness={1}
               barMarginBottom={0}
               yAxisExtraHeight={0}
@@ -274,28 +274,31 @@ export default function Transactions1() {
           <View className='pt-[4rem]'>
             {groupedTransactions.map(([month, txs]) => (
               <View key={month} className="mb-6">
-                <Text className="text-[#5050c2] text-[1.4rem] font-bold mb-3">{month}</Text>
+                <Text className="text-[#105E49] text-[1.4rem] font-bold mb-3">{month}</Text>
                 {txs.map((tx, index) => (
-                  <View key={index} className="mb-3 p-4 border border-[#ddd] rounded-[10px] bg-[#f9f9ff]">
+                  <View key={index} className="mb-3 p-4 border border-[#105E49] rounded-[10px] bg-white">
                     <View className="flex flex-row justify-between items-center">
-                      <Text className="text-[1.2rem] text-[#5050c2] font-semibold">
+                      <Text className="text-[1.2rem] text-[1E1E1E] font-semibold">
                         {getEmoji(tx.label)} {tx.label}
                       </Text>
-                      <Text
-                        className={`text-[1.1rem] font-bold ${
-                          tx.type === 'Deposit'
-                            ? 'text-green-600'
-                            : tx.type === 'Expense'
-                            ? 'text-red-600'
-                            : 'text-blue-600'
-                        }`}
-                      >
-                        {tx.type === 'Deposit' ? '+' : tx.type === 'Expense' ? '-' : '+'}${tx.amount}
-                      </Text>
+                      <View className=''>
+                        <Text
+                          className={`text-[1.1rem] font-bold ${
+                            tx.type === 'Deposit'
+                              ? 'text-[#BECD01]'
+                              : tx.type === 'Expense'
+                              ? 'text-[#E24C4B]'
+                              : 'text-[#8AC3F9]'
+                          }`}
+                        >
+                          {tx.type === 'Deposit' ? '+' : tx.type === 'Expense' ? '-' : '+'}${tx.amount}
+                        </Text>
+                      
+                      </View>
                     </View>
                     <View className="pt-[0.3rem]">
-                      <Text className="text-[1rem] text-[#666]">{tx.date}</Text>
-                      <Text className="text-[0.9rem] text-[#999]">{tx.type}</Text>
+                      <Text className="text-[1rem] text-[#1E1E1E]">{tx.date}</Text>
+                      <Text className="text-[0.9rem] text-[#1E1E1E]">{tx.type}</Text>
                     </View>
                   </View>
                 ))}

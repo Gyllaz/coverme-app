@@ -23,10 +23,10 @@ export default function Benefits() {
             }}
           >
             <View className="gap-[6px]">
-              <Text className="font-poppins text-[22px] tracking-[0.1rem] text-[#5050C2] font-medium">
+              <Text className="font-poppins text-[22px] tracking-[0.1rem] text-[#105E49] font-medium">
                 Benefits
               </Text>
-              <Text className="font-poppins text-[18px] text-[#5050C2] font-light">
+              <Text className="font-poppins text-[18px] text-[#1E1E1E] font-light">
                 {policyName}
               </Text>
             </View>
@@ -40,22 +40,22 @@ export default function Benefits() {
                   fill={percentProgress}
                   rotation={0}
                   lineCap="round"
-                  tintColor="#55C47C"
-                  backgroundColor="#C9F8D9"
+                  tintColor="#8AC3F9"
+                  backgroundColor="#DDEBF9"
                   duration={1800}
                 />
               </View>
               <View className="absolute w-full h-full items-center justify-center">
-                <Text className="font-poppins text-[44px] tracking-[0.1rem] text-[#5050C2] font-medium">
+                <Text className="font-poppins text-[44px] tracking-[0.1rem] text-[#8AC3F9] font-medium">
                   ${remainBenefits}
                 </Text>
-                <Text className="font-poppins text-[20px] tracking-[0.1rem] text-[#5050C2] font-medium">
+                <Text className="font-poppins text-[20px] tracking-[0.1rem] text-[#8AC3F9] font-medium">
                   Remaining
                 </Text>
               </View>
             </View>
 
-            <Text className="pt-[12px] font-poppins text-[14px] text-[#5050C2] font-light">
+            <Text className="pt-[12px] font-poppins text-[14px] text-[#1E1E1E] font-light">
               Your benefits including dental, optical, physio and more share a combined limit.
             </Text>
           </View>

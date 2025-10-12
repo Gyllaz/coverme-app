@@ -19,33 +19,33 @@ export default function MonthlyPay() {
             }}
           >
             <View className="flex-row justify-between">
-              <Text className="font-poppins text-[20px] text-[#5050C2] font-medium">
+              <Text className="font-poppins text-[20px] text-[#105E49] font-medium">
                 Monthly Payments
               </Text>
             </View>
 
             <View className="mt-[12px] gap-[10px]">
               <View className="flex-row justify-between">
-                <Text className="font-poppins text-[18px] text-[#5050C2] font-light">
+                <Text className="font-poppins text-[18px] text-[#1E1E1E] font-light">
                   Wallet Deposit
                 </Text>
-                <Text className="font-poppins text-[18px] text-[#5050C2]">
+                <Text className="font-poppins text-[18px] text-[#1E1E1E]">
                   {monthlyDeposit}
                 </Text>
               </View>
               <View className="flex-row justify-between">
-                <Text className="font-poppins text-[18px] text-[#5050C2] font-light">
+                <Text className="font-poppins text-[18px] text-[#1E1E1E] font-light">
                   Policy Financing
                 </Text>
-                <Text className="font-poppins text-[18px] text-[#5050C2]">
+                <Text className="font-poppins text-[18px] text-[#1E1E1E]">
                   {monthlyPolicy}
                 </Text>
               </View>
-              <View className="pt-[12px] mt-[8px] border-t border-[#5050C2]/40 flex-row justify-between">
-                <Text className="font-poppins text-[18px] text-[#5050C2] font-light">
+              <View className="pt-[12px] mt-[8px] border-t border-[#105E49]/40 flex-row justify-between">
+                <Text className="font-poppins text-[18px] text-[#1E1E1E] font-light">
                   Total
                 </Text>
-                <Text className="font-poppins text-[18px] text-[#5050C2]">
+                <Text className="font-poppins text-[18px] text-[#1E1E1E]">
                   {monthlyTotal}
                 </Text>
               </View>

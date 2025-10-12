@@ -57,26 +57,29 @@ export default function Info() {
 
   const [showModal, setShowModal] = useState(false);
 
-  const showCopyToast = (message: string) => {
+  const showCopyToast = (msg: string) => {
     Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
-    setToastMessage(message);
-    setShowToast(true);
-    Animated.timing(toastAnim, {
-      toValue: 1,
-      duration: 300,
-      useNativeDriver: true,
-      easing: Easing.out(Easing.ease),
-    }).start(() => {
-      setTimeout(() => {
-        Animated.timing(toastAnim, {
-          toValue: 0,
-          duration: 300,
-          useNativeDriver: true,
-          easing: Easing.in(Easing.ease),
-        }).start(() => setShowToast(false));
-      }, 1200);
-    });
+    setToastMessage(msg);
+    if (!showToast) {
+      setShowToast(true);
+      Animated.timing(toastAnim, {
+        toValue: 1,
+        duration: 200,
+        useNativeDriver: true,
+      }).start();
+    }
+    clearTimeout((showCopyToast as any).timer);
+    (showCopyToast as any).timer = setTimeout(() => {
+      Animated.timing(toastAnim, {
+        toValue: 0,
+        duration: 200,
+        useNativeDriver: true,
+      }).start(() => setShowToast(false));
+    }, 3000);
   };
+
+
+
 
 
   // inside Info component
@@ -99,7 +102,7 @@ export default function Info() {
       <BackArrow />
       
       <View className="flex flex-row pt-[2.5rem] gap-[1.5rem] w-full justify-center items-center">
-        <Text className="text-[#5050c2] font-poppins text-[2rem] font-medium">Account Information</Text>
+        <Text className="text-[#105E49] font-poppins text-[2rem] font-medium">Account Information</Text>
         <View className="pb-[0.5rem]">
           <ShareSVG onPress={handleShare}/>
         </View>
@@ -117,7 +120,7 @@ export default function Info() {
               }}
           >
             <View className="flex flex-row justify-between">
-              <Text className="font-poppins text-[1.7rem] tracking-[0.1rem] text-[#5050c2] font-medium">
+              <Text className="font-poppins text-[1.7rem] tracking-[0.1rem] text-[#105E49] font-medium">
                 PayID
               </Text>
 
@@ -126,8 +129,8 @@ export default function Info() {
               </View>
 
             </View>
-            <Text className="pt-[0.1rem] font-poppins text-[1.3rem] text-[#5050c2] font-me">{ payID }</Text>
-            <Text className="pt-[0.5rem] font-poppins text-[1rem] text-[#5050c2] font-me font-light">Osko payments are usually instant</Text>
+            <Text className="pt-[0.1rem] font-poppins text-[1.3rem] text-[#1E1E1E] font-me">{ payID }</Text>
+            <Text className="pt-[0.5rem] font-poppins text-[1rem] text-[#1E1E1E] font-me font-light">Osko payments are usually instant</Text>
           </View>
         </View>
 
@@ -144,10 +147,10 @@ export default function Info() {
             <View className="">
               <View className="flex flex-row justify-between">
                 <View>
-                  <Text className="font-poppins text-[1.7rem] text-[#5050c2] font-medium">
+                  <Text className="font-poppins text-[1.7rem] text-[#105E49] font-medium">
                     Account Name
                   </Text>
-                  <Text className="pt-[1rem] font-poppins text-[1.3rem] text-[#5050c2] font-me">{ accountName }</Text>
+                  <Text className="pt-[1rem] font-poppins text-[1.3rem] text-[#1E1E1E] font-me">{ accountName }</Text>
                 </View>
                 <CopySVG onPress={() => handleCopyAccountInfo('both')}/>
 
@@ -157,25 +160,25 @@ export default function Info() {
             <View className="w-full flex flex-row justify-between pt-[1.5rem] ">
               <View>
                 <TouchableOpacity onPress={() => handleCopyAccountInfo('bsb')}>
-                  <Text className="font-poppins text-[1.7rem] text-[#5050c2] font-medium">
+                  <Text className="font-poppins text-[1.7rem] text-[#105E49] font-medium">
                     BSB
                   </Text>
 
-                  <Text className="pt-[1rem] font-poppins text-[1.3rem] text-[#5050c2] font-me">{ BSB }</Text>  
+                  <Text className="pt-[1rem] font-poppins text-[1.3rem] text-[#1E1E1E] font-me">{ BSB }</Text>  
                 </TouchableOpacity>
               </View>
               <View>
                 <TouchableOpacity onPress={() => handleCopyAccountInfo('account')}>
-                  <Text className="font-poppins text-[1.7rem] text-[#5050c2] font-medium">
+                  <Text className="font-poppins text-[1.7rem] text-[#105E49] font-medium">
                     Account Number
                   </Text>
 
-                  <Text className="pt-[1rem] font-poppins text-[1.3rem] text-[#5050c2] font-me">{ accountNo }</Text>
+                  <Text className="pt-[1rem] font-poppins text-[1.3rem] text-[#1E1E1E] font-me">{ accountNo }</Text>
                   
                 </TouchableOpacity>
               </View>
             </View>
-            <Text className="pt-[1rem] font-poppins text-[1rem] text-[#5050c2] font-me font-light">Tap your BSB or Account Number to copy them. Bank transfers usually take 2 - 3 days</Text>
+            <Text className="pt-[1rem] font-poppins text-[1rem] text-[#1E1E1E] font-me font-light">Tap your BSB or Account Number to copy them. Bank transfers usually take 2 - 3 days</Text>
           </View>
         </View>
         <View className="w-full flex justify-center items-center">
@@ -188,7 +191,7 @@ export default function Info() {
                 elevation: 10, // Android
               }}
           >
-            <Text className="font-poppins text-[1rem] text-[#5050c2] font-normal">Transfer money easily into your CoverMe wallet with PayID or direct debit</Text>
+            <Text className="font-poppins text-[1rem] text-[#1E1E1E] font-normal">Transfer money easily into your CoverMe wallet with PayID or direct debit</Text>
           </View>
 
         </View>
@@ -204,16 +207,17 @@ export default function Info() {
               {
                 translateY: toastAnim.interpolate({
                   inputRange: [0, 1],
-                  outputRange: [50, 0],
+                  outputRange: [30, 0], // slide up smoothly
                 }),
               },
             ],
           }}
         >
-          <View className="bg-[#5050c2] px-6 py-3 rounded-full shadow-md">
-            <Text className="text-white text-base font-medium">{toastMessage}</Text>
+          <View className="bg-[#E5EF68] px-6 py-3 rounded-full shadow-md">
+            <Text className="text-[#1E1E1E] text-base font-medium">{toastMessage}</Text>
           </View>
         </Animated.View>
+
       )}
 
 

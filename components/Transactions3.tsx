@@ -110,7 +110,7 @@ export default function Transactions3() {
           }}
           className="pt-[3rem] pb-[1rem]"
         >
-          <Text className="text-[#5050c2] pb-[3rem] pt-[1.5rem] pl-[2rem] text-[2.5rem]">
+          <Text className="text-[#105E49] pb-[3rem] pt-[1.5rem] pl-[2rem] text-[2.5rem]">
             Growth
           </Text>
         </BlurView>
@@ -121,10 +121,10 @@ export default function Transactions3() {
           <View style={{ width: width - 40, height: 320, overflow: "visible" }} className="flex">
             {/* Ticker */}
             <View className="pl-[1rem]">
-              <Text className="text-[1.8rem] font-medium">
+              <Text className="text-[2rem] font-medium">
                 {fmtCurrency(hoverValue)}{"  "}
               </Text>
-                <Text style={{ color: pctChangeFromStart >= 0 ? "#55C47C" : "#E24C4B" }} className="text-[1.2rem]">
+                <Text style={{ color: pctChangeFromStart >= 0 ? "#8AC3F9" : "#E24C4B" }} className="text-[1.5rem] font-medium">
                   {fmtPct(pctChangeFromStart)}
                 </Text>
             </View>
@@ -134,7 +134,7 @@ export default function Transactions3() {
               <LineGraph
                 points={filteredData}
                 animated
-                color="#5050C2"
+                color="#105E49"
                 enablePanGesture
                 verticalPadding={30}
                 horizontalPadding={30}
@@ -165,11 +165,11 @@ export default function Transactions3() {
                       paddingVertical: 6,
                       borderRadius: 999,
                       borderWidth: active ? 1 : 0,
-                      borderColor: active ? "#5050C2" : "",
-                      backgroundColor: active ? "#5050C2" : "",
+                      borderColor: active ? "#105E49" : "",
+                      backgroundColor: active ? "#105E49" : "",
                     }}
                   >
-                    <Text style={{ color: active ? "#FFFFFF" : "#5050C2", fontWeight: "600", fontSize: 17, }}>
+                    <Text style={{ color: active ? "#FFFFFF" : "#105E49", fontWeight: "600", fontSize: 17, }}>
                       {key}
                     </Text>
                   </TouchableOpacity>
@@ -190,25 +190,25 @@ export default function Transactions3() {
             }}
           >
             <View className="flex-row justify-between">
-              <Text className="font-poppins text-[1.5rem] text-[#5050C2] font-medium">
+              <Text className="font-poppins text-[1.5rem] text-[#105E49] font-medium">
                 Investment Returns
               </Text>
             </View>
 
             <View className="mt-[12px] gap-[10px]">
               <View className="flex-row justify-between">
-                <Text className="font-poppins text-[1.3rem] text-[#5050C2] font-light">
+                <Text className="font-poppins text-[1.3rem] text-[#105E49] font-light">
                   Total Return
                 </Text>
-                <Text className="font-poppins text-[1.3rem] text-[#5050C2]">
+                <Text className="font-poppins text-[1.3rem] text-[#105E49]">
                   {fmtPct(lastPercentage)}
                 </Text>
               </View>
               <View className="flex-row justify-between">
-                <Text className="font-poppins text-[1.3rem] text-[#5050C2] font-light">
+                <Text className="font-poppins text-[1.3rem] text-[#105E49] font-light">
                   Increased Savings
                 </Text>
-                <Text className="font-poppins text-[1.3rem] text-[#5050C2]">
+                <Text className="font-poppins text-[1.3rem] text-[#105E49]">
                   {fmtCurrency(lastValue)}
                 </Text>
               </View>
@@ -231,7 +231,7 @@ export default function Transactions3() {
             }}
           >
             <View className="flex-row align-center">
-              <Text className="font-poppins text-[1.4rem] pt-[0.5rem] text-[#5050C2] font-medium">
+              <Text className="font-poppins text-[1.4rem] pt-[0.5rem] text-[#105E49] font-medium">
                 Share your growth with others!
                 </Text>
               <View className="h-[3rem] w-[3rem] ml-[3rem] pt-[0.1rem] flex">

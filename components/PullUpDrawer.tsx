@@ -134,7 +134,7 @@ export default function PullUpDrawer({children} : {children: ReactNode;}) {
         ref={bottomSheetRef}
         snapPoints={snapPoints}
         onChange={handleSheetChanges}
-        backgroundStyle={{ backgroundColor: '#5050c2' }}
+        backgroundStyle={{ backgroundColor: '#105E49' }}
         handleIndicatorStyle={{ backgroundColor: 'white' }}
       >
         <BottomSheetView style={styles.sheetContent} onLayout={onCardsAreaLayout}>

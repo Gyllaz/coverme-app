@@ -51,7 +51,7 @@ export default function Policy2() {
           }}
           className="pt-[3rem] pb-[1rem]"
         >
-          <Text className="text-[#5050c2] pt-[1.5rem] pl-[2rem] text-[2.5rem]">
+          <Text className="text-[#105E49] pt-[1.5rem] pl-[2rem] text-[2.5rem]">
             Your Receipts
           </Text>
 
@@ -61,7 +61,7 @@ export default function Policy2() {
               placeholderTextColor="#8A8AC9"
               value={query}
               onChangeText={setQuery}
-              className="border border-[#5050c2] w-full rounded-[10px] px-4 py-2 text-[#5050c2] text-[1.1rem]"
+              className="border border-[#105E49] w-full rounded-[10px] px-4 py-2 text-[#5050c2] text-[1.1rem]"
             />
           </View>
         </BlurView>
@@ -75,8 +75,8 @@ export default function Policy2() {
         <View className="gap-[24px] px-[16px] pt-[16px]">
           {filtered.map((r, idx) => {
             const isClaimed = r.status.toLowerCase() === 'claimed';
-            const statusBg = isClaimed ? '#DFF6E8' : '#FFF5D9';
-            const statusColor = isClaimed ? '#1E7F52' : '#8A6A00';
+            const statusBg = isClaimed ? '#EFF7FF' : '#FFF5D9';
+            const statusColor = isClaimed ? '#8AC3F9' : '#8A6A00';
 
             return (
               <View
@@ -92,7 +92,7 @@ export default function Policy2() {
               >
                 {/* Header row: type + status pill */}
                 <View className="flex-row items-center justify-between">
-                  <Text className="font-poppins text-[1.35rem] text-[#5050C2] font-medium">
+                  <Text className="font-poppins text-[1.35rem] text-[#105E49] font-medium">
                     {r.type}
                   </Text>
                   <View
@@ -111,10 +111,10 @@ export default function Policy2() {
 
                 {/* Meta */}
                 <View className="mt-[10px] gap-[6px]">
-                  <Text className="text-[#5050C2] opacity-80">
-                    Date: <Text className="font-semibold opacity-100">{r.date}</Text>
+                  <Text className="text-[#1E1E1E] opacity-80">
+                    Date: <Text className=" font-semibold opacity-100">{r.date}</Text>
                   </Text>
-                  <Text className="text-[#5050C2] opacity-80">
+                  <Text className="text-[#1E1E1E] opacity-80">
                     Member: <Text className="font-semibold opacity-100">{r.members}</Text>
                   </Text>
                 </View>
@@ -122,19 +122,19 @@ export default function Policy2() {
                 {/* Financials */}
                 <View className="mt-[12px] pt-[10px] border-t border-[#5050C2]/25 gap-[8px]">
                   <View className="flex-row justify-between">
-                    <Text className="text-[#5050C2] opacity-80">Charge</Text>
-                    <Text className="text-[#5050C2] font-semibold">{currency(r.charge)}</Text>
+                    <Text className="text-[#1E1E1E] opacity-80">Charge</Text>
+                    <Text className="text-[#1E1E1E] font-semibold">{currency(r.charge)}</Text>
                   </View>
                   <View className="flex-row justify-between">
-                    <Text className="text-[#5050C2] opacity-80">Benefits Paid</Text>
-                    <Text className="text-[#5050C2] font-semibold">{currency(r.benefits)}</Text>
+                    <Text className="text-[#1E1E1E] opacity-80">Benefits Paid</Text>
+                    <Text className="text-[#1E1E1E] font-semibold">{currency(r.benefits)}</Text>
                   </View>
                   <View className="flex-row justify-between pt-[1rem] border-t border-[#5050C2]/15 ">
-                    <TouchableOpacity className=" px-[1rem] py-[0.5rem] w-[45%] h-[3rem] bg-[#5050c2] rounded-[1rem] flex flex-row  gap-[0.7rem]">
+                    <TouchableOpacity className=" px-[1rem] py-[0.5rem] w-[45%] h-[3rem] bg-[#E5EF68] rounded-[1rem] flex flex-row  gap-[0.7rem]">
                       <View className="self-center">
                         <ReceiptSVG />
                       </View>
-                      <Text className="self-center text-white text-[1.3rem]">View Receipt</Text>
+                      <Text className="self-center text-[#1E1E1E] text-[1.3rem]">View Receipt</Text>
                     </TouchableOpacity>
                   </View>
                 </View>

@@ -31,7 +31,7 @@ export default function TabIcon({
             width: 50,
             height: 50,
             borderRadius: 25,
-            backgroundColor: '#8A8AC9',
+            backgroundColor: '#4B91A1',
           }}
         />
       )}

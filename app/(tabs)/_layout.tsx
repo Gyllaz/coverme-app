@@ -8,15 +8,15 @@ export default function TabLayout() {
       initialRouteName="home"
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: '#5050C2',
+        tabBarActiveTintColor: '#105E49',
         tabBarInactiveTintColor: '#8D8DAA',
         tabBarStyle: {
-          backgroundColor: '#5050C2',
+          backgroundColor: '#105E49',
           height: 90,
           paddingBottom: 20,
           paddingTop: 15,
           borderWidth: 0,
-          borderColor: '#5050C2',
+          borderColor: '#105E49',
           shadowColor: '#000',
           shadowOffset: { width: 0, height: 8 },
           shadowOpacity: 0.50,

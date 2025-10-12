@@ -39,20 +39,20 @@ export default function index() {
     <View className="pt-[17%] bg-white w-full h-full pl-[1rem] pr-[3rem]">
 
       <View className="pb-[3rem] pl-[1rem]">
-        <Text className="text-[2.5rem] text-[#5050C2] ">Settings</Text>
+        <Text className="text-[2.5rem] text-[#105E49] ">Settings</Text>
       </View>
 
       <View className="flex flex-row gap-[0.75rem] mb-[3.25rem] justify-center items-center">
-        <View className="w-[5rem] h-[5rem] rounded-full bg-[#E4E4F7] items-center justify-center">
-          <Text className="text-[2.3rem] text-[#5050C2]">
+        <View className="w-[5rem] h-[5rem] rounded-full bg-[#4B91A1] items-center justify-center">
+          <Text className="text-[2.3rem] text-white">
             {firstname[0]}
           </Text>
         </View>
 
         <View className="flex">
           <View className="flex-col gap-[0.5rem]">
-            <Text className="text-[1.5rem] text-[#5050C2] ">{userId}</Text>
-            <TouchableOpacity className="border-b-[2px] border-[#5050c2]"
+            <Text className="text-[1.5rem] text-[#105E49] ">{userId}</Text>
+            <TouchableOpacity className="border-b-[2px] border-[#105E49]"
             onPress={() => router.push('/pin')}
             >
               <View className="flex-row items-center gap-[0.5rem]">
@@ -71,7 +71,7 @@ export default function index() {
           return (
             <View 
             key={item.title + index}
-            className='w-full h-fit mx-[1rem] rounded-[12px] bg-[#5050C2]'>
+            className='w-full h-fit mx-[1rem] rounded-[12px] bg-[#105E49]'>
               <TouchableOpacity
                 className="w-full h-[60px] px-[1rem] bg-[#E5E5E5] rounded-[12px] flex-row items-center justify-between"
                 onPress={item.onPress}
@@ -79,7 +79,7 @@ export default function index() {
               >
                 <View className="flex-row items-center gap-[0.75rem]">
                   <Icon />
-                  <Text className="text-[1.5rem] text-[#5050C2] ">
+                  <Text className="text-[1.5rem] text-[#1E1E1E] ">
                     {item.title}
                   </Text>
                 </View>
