@@ -1,11 +1,14 @@
 // PullUpDrawer.tsx
 import React, { useMemo, useRef, useState, useCallback } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, LayoutChangeEvent } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, LayoutChangeEvent, Image } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import BottomSheet, { BottomSheetView } from '@gorhom/bottom-sheet';
 import InsuranceCard from '@/components/InsuranceCard';
 import BankCard from '@/components/BankCard';
 import type { ReactNode } from 'react';
+import { useRouter } from "expo-router";
+import { useWallet } from "@/context/WalletContext";
+
 
 // Reanimated
 import Animated, {
@@ -121,11 +124,19 @@ export default function PullUpDrawer({children} : {children: ReactNode;}) {
     transform: [{ translateY: bankY.value }],
   }));
 
-  // Initialize stacked positions instantly (no rubber-banding on first mount)
+  const router = useRouter();
+  const { addedCards, markAdded } = useWallet();
+
   React.useEffect(() => {
-    insY.value = withTiming(0, { duration: 0 });
-    bankY.value = withTiming(CARD_HEIGHT + GAP, { duration: 0 });
-  }, []);
+      insY.value = withTiming(0, { duration: 0 });
+      bankY.value = withTiming(CARD_HEIGHT + GAP, { duration: 0 });
+    }, []);
+
+  const onAddToWallet = (type: 'insurance' | 'bank') => {
+    markAdded(type);
+    router.push('/sent');
+  // Initialize stacked positions instantly (no rubber-banding on first mount)
+    }
 
   return (
     <GestureHandlerRootView style={styles.root}>
@@ -160,9 +171,39 @@ export default function PullUpDrawer({children} : {children: ReactNode;}) {
               </TouchableOpacity>
             </Animated.View>
             
-            <View className='flex flex-row justify-center align-items pt-[23rem]'>
-              <Text className='font-poppins text-white text-[1.5rem]'>Hold Near Reader</Text>
-            </View>
+          {/* INSURANCE CARD WALLET BUTTON */}
+          <View className="flex flex-row justify-center align-items pt-[23rem]">
+            {activeCard === 'insurance' && (
+              addedCards.insurance ? (
+                <Text className="font-poppins text-white text-center text-[1.5rem]">
+                  Use your card through{'\n'} your Apple Wallet
+                </Text>
+              ) : (
+                <TouchableOpacity onPress={() => onAddToWallet('insurance')}>
+                  <Image
+                      source={require('@/assets/images/addtowallet.png')}
+                      style={{ width: 180, height: 50 }}
+                      resizeMode="contain"
+                    />
+                </TouchableOpacity>
+              )
+            )}
+            {activeCard === 'bank' && (
+              addedCards.bank ? (
+                <Text className="font-poppins text-white text-center text-[1.5rem]">
+                  Use your card through {'\n'} your Apple Wallet
+                </Text>
+              ) : (
+                <TouchableOpacity onPress={() => onAddToWallet('bank')}>
+                    <Image
+                      source={require('@/assets/images/addtowallet.png')}
+                      style={{ width: 180, height: 50 }}
+                      resizeMode="contain"
+                    />
+                </TouchableOpacity>
+              )
+            )}
+          </View>
 
             {/* Bank card */}
             <Animated.View
@@ -183,10 +224,7 @@ export default function PullUpDrawer({children} : {children: ReactNode;}) {
               </TouchableOpacity>
             </Animated.View>
           </View>
-          <View className='flex flex-row justify-center align-items'>
-            <Text className='font-poppins '>Hold Near Reader</Text>
 
-          </View>
         </BottomSheetView>
       </BottomSheet>
     </GestureHandlerRootView>

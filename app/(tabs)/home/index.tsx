@@ -4,6 +4,8 @@ import { account, banking } from "@/constants/accountInfo";
 import { useState } from "react";
 import Animated, { FadeIn, FadeOut, Easing } from "react-native-reanimated";
 import { useRouter } from 'expo-router';
+import { LinearGradient } from 'expo-linear-gradient';
+
 
 const { firstname } = account;
 const { currentBalance } = banking;
@@ -20,8 +22,9 @@ export default function Index() {
 
   return (
     <View
-      className={`bg-white h-full flex`}
+      className={`bg-white h-full flex bg-white`}
     >
+
       {active && (
         <Animated.View
           entering={FadeIn.duration(500).easing(Easing.out(Easing.cubic))}

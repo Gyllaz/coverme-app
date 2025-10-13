@@ -58,7 +58,7 @@ export default function Policy2() {
           <View className="flex flex-row gap-[1.5rem] w-full px-[2rem] pt-[1rem] mb-[3rem]">
             <TextInput
               placeholder="Search by type, member, status or date…"
-              placeholderTextColor="#8A8AC9"
+              placeholderTextColor="#999"
               value={query}
               onChangeText={setQuery}
               className="border border-[#105E49] w-full rounded-[10px] px-4 py-2 text-[#5050c2] text-[1.1rem]"
