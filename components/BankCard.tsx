@@ -13,7 +13,7 @@ export default function BankCard() {
         <Animated.View
         className='w-full h-[18rem] bg-white rounded-l-[10px] rounded-br-[10px] rounded-tr-[70px] shadow-xl overflow-hidden'>
           <LinearGradient 
-            colors={['#8AC3F9', '#E5EF68']}
+            colors={['#E5EF68', '#8AC3F9']}
             locations={[0, 1]}
             start={{ x: 0, y: 0 }}
             end={{ x: 0, y: 1 }}

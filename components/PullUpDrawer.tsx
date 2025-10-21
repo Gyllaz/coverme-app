@@ -25,7 +25,7 @@ export default function PullUpDrawer({children} : {children: ReactNode;}) {
   const bottomSheetRef = useRef<BottomSheet>(null);
 
   // Bottom sheet snaps
-  const snapPoints = useMemo(() => ['4%', '60%', '100%'], []);
+  const snapPoints = useMemo(() => ['4%', '55%', '100%'], []);
 
   // React state (non-animated)
   const [cardsAreaHeight, setCardsAreaHeight] = useState(0);
@@ -149,7 +149,7 @@ export default function PullUpDrawer({children} : {children: ReactNode;}) {
         handleIndicatorStyle={{ backgroundColor: 'white' }}
       >
         <BottomSheetView style={styles.sheetContent} onLayout={onCardsAreaLayout}>
-          <Text style={styles.title} className='font-semibold'>Cards</Text>
+          <Text style={styles.title} className='font-bold text-[2rem]'>Cards</Text>
 
           <View style={{ height: Math.max(CARD_HEIGHT * 2 + GAP + 24, cardsAreaHeight || 1) }}>
             {/* Insurance card */}
@@ -234,7 +234,7 @@ export default function PullUpDrawer({children} : {children: ReactNode;}) {
 const styles = StyleSheet.create({
   root: { flex: 1, backgroundColor: 'white' },
   sheetContent: { flex: 1, paddingTop: 24 },
-  title: { color: 'white', fontSize: 28, fontWeight: '300', paddingLeft: 24, marginBottom: 40, marginTop: 0, },
+  title: { color: 'white', fontSize: 35, fontWeight: '400', paddingLeft: 24, marginBottom: 40, marginTop: 0, },
   cardShadow: {
     shadowColor: '#000',
     shadowOffset: { width: 10, height: 10 },

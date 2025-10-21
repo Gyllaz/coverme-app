@@ -14,13 +14,13 @@ function InsuranceCard () {
       <Animated.View
         className='w-full h-[18rem] bg-white rounded-l-[10px] rounded-br-[10px] rounded-tr-[70px] shadow-xl overflow-hidden'>
           <LinearGradient 
-            colors={['#F50000', '#FF7A00', '#E4E4F7']}
-            locations={[0, 0.5, 1]}
+            colors={['#0051A0', '#82AAD0', '#FFFFFF']}
+            locations={[0, 0.4, 1]}
             start={{ x: 0.2, y: 0.7 }}
             end={{ x: 1, y: 0 }}
             style={{height: '100%'}}
           >
-            <View className='flex flex-row gap-[3rem] w-full h-[7rem] pl-[2rem] pr-[1.5rem]'>
+            <View className='flex flex-row gap-[5rem] w-full h-[7rem] pl-[2rem] pr-[1.5rem]'>
               <View className='flex justify-end'>
                 {policyPerson.map((item) => (
                   <Text key={item} className='text-[1rem] text-white'>0{policyPerson.indexOf(item)} {item}</Text>
@@ -28,7 +28,7 @@ function InsuranceCard () {
               </View>
               <View className='flex flex-row gap-[1rem]'>
                 <View className='w-[50%] flex flex-row justify-end pt-[2.4rem]'>
-                  <Image source={require('@/assets/images/medibank.png')} className="w-full h-9"></Image>
+                  <Image source={require('@/assets/images/Latrobe.png')} className="w-full h-9"></Image>
                 </View>
                 <View className='flex flex-row justify-start'>
                   <PayWave colour = 'white' />
