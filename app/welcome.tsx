@@ -38,8 +38,8 @@ export default function Welcome() {
                 }}
               />
               <View className="pt-[5%] pb-[10%] flex flex-col justify-center align-center">
-                <Text className="text-[3.5rem] text-[#1E1E1E] font-medium text-center">We Got You{'\n'}Covered</Text>
-                <Text className="pt-[5%] text-[1.5rem] text-[#1E1E1E] text-center">Brighter days ahead.{'\n'} Look out for your welcome pack {'\n'} arriving soon</Text>
+                <Text className="text-[3.5rem] text-[#1E1E1E] font-[BASKiT-medium] text-center">We Got You{'\n'}Covered</Text>
+                <Text className="pt-[5%] text-[1.5rem] font-[BASKiT] text-[#1E1E1E] text-center">Brighter days ahead.{'\n'} Look out for your welcome pack {'\n'} arriving soon</Text>
               </View>
             </View>
             <View className="z-0">
@@ -67,9 +67,9 @@ export default function Welcome() {
             <TouchableOpacity
               onPress={handlePress}
               activeOpacity={0.9}
-              className="w-[30%] h-[4rem] bg-white rounded-full flex flex-row justify-center align-center pt-[1rem]"
+              className="w-fit h-fit bg-white rounded-full flex flex-row justify-center align-center py-[1rem] px-[2rem]"
             >
-              <Text className="text-[1.5rem] text-[#1E1E1E]">
+              <Text className="text-[1.5rem] font-[BASKiT] text-[#1E1E1E]">
                 Let’s Go
               </Text>
             </TouchableOpacity>

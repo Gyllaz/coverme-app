@@ -1,18 +1,26 @@
 import { View, TouchableOpacity } from 'react-native';
-import { Svg, Path } from 'react-native-svg';
+import { Svg, Path, G, Defs, ClipPath, Rect } from 'react-native-svg';
 
-export default function ChartSVG() {
+type SVGprops = {
+  colour: string;
+};
+
+export default function ChartSVG(props: SVGprops) {
   return (
     <View>
-      <TouchableOpacity>
-        <Svg width="30" height="60" viewBox="0 0 97 97" fill="none">
-          <Path d="M12.125 88.9165H84.875" stroke="white" strokeWidth="6.944" strokeLinecap="round" strokeLinejoin="round"/>
-          <Path d="M12.125 68.7083C12.125 72.5188 12.125 74.4241 13.3088 75.6079C14.4926 76.7917 16.3978 76.7917 20.2083 76.7917C24.0189 76.7917 25.9241 76.7917 27.1079 75.6079C28.2917 74.4241 28.2917 72.5188 28.2917 68.7083V44.4583C28.2917 40.6479 28.2917 38.7426 27.1079 37.5588C25.9241 36.375 24.0189 36.375 20.2083 36.375C16.3978 36.375 14.4926 36.375 13.3088 37.5588C12.125 38.7426 12.125 40.6479 12.125 44.4583V52.5417" stroke="white" strokeWidth="6.944" strokeLinecap="round"/>
-          <Path d="M40.4166 28.2916C40.4166 24.4811 40.4166 22.5758 41.6004 21.392C42.7842 20.2083 44.6895 20.2083 48.5 20.2083C52.3104 20.2083 54.2157 20.2083 55.3995 21.392C56.5833 22.5758 56.5833 24.4811 56.5833 28.2916V68.7083C56.5833 72.5187 56.5833 74.424 55.3995 75.6078C54.2157 76.7916 52.3104 76.7916 48.5 76.7916C44.6895 76.7916 42.7842 76.7916 41.6004 75.6078C40.4166 74.424 40.4166 72.5187 40.4166 68.7083V28.2916Z" stroke="white" strokeWidth="6.944"/>
-          <Path d="M84.875 44.4583V68.7083C84.875 72.5187 84.875 74.424 83.6912 75.6078C82.5074 76.7916 80.6022 76.7916 76.7917 76.7916C72.9812 76.7916 71.076 76.7916 69.8922 75.6078C68.7084 74.424 68.7084 72.5187 68.7084 68.7083V16.1666C68.7084 12.3561 68.7084 10.4508 69.8922 9.26702C71.076 8.08325 72.9812 8.08325 76.7917 8.08325C80.6022 8.08325 82.5074 8.08325 83.6912 9.26702C84.875 10.4508 84.875 12.3561 84.875 16.1666V28.2916" stroke="white" strokeWidth="6.944" strokeLinecap="round"/>
-        </Svg>
 
-      </TouchableOpacity>
+        <Svg width="33" height="33" viewBox="0 0 63 63" fill="none">
+          <G clip-path="url(#clip0_1_408)">
+          <Path d="M17.8966 40.3027H0V62.9999H17.8966V40.3027Z" fill={props.colour}/>
+          <Path d="M40.4494 23.5151H22.5527V62.9254H40.4494V23.5151Z" fill={props.colour}/>
+          <Path d="M62.9999 0H45.1033V62.917H62.9999V0Z" fill={props.colour}/>
+          </G>
+          <Defs>
+          <ClipPath id="clip0_1_408">
+          <Rect width="63" height="63" fill="white"/>
+          </ClipPath>
+          </Defs>
+        </Svg>
     </View>
   )
 }
