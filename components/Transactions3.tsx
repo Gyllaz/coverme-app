@@ -1,9 +1,9 @@
-import { View, Text, Dimensions, TouchableOpacity, Share, Alert, useWindowDimensions } from "react-native";
-import { BlurView } from "expo-blur";
-import { LineGraph, type GraphPoint } from "react-native-graph";
 import { investmentReturns } from "@/constants/accountInfo";
-import { useMemo, useState, useCallback, useEffect } from "react";
-import ShareSVG from "./ShareSVG";
+import { BlurView } from "expo-blur";
+import { useCallback, useEffect, useMemo, useState } from "react";
+import { Alert, Share, Text, TouchableOpacity, useWindowDimensions, View } from "react-native";
+import { LineGraph, type GraphPoint } from "react-native-graph";
+import ShareSVG from "./ShareButton";
 
 
 type RangeKey = "3M" | "6M" | "1Y" | "ALL";

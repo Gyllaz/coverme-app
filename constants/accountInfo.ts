@@ -1,3 +1,4 @@
+
 export const account = {
   firstname: 'John',
   lastname: 'Conner',
@@ -172,7 +173,7 @@ export const claimsHistory = [
   { date: '30/09/25', type: 'CLAIM', label: 'Physio Appointment', amount: 95 },
 ];
 
-export function getEmoji(label) {
+export function getEmoji(label: string) {
   const emojiMap = {
     '🦷': ['Dental Filling', 'Tooth Extraction', 'Root Canal', 'Tooth Cleaning', 'Checkup & Clean'],
     '💪': ['Physio Appointment', 'Physicial Therapy'],
@@ -254,4 +255,16 @@ export const receipts = [
   {type: 'Psychology', status: 'Processing', date: '03/10/25', members: 'John Connor', charge: 199.75, benefits: 114.63,},
   {type: 'Physio', status: 'Claimed', date: '25/09/25', members: 'John Connor', charge: 99.95, benefits: 45.55,},
   {type: 'Optical', status: 'Claimed', date: '13/05/25', members: 'John Connor', charge: 99.95, benefits: 45.55,}
+]
+
+export const offers = [
+  {id: '1', isNew: true, img: require('@/assets/images/Toothpaste.png'), title: 'Save 10% on skin products'},
+  {id: '2', isNew: false, img: require('@/assets/images/Apple.png'), title: 'Get $5 cashback on your groceries'},
+  {id: '3', isNew: false, img: require('@/assets/images/Stethoscope.png'), title: 'Book in your annual GP check'}
+]
+
+export const cardPoints = [
+  {id: '1', Stamp: require('@/components/SVG/TrophySVG').default, header: 'Get instant rebates', body: 'No need to submit a claim, get your rebate instantly'},
+  {id: '2', Stamp: require('@/components/SVG/UmbrellaSVG').default, header: 'Access your rainy day fund', body: 'Have your rainy day fund available anywhere, anytime you need it'},
+  {id: '3', Stamp: require('@/components/SVG/WatchSVG').default, header: 'Save time, save money', body: 'Get access to your CoverMe benefits instantly'}
 ]

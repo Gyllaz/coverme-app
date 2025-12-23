@@ -1,6 +1,6 @@
-import { View, Text, TouchableOpacity } from 'react-native'
-import DocSVG from './DocSVG'
 import { policyInfo } from '@/constants/accountInfo';
+import { Text, TouchableOpacity, View } from 'react-native';
+import DocSVG from './SVG/DocSVG';
 
 const {
   monthlyTotal, monthlyDeposit, monthlyPolicy, frequency, invoice, payment,

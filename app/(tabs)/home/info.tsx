@@ -24,7 +24,7 @@ export default function Info() {
     }
   };
 
-  const handleCopyAccountInfo = async (type: 'bsb' | 'account' | 'both') => {
+  const handleCopyAccountInfo = async (type: 'bsb' | 'account' | 'name' | 'all') => {
     try {
       let valueToCopy = '';
       let message = '';
@@ -36,9 +36,13 @@ export default function Info() {
         valueToCopy = accountNo;
         message = 'Account number copied to clipboard';
       }
-      if (type === 'both') {
-        valueToCopy = `BSB: ${BSB}\nAccount No: ${accountNo}`;
-        message = 'BSB & Account number copied';
+      if (type === 'name') {
+        valueToCopy = accountName;
+        message = 'Account name copied to clipboard';
+      }
+      if (type === 'all') {
+        valueToCopy = `Account Name: ${accountName} \nBSB: ${BSB}\nAccount No: ${accountNo}`;
+        message = 'Account information copied';
       }
       await Clipboard.setStringAsync(valueToCopy);
       setShowModal(false);
@@ -97,110 +101,94 @@ export default function Info() {
 
   return (
     <View
-      className="bg-white h-full flex gap-[0.1rem] pt-[10%]"
+      className="bg-white h-full flex gap-[0.1rem] mt-[13%] pt-[4%] rounded-t-[1rem]"
     >
+
       <BackArrow />
       
-      <View className="flex flex-row pt-[2.5rem] gap-[1.5rem] w-full justify-center items-center">
-        <Text className="text-[#105E49] font-poppins text-[2rem] font-medium">Account Information</Text>
-        <View className="pb-[0.5rem]">
-          <ShareSVG onPress={handleShare}/>
+      <View className="flex flex-col gap-[1rem] px-[7%]">
+        <View className="flex flex-row pt-[2.5rem] gap-[1.5rem] w-full">
+          <Text className="text-[#231F20] font-poppins text-[1.7rem] font-[BASKiT-medium]">Account Information</Text>
+          <View className="">
+            <ShareSVG onPress={handleShare}/>
+          </View>
         </View>
+        <Text className="text-[1rem] font-[BASKiT-light] text-black w-[80%]">Use PayID or bank transfer to add money to your Rainy Day Fund.</Text>
       </View>
 
-      <View className="flex gap-[1.5rem] pt-[2.5rem]">
-        <View className=" w-full flex justify-center items-center">
-          <View className="bg-white w-[90%] border-[3px] border-white flex gap-[1rem] py-[2rem] px-[2rem] rounded-[15px]"
-              style={{
-                shadowColor: '#000',
-                shadowOffset: { width: 0, height: 8 },
-                shadowOpacity: 0.38,
-                shadowRadius: 16,
-                elevation: 10, // Android
-              }}
+      <View className="flex gap-[1.5rem] pt-[1rem] px-[7%]">
+        <View className=" w-full flex ">
+          <View className="bg-white w-full border-[3px] border-white flex gap-[0.5rem] py-[2rem] rounded-[15px]"
           >
-            <View className="flex flex-row justify-between">
-              <Text className="font-poppins text-[1.7rem] tracking-[0.1rem] text-[#105E49] font-medium">
+            <View className="flex flex-row justify-between pb-[0.5rem] mb-[0.5rem] border-b-[1px] border-[#F3F3F1]">
+              <Text className="font-[BASKiT-medium] text-[1.3rem] tracking-[0.1rem] text-[#231F20]">
                 PayID
               </Text>
 
-              <View className="pt-[0.1rem]">
+              <View className="pt-[0.1rem] w-[2rem] h-[1rem] flex justify-center items-center">
                 <CopySVG onPress={handleCopyPayID} />
               </View>
 
             </View>
-            <Text className="pt-[0.1rem] font-poppins text-[1.3rem] text-[#1E1E1E] font-me">{ payID }</Text>
-            <Text className="pt-[0.5rem] font-poppins text-[1rem] text-[#1E1E1E] font-me font-light">Osko payments are usually instant</Text>
+            <Text className="pt-[0.1rem] text-[1.2rem] text-[#1E1E1E] font-[BASKiT]">{ payID }</Text>
+            <Text className="pt-[0.5rem] text-[1rem] text-[#1E1E1E] font-[BASKiT]">Osko payments are usually instant</Text>
           </View>
         </View>
 
         <View className="w-full flex justify-center items-center">
-          <View className=" bg-white w-[90%] border-[3px] border-white flex gap-[1rem] py-[2rem] px-[2rem] rounded-[15px]"
-              style={{
-                shadowColor: '#000',
-                shadowOffset: { width: 0, height: 8 },
-                shadowOpacity: 0.38,
-                shadowRadius: 16,
-                elevation: 10, // Android
-              }}
-          >
+          <View className="flex gap-[0.5rem]">
             <View className="">
-              <View className="flex flex-row justify-between">
-                <View>
-                  <Text className="font-poppins text-[1.7rem] text-[#105E49] font-medium">
-                    Account Name
-                  </Text>
-                  <Text className="pt-[1rem] font-poppins text-[1.3rem] text-[#1E1E1E] font-me">{ accountName }</Text>
-                </View>
-                <CopySVG onPress={() => handleCopyAccountInfo('both')}/>
-
+              <View className="flex flex-row justify-between pb-[0.5rem] mb-[0.5rem] border-b-[1px] border-[#F3F3F1]">
+                <Text className="font-[BASKiT-medium] text-[1.3rem] tracking-[0.1rem] text-[#231F20]">
+                    Bank Transfer
+                </Text>
+                <CopySVG onPress={() => handleCopyAccountInfo('all')}/>
               </View>
             </View>
 
-            <View className="w-full flex flex-row justify-between pt-[1.5rem] ">
-              <View>
-                <TouchableOpacity onPress={() => handleCopyAccountInfo('bsb')}>
-                  <Text className="font-poppins text-[1.7rem] text-[#105E49] font-medium">
+            <View className="w-full flex flex-col gap-[1rem] justify-between ">
+              <View className="w-full">
+                <TouchableOpacity onPress={() => handleCopyAccountInfo('name')} 
+                className="w-full flex flex-row justify-between">
+                  <Text className="text-[1.2rem] text-[#1E1E1E] font-[BASKiT]">
+                    Account Name
+                  </Text>
+                  <Text className=" font-[BASKiT-Light] text-[1.1rem] text-[#1E1E1E]">{ accountName }</Text>
+                </TouchableOpacity>
+              </View>
+              <View className="w-full">
+                <TouchableOpacity onPress={() => handleCopyAccountInfo('bsb')}
+                  className="w-full flex flex-row justify-between"
+                  >
+                  <Text className="text-[1.2rem] text-[#1E1E1E] font-[BASKiT]">
                     BSB
                   </Text>
 
-                  <Text className="pt-[1rem] font-poppins text-[1.3rem] text-[#1E1E1E] font-me">{ BSB }</Text>  
+                  <Text className=" font-[BASKiT-Light] text-[1.1rem] text-[#1E1E1E]">{ BSB }</Text>  
                 </TouchableOpacity>
               </View>
-              <View>
-                <TouchableOpacity onPress={() => handleCopyAccountInfo('account')}>
-                  <Text className="font-poppins text-[1.7rem] text-[#105E49] font-medium">
+              <View className="w-full">
+                <TouchableOpacity onPress={() => handleCopyAccountInfo('account')}
+                  className="w-full flex flex-row justify-between"
+                  >
+                  <Text className="text-[1.2rem] text-[#1E1E1E] font-[BASKiT]">
                     Account Number
                   </Text>
 
-                  <Text className="pt-[1rem] font-poppins text-[1.3rem] text-[#1E1E1E] font-me">{ accountNo }</Text>
+                  <Text className="font-[BASKiT-Light] text-[1.1rem] text-[#1E1E1E]">{ accountNo }</Text>
                   
                 </TouchableOpacity>
               </View>
             </View>
-            <Text className="pt-[1rem] font-poppins text-[1rem] text-[#1E1E1E] font-me font-light">Tap your BSB or Account Number to copy them. Bank transfers usually take 2 - 3 days</Text>
+            <Text className="font-[BASKiT-Light] pt-[1rem] text-[1rem] text-[#1E1E1E]">Tap your BSB or Account Number to copy them. Bank transfers usually take 2 - 3 days</Text>
           </View>
-        </View>
-        <View className="w-full flex justify-center items-center">
-          <View className=" bg-white w-[90%] border-[3px] border-white flex gap-[1rem] py-[1rem] px-[2rem] rounded-[15px]"
-          style={{
-                shadowColor: '#000',
-                shadowOffset: { width: 0, height: 8 },
-                shadowOpacity: 0.38,
-                shadowRadius: 16,
-                elevation: 10, // Android
-              }}
-          >
-            <Text className="font-poppins text-[1rem] text-[#1E1E1E] font-normal">Transfer money easily into your CoverMe wallet with PayID or direct debit</Text>
-          </View>
-
         </View>
 
       </View>
 
       {showToast && (
         <Animated.View
-          className="absolute bottom-[3rem] left-0 right-0 items-center"
+          className="absolute bottom-[10%] left-0 right-0 items-center"
           style={{
             opacity: toastAnim,
             transform: [

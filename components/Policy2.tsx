@@ -2,8 +2,8 @@
 import { receipts } from '@/constants/accountInfo';
 import { BlurView } from 'expo-blur';
 import React, { useMemo, useState } from 'react';
-import { ScrollView, Text, TextInput, View, TouchableOpacity } from 'react-native';
-import ReceiptSVG from './ReceiptSVG';
+import { ScrollView, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import ReceiptSVG from './SVG/ReceiptSVG';
 
 const HEADER_H = 96;
 

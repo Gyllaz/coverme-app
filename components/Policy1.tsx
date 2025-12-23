@@ -1,5 +1,7 @@
 // Policy1.tsx
-import { Benefits, Details, MonthlyPay } from '@/components';
+import Benefits from '@/components/Benefits';
+import Details from '@/components/Details';
+import MonthlyPay from '@/components/MonthlyPay';
 import { BlurView } from 'expo-blur';
 import { ScrollView, Text, View } from 'react-native';
 

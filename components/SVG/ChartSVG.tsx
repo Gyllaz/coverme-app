@@ -9,7 +9,7 @@ export default function ChartSVG(props: SVGprops) {
   return (
     <View>
 
-        <Svg width="33" height="33" viewBox="0 0 63 63" fill="none">
+        <Svg width="27" height="33" viewBox="0 0 63 63" fill="none">
           <G clip-path="url(#clip0_1_408)">
           <Path d="M17.8966 40.3027H0V62.9999H17.8966V40.3027Z" fill={props.colour}/>
           <Path d="M40.4494 23.5151H22.5527V62.9254H40.4494V23.5151Z" fill={props.colour}/>
