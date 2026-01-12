@@ -47,7 +47,9 @@ export default function card() {
           <BackArrow />
         </View>
         <View className='w-full pt-[3rem] flex flex-col justify-center items-center gap-[1rem]'>
-          <Image source={require('@/assets/images/card2.png')} className='w-[23rem] h-[14.5rem]'/>
+          <View className='overflow-hidden rounded-[1rem]'>
+            <Image source={require('@/assets/images/card4.png')} className='w-[26rem] h-[16rem]'/>
+          </View>
         </View>
         <View className='w-full mt-[10%] flex flex-col justify-center items-center px-[2rem]'>
           <FlatList

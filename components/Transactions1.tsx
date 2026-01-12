@@ -3,7 +3,8 @@ import { useMemo, useState } from 'react';
 import { BlurView } from 'expo-blur';
 import { BarChart } from 'react-native-gifted-charts';
 import { Picker } from '@react-native-picker/picker';
-import { transactionsHistory, claimsHistory, getEmoji } from '@/constants/accountInfo';
+import { transactionsHistory, claimsHistory, getIcon } from '@/constants/accountInfo';
+import { Platform } from 'react-native';
 
 
 // ---- helpers ----
@@ -70,9 +71,9 @@ export default function Transactions1() {
       (a, b) => a.weekStart.getTime() - b.weekStart.getTime()
     );
 
-    const cDeposit = '#E5EF68';
-    const cClaim = '#8AC3F9';
-    const cExpense = '#E24C4B';
+    const cDeposit = '#105E49';
+    const cClaim = '#ECF86E';
+    const cExpense = '#8AC3F9';
 
     return weeks.map((w, i) => ({
       label: labelWeek(i),
@@ -131,82 +132,74 @@ export default function Transactions1() {
 
   return (
     <View className="bg-white h-full">
-      {/* Header */}
-      <View
-        style={{
-          position: 'absolute',
-          top: 0, left: 0, right: 0,
-          height: 170, zIndex: 10, elevation: 10,
-        }}
-        pointerEvents="box-none"
-      >
-        <BlurView
-          intensity={50}
-          tint="light"
-          style={{
-            backgroundColor: 'rgba(255,255,255,0.15)',
-            borderBottomWidth: 1,
-            borderColor: 'rgba(255,255,255,0.35)',
-          }}
-          className="pt-[3rem] pb-[1rem]"
-        >
-          <Text className="text-[#105E49] pb-[1rem] pt-[1.5rem] pl-[2rem] text-[2.5rem]">
-            Transactions
-          </Text>
-
-          {/* Search + Month selector */}
-          <View className="flex flex-col gap-[1rem] w-full px-[2rem]">
-            <TextInput
-              placeholder="Search by title or date…"
-              placeholderTextColor="#999"
-              value={searchQuery}
-              onChangeText={setSearchQuery}
-              className="border border-[#105E49] w-full rounded-[10px] px-4 py-2 text-[1.1rem]"
-            />
-            <View
-              style={{
-                borderWidth: 1,
-                borderColor: '#105E49',
-                borderRadius: 10,
-                overflow: 'hidden',
-              }}
-              className='h-[5rem] py-[0rem]'
-            >
-              <View className='absolute inset-x-0 top-[-5.25rem]'>
-                <Picker
-                  selectedValue={selectedMonth}
-                  onValueChange={(v) => { setSelectedMonth(v); setActiveBar(null); }}
-                  dropdownIconColor="#105E49"
-                >
-                  {monthOptions.map((m) => (
-                    <Picker.Item
-                      key={m}
-                      label={m === 'ALL' ? 'All Transactions' : m}
-                      value={m}
-                      color="#105E49"
-                    />
-                  ))}
-                </Picker>
-              </View>
-            </View>
-          </View>
-        </BlurView>
-      </View>
 
       <ScrollView>
-        <View className="w-full px-[2rem] pt-[19rem] pb-[7rem]">
-          {/* Legend */}
-          <View className="flex flex-row gap-[16px] mb-3 items-center">
-            {[
-              { label: 'Deposits', color: '#E5EF68' },
-              { label: 'Claims', color: '#8AC3F9' },
-              { label: 'Expenses', color: '#E24C4B' },
-            ].map((l) => (
-              <View key={l.label} className="flex flex-row items-center gap-[6px]">
-                <View style={{ width: 12, height: 12, borderRadius: 3, backgroundColor: l.color }} />
-                <Text className="text-[#1E1E1E]">{l.label}</Text>
+        <View className="w-full px-[2rem] pb-[7rem]">
+        {/* Header */}
+          <View
+
+            className="pt-[4rem] pb-[1rem]"
+          >
+            <View className='flex flex-row w-full h-fit justify-between pt-[1rem] pb-[1rem]'>
+              <Text className="font-[BASKiT] text-[#231F20]  text-[1.7rem]">
+                Transactions
+              </Text>
+
+              {/* Legend */}
+              <View className="flex flex-row gap-[10px]  items-center">
+                {[
+                  { label: 'Deposits', color: '#105E49' },
+                  { label: 'Claims', color: '#ECF86E' },
+                  { label: 'Expenses', color: '#8AC3F9' },
+                ].map((l) => (
+                  <View key={l.label} className="flex flex-row items-center gap-[6px]">
+                    <View style={{ width: 12, height: 12, borderRadius: 3, backgroundColor: l.color }} />
+                    <Text className="text-[#231F20] text-[0.7rem]">{l.label}</Text>
+                  </View>
+                ))}
               </View>
-            ))}
+
+            </View>
+
+            {/* Month selector */}
+            <View className="flex flex-col gap-[1rem] w-full">
+              {Platform.OS === 'ios' ? (
+                // iOS: Keep your clipping logic to hide the wheel's height
+                <View style={{ overflow: 'hidden' }} className="h-[5rem] w-full">
+                  <View className="absolute inset-x-0 top-[-5.25rem]">
+                    <Picker
+                      selectedValue={selectedMonth}
+                      onValueChange={(v) => { setSelectedMonth(v); setActiveBar(null); }}
+                      dropdownIconColor="#8B8988"
+                    >
+                      {monthOptions.map((m) => (
+                        <Picker.Item key={m} label={m === 'ALL' ? 'All Transactions' : m} value={m} color="#8B8988" />
+                      ))}
+                    </Picker>
+                  </View>
+                </View>
+              ) : (
+                // Android: Render a clean, visible box without the negative offset
+                <View className="h-[3.5rem] w-[75%] ml-[3rem] border border-[#8B8988] rounded-xl justify-center">
+                  <Picker
+                    selectedValue={selectedMonth}
+                    onValueChange={(v) => { setSelectedMonth(v); setActiveBar(null); }}
+                    dropdownIconColor="#8B8988"
+                    mode="dropdown"
+                    style={{ color: '#8B8988', backgroundColor: 'transparent' }}
+                  >
+                    {monthOptions.map((m) => (
+                      <Picker.Item 
+                        key={m} 
+                        label={m === 'ALL' ? 'All Transactions' : m} 
+                        value={m} 
+                        color="#8B8988" // This color prop works better on Android
+                      />
+                    ))}
+                  </Picker>
+                </View>
+              )}
+            </View>
           </View>
 
           {/* Stacked weekly bar chart */}
@@ -251,57 +244,86 @@ export default function Transactions1() {
               // onPress={(item: any, index: number) => setActiveBar(index)}
               isAnimated
               animationDuration={3000}
-              renderTooltip={(item: any, index: number) =>
-                {return (
-                  <View
-                    style={{
-                      backgroundColor: '#5050C2',
-                      paddingVertical: 6,
-                      paddingHorizontal: 10,
-                      borderRadius: 8,
-                    }}
-                  >
-                    {/* Show the "week" label at the top */}
-                    <Text style={{ color: 'white', fontWeight: '700', marginBottom: 4 }}>
-                      {item.values}
-                    </Text>
-                  </View>
-                )}
-              }
+              // renderTooltip={(item: any, index: number) =>
+              //   {return (
+              //     <View
+              //       style={{
+              //         backgroundColor: '#5050C2',
+              //         paddingVertical: 6,
+              //         paddingHorizontal: 10,
+              //         borderRadius: 8,
+              //       }}
+              //     >
+              //       {/* Show the "week" label at the top */}
+              //       <Text style={{ color: 'white', fontWeight: '700', marginBottom: 4 }}>
+              //         {item.values}
+              //       </Text>
+              //     </View>
+              //   )}
+              // }
             />
           </View>
+          <View className='pt-[3rem]'>
+             <TextInput
+                placeholder="Search by title or date…"
+                placeholderTextColor="#999"
+                value={searchQuery}
+                onChangeText={setSearchQuery}
+                className="bg-[#F3F3F1] w-full rounded-[10px] px-4 py-2 text-[1.3rem]"
+              />
+          </View>
 
-          <View className='pt-[4rem]'>
+          <View className='pt-[2rem]'>
             {groupedTransactions.map(([month, txs]) => (
               <View key={month} className="mb-6">
-                <Text className="text-[#105E49] text-[1.4rem] font-bold mb-3">{month}</Text>
-                {txs.map((tx, index) => (
-                  <View key={index} className="mb-3 p-4 border border-[#105E49] rounded-[10px] bg-white">
-                    <View className="flex flex-row justify-between items-center">
-                      <Text className="text-[1.2rem] text-[1E1E1E] font-semibold">
-                        {getEmoji(tx.label)} {tx.label}
-                      </Text>
-                      <View className=''>
-                        <Text
-                          className={`text-[1.1rem] font-bold ${
-                            tx.type === 'Deposit'
-                              ? 'text-[#BECD01]'
-                              : tx.type === 'Expense'
-                              ? 'text-[#E24C4B]'
-                              : 'text-[#8AC3F9]'
-                          }`}
-                        >
-                          {tx.type === 'Deposit' ? '+' : tx.type === 'Expense' ? '-' : '+'}${tx.amount}
-                        </Text>
-                      
+                <Text className="text-[#231F20] font-[BASKiT] text-[1.4rem] mb-3">{month}</Text>
+                {txs.map((tx, index) => {
+                  
+                  const Icon = getIcon(tx.label);
+                  interface ColourScheme {
+                    [key: string]: string[]; 
+                  }
+
+                  const colourScreen: ColourScheme = {
+                    'Deposit': ['#105E49', '#ECF86E'],
+                    'CLAIM': ['#ECF86E', '#105E49'],
+                    'Expense': ['#8AC3F9', '#FFFFFF']
+                  };
+
+                
+
+                  return (
+                    <View key={index} className="py-[1rem] border-t-[1px] border-t-[#F3F3F1] bg-white">
+                      <View className='flex flex-row gap-[1rem]'>
+                        <View>
+                          <Icon colour1={colourScreen[tx.type][0]} colour2={colourScreen[tx.type][1]}/>
+                        </View>
+                        <View className='flex w-[80%]'>
+                          <View className="flex flex-row justify-between items-center">
+                            <Text className="text-[1.3rem] text-[1E1E1E] font-[BASKiT-Medium]">
+                              {tx.label}
+                            </Text>
+                            <View className=''>
+                              <Text
+                                className={`text-[1.3rem] font-[BASKiT-Medium] text-[#231F20]`}
+                              >
+                                {tx.type === 'Deposit' ? '+' : tx.type === 'Expense' ? '-' : '+'}${tx.amount}
+                              </Text>
+                            
+                            </View>
+                          </View>
+                          <View className="pt-[0.3rem] flex flex-row justify-between items-center">
+                            <Text className="text-[1rem] font-[BASKiT] text-[#8B8988]">{tx.date}</Text>
+                            <Text className="text-[0.9rem] font-[BASKiT] text-[#8B8988]">{tx.type}</Text>
+                          </View>
+                        
+                        </View>
+
                       </View>
                     </View>
-                    <View className="pt-[0.3rem]">
-                      <Text className="text-[1rem] text-[#1E1E1E]">{tx.date}</Text>
-                      <Text className="text-[0.9rem] text-[#1E1E1E]">{tx.type}</Text>
-                    </View>
-                  </View>
-                ))}
+
+                  )
+                })}
               </View>
             ))}
 

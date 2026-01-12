@@ -37,7 +37,18 @@ import UmbrellaSVG from './SVG/UmbrellaSVG';
 import WatchSVG from './SVG/WatchSVG';
 import LogoSVG from './SVG/LogoSVG';
 import GoogleWalletSVG from './SVG/GoogleWalletSVG';
+import DepositSVG from './SVG/Icons/DepositSVG';
+import DentalSVG from './SVG/Icons/DentalSVG';
+import PhysioSVG from './SVG/Icons/PhysioSVG';
+import OptomSVG from './SVG/Icons/OptomSVG';
+import ChiroSVG from './SVG/Icons/ChiroSVG';
+import NaturoSVG from './SVG/Icons/NaturoSVG';
+import NutritionSVG from './SVG/Icons/NutritionSVG';
+import PsychSVG from './SVG/Icons/PsychSVG';
+import PillSVG from './SVG/Icons/PillSVG';
+import HealthSVG from './SVG/Icons/HealthSVG';
+import AudioSVG from './SVG/Icons/AudioSVG';
 
 
-export { BackArrow, BackSpaceSVG, Benefits, ChangeSVG, ChartSVG, ClaimButton, ClaimSVG, CloseSVG, CopySVG, Details, DocSVG, HomeSVG, LegalSVG, MemberSVG, MiniArrow, MonthlyPay, NarrowSVG, NewBackArrow, Notifications, NotificationSVG, PaymentSVG, Policy1, Policy2, ReceiptSVG, ScanSVG, SecuritySVG, SettingsSVG, ShareSVG, StatementSVG, SupportSVG, Transactions1, Transactions2, Transactions3, WideSVG, TrophySVG, UmbrellaSVG, WatchSVG, LogoSVG, GoogleWalletSVG };
+export { BackArrow, BackSpaceSVG, Benefits, ChangeSVG, ChartSVG, ClaimButton, ClaimSVG, CloseSVG, CopySVG, Details, DocSVG, HomeSVG, LegalSVG, MemberSVG, MiniArrow, MonthlyPay, NarrowSVG, NewBackArrow, Notifications, NotificationSVG, PaymentSVG, Policy1, Policy2, ReceiptSVG, ScanSVG, SecuritySVG, SettingsSVG, ShareSVG, StatementSVG, SupportSVG, Transactions1, Transactions2, Transactions3, WideSVG, TrophySVG, UmbrellaSVG, WatchSVG, LogoSVG, GoogleWalletSVG, DepositSVG, DentalSVG, PhysioSVG, OptomSVG, ChiroSVG, NaturoSVG, NutritionSVG, PsychSVG, PillSVG, HealthSVG, AudioSVG };
 

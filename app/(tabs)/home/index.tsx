@@ -49,7 +49,7 @@ export default function Index() {
   return (
     <View className={`bg-[#F3F3F1] h-full flex`}>
 
-      <ScrollView className='bg-white h-full w-full mt-[13%] pt-[4%] pb-[5rem] rounded-t-[1rem]'>
+      <ScrollView className='bg-white h-full w-full mt-[15%] pt-[4%] pb-[5rem] rounded-t-[1rem]'>
         <View className="flex flex-row justify-end pr-[2rem]">
           <TouchableOpacity onPress={() => router.push('/notifications')}>
             <NotificationSVG/>

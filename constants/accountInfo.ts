@@ -1,3 +1,7 @@
+import { DepositSVG, DentalSVG, PhysioSVG, OptomSVG, ChiroSVG, 
+  NaturoSVG, NutritionSVG, PsychSVG, PillSVG, HealthSVG, AudioSVG } from "@/components"
+import { ComponentType } from "react"
+
 
 export const account = {
   firstname: 'John',
@@ -105,6 +109,7 @@ export const transactionsHistory = [
   { date: '04/08/25', type: 'Deposit', label: 'Premium Deposit', amount: 35 },
   { date: '05/08/25', type: 'Deposit', label: 'Top Up', amount: 150 },
   { date: '07/08/25', type: 'Expense', label: 'Prescription', amount: 55 },
+  { date: '10/08/25', type: 'Expense', label: 'Naturopath', amount: 55 },
 
   { date: '11/08/25', type: 'Deposit', label: 'Top Up', amount: 170 },
   { date: '13/08/25', type: 'Expense', label: 'GP Visit', amount: 95 },
@@ -173,27 +178,39 @@ export const claimsHistory = [
   { date: '30/09/25', type: 'CLAIM', label: 'Physio Appointment', amount: 95 },
 ];
 
-export function getEmoji(label: string) {
-  const emojiMap = {
-    '🦷': ['Dental Filling', 'Tooth Extraction', 'Root Canal', 'Tooth Cleaning', 'Checkup & Clean'],
-    '💪': ['Physio Appointment', 'Physicial Therapy'],
-    '👓': ['Glasses', 'Eye Test', 'Glasses Purchase'],
-    '🦴': ['Chiro', 'Osteopath'],
-    '🌿': ['Naturopath'],
-    '🍎': ['Nutritionist'],
-    '🧠': ['Therapy', 'Counselling', 'Psychologist'],
-    '💊': ['Prescription', 'Pharmacist'],
-    '🩺': ['GP Visit', 'Out-Patient Care'],
-    '🦻': ['Audiologist', 'Hearing Aids'],
-    '💸': ['Premium Deposit', 'Top Up'],
-    '📄': ['Claim Submission'],
-    '🏥': ['Hospital Visit'],
-  };
+interface IconProps {
+  colour1?: string;
+  colour2?: string;
+}
 
-  for (const [emoji, labels] of Object.entries(emojiMap)) {
-    if (labels.includes(label)) return emoji;
-  }
-  return '💳';
+interface IconMapping {
+  icon: ComponentType<IconProps>; // This tells TS it's a React Component
+  labels: string[];
+}
+
+export function getIcon(label: string) {
+
+
+  const iconMap: IconMapping[] = [
+    { icon: DentalSVG, labels: ['Dental Filling', 'Tooth Extraction', 'Root Canal', 'Tooth Cleaning', 'Checkup & Clean'] },
+    { icon: PhysioSVG, labels: ['Physio Appointment', 'Physicial Therapy'] },
+    { icon: OptomSVG, labels: ['Glasses', 'Eye Test', 'Glasses Purchase'] },
+    { icon: ChiroSVG, labels: ['Chiro', 'Osteopath'] },
+    { icon: NaturoSVG, labels: ['Naturopath'] },
+    { icon: NutritionSVG, labels: ['Nutritionist'] },
+    { icon: PsychSVG, labels: ['Therapy', 'Counselling', 'Psychologist'] },
+    { icon: PillSVG, labels: ['Prescription', 'Pharmacist'] },
+    { icon: HealthSVG, labels: ['GP Visit', 'Out-Patient Care'] },
+    { icon: AudioSVG, labels: ['Audiologist', 'Hearing Aids'] },
+    { icon: DepositSVG, labels: ['Premium Deposit', 'Top Up'] },
+    { icon: DepositSVG, labels: ['Claim Submission'] },
+    { icon: HealthSVG, labels: ['Hospital Visit'] },
+
+    ];
+
+
+  const match = iconMap.find(item => item.labels.includes(label));
+  return match ? match.icon : iconMap[0].icon;
 }
 
 
