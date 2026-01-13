@@ -285,3 +285,34 @@ export const cardPoints = [
   {id: '2', Stamp: require('@/components/SVG/UmbrellaSVG').default, header: 'Access your rainy day fund', body: 'Have your rainy day fund available anywhere, anytime you need it'},
   {id: '3', Stamp: require('@/components/SVG/WatchSVG').default, header: 'Save time, save money', body: 'Get access to your CoverMe benefits instantly'}
 ]
+
+export const levelUp = {
+  level: 'Level 1',
+  current: 75,
+  target: 300,
+}
+
+export const formatDate = (rawDate: string) => {
+  // 1. Split '25/05/25' into [25, 05, 25]
+  const [day, month, year] = rawDate.split('/').map(Number);
+  
+  // 2. Create Date (Year 2025, Month is 0-indexed so 5-1=4, Day 25)
+  const date = new Date(2000 + year, month - 1, day);
+
+  // 3. Get the ordinal suffix logic
+  const getOrdinal = (d: number) => {
+    if (d > 3 && d < 21) return d + 'th';
+    switch (d % 10) {
+      case 1:  return d + "st";
+      case 2:  return d + "nd";
+      case 3:  return d + "rd";
+      default: return d + "th";
+    }
+  };
+
+  // 4. Format the Weekday and Month name
+  const weekday = new Intl.DateTimeFormat('en-GB', { weekday: 'long' }).format(date);
+  const monthName = new Intl.DateTimeFormat('en-GB', { month: 'long' }).format(date);
+
+  return `${weekday}, ${getOrdinal(day)} ${monthName}`;
+};

@@ -73,6 +73,7 @@ export default function Transactions() {
           getItemLayout={getItemLayout}
           onMomentumScrollEnd={onMomentumEnd}
           removeClippedSubviews
+          
           initialNumToRender={2}
           windowSize={2}
         />

@@ -1,6 +1,6 @@
-import { Text, View, TextInput, ScrollView, Dimensions, useWindowDimensions } from 'react-native';
+import { Text, View, TextInput, ScrollView, useWindowDimensions } from 'react-native';
 import { useMemo, useState } from 'react';
-import { BlurView } from 'expo-blur';
+import { formatDate } from '@/constants/accountInfo';
 import { BarChart } from 'react-native-gifted-charts';
 import { Picker } from '@react-native-picker/picker';
 import { transactionsHistory, claimsHistory, getIcon } from '@/constants/accountInfo';
@@ -141,7 +141,7 @@ export default function Transactions1() {
             className="pt-[4rem] pb-[1rem]"
           >
             <View className='flex flex-row w-full h-fit justify-between pt-[1rem] pb-[1rem]'>
-              <Text className="font-[BASKiT] text-[#231F20]  text-[1.7rem]">
+              <Text className="font-[BASKiT-Medium] text-[#231F20]  text-[1.7rem]">
                 Transactions
               </Text>
 
@@ -235,6 +235,9 @@ export default function Transactions1() {
               // visuals
               roundedTop
               roundedBottom
+              nestedScrollEnabled={true}
+              scrollAnimation={true}
+              disableScroll={false}
               barStyle={{
                 
               }}
@@ -313,7 +316,7 @@ export default function Transactions1() {
                             </View>
                           </View>
                           <View className="pt-[0.3rem] flex flex-row justify-between items-center">
-                            <Text className="text-[1rem] font-[BASKiT] text-[#8B8988]">{tx.date}</Text>
+                            <Text className="text-[1rem] font-[BASKiT] text-[#8B8988]">{formatDate(tx.date)}</Text>
                             <Text className="text-[0.9rem] font-[BASKiT] text-[#8B8988]">{tx.type}</Text>
                           </View>
                         

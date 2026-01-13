@@ -1,9 +1,9 @@
 import { investmentReturns } from "@/constants/accountInfo";
-import { BlurView } from "expo-blur";
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { Alert, Share, Text, TouchableOpacity, useWindowDimensions, View } from "react-native";
+import { Alert, Share, Text, TouchableOpacity, useWindowDimensions, View, ScrollView } from "react-native";
 import { LineGraph, type GraphPoint } from "react-native-graph";
-import ShareSVG from "./ShareButton";
+import WideSVG from "./SVG/WideSVG";
+import { Platform } from "react-native";
 
 
 type RangeKey = "3M" | "6M" | "1Y" | "ALL";
@@ -94,154 +94,137 @@ export default function Transactions3() {
 
   return (
     <View className="bg-white h-full">
-      {/* Header */}
-      <View
-        style={{ position: "absolute", top: 0, left: 0, right: 0, height: 96, zIndex: 10, elevation: 10 }}
-        pointerEvents="box-none"
-        className="h-[10rem]"
-      >
-        <BlurView
-          intensity={30}
-          tint="light"
-          style={{
-            backgroundColor: "rgba(255,255,255,0.15)",
-            borderBottomWidth: 1,
-            borderColor: "rgba(255,255,255,0.35)",
-          }}
-          className="pt-[3rem] pb-[1rem]"
-        >
-          <Text className="text-[#105E49] pb-[3rem] pt-[1.5rem] pl-[2rem] text-[2.5rem]">
-            Growth
-          </Text>
-        </BlurView>
-      </View>
+      <ScrollView>
+        <View className="w-full px-[2rem] pb-[7rem] flex flex-col gap-[1rem]">
+          {/* Header */}
+          <View
+            pointerEvents="box-none"
+            className="pt-[4rem] pb-[1rem]"
+            >
+            <Text className="font-[BASKiT-Medium] text-[#231F20] pt-[1rem]  text-[1.7rem]">
+              Growth
+            </Text>
+          </View>
 
-      <View className="pt-[10rem]" style={{ overflow: "visible" }}>
-        <View className="flex flex-col items-center px-[2rem]" style={{ overflow: "visible" }}>
-          <View style={{ width: width - 40, height: 320, overflow: "visible" }} className="flex">
-            {/* Ticker */}
-            <View className="pl-[1rem]">
-              <Text className="text-[2rem] font-medium">
-                {fmtCurrency(hoverValue)}{"  "}
-              </Text>
-                <Text style={{ color: pctChangeFromStart >= 0 ? "#8AC3F9" : "#E24C4B" }} className="text-[1.5rem] font-medium">
-                  {fmtPct(pctChangeFromStart)}
-                </Text>
-            </View>
-
-            {/* Graph */}
-            <View className="w-full h-[15rem]" style={{ overflow: "visible" }}>
-              <LineGraph
-                points={filteredData}
-                animated
-                color="#105E49"
-                enablePanGesture
-                verticalPadding={30}
-                horizontalPadding={30}
-                onPointSelected={handlePointSelected}
-                onGestureEnd={handleGestureEnd}
-                selectionDotShadowColor="rgba(0,0,0,0.2)"
-                style={{
-                  flex: 1,
-                  marginHorizontal: 10,
-                  marginVertical: 10,
-                  overflow: "visible",
-                  height: 150,
-                }}
-              />
-            </View>
-
-            {/* Range pills */}
-            <View className="mt-[10px] w-full flex flex-row justify-center gap-[1.3rem]">
-              {(["3M", "6M", "1Y", "ALL"] as RangeKey[]).map((key) => {
-                const active = range === key;
-                return (
-                  <TouchableOpacity
-                    key={key}
-                    onPress={() => setRange(key)}
-                    activeOpacity={0.8}
-                    style={{
-                      paddingHorizontal: 14,
-                      paddingVertical: 6,
-                      borderRadius: 999,
-                      borderWidth: active ? 1 : 0,
-                      borderColor: active ? "#105E49" : "",
-                      backgroundColor: active ? "#105E49" : "",
-                    }}
-                  >
-                    <Text style={{ color: active ? "#FFFFFF" : "#105E49", fontWeight: "600", fontSize: 17, }}>
-                      {key}
+          <View className="" style={{ overflow: "visible" }}>
+            <View className="flex flex-col items-center px-[2rem]" style={{ overflow: "visible" }}>
+              <View style={{ width: width - 40, height: 320, overflow: "visible" }} className="flex">
+                {/* Ticker */}
+                <View className="pl-[1rem]">
+                  <Text className="text-[2rem] font-[BASKiT]">
+                    {fmtCurrency(hoverValue)}{"  "}
+                  </Text>
+                    <Text style={{ color: pctChangeFromStart >= 0 ? "#105E49" : "#8AC3F9" }} className="text-[1.5rem] font-[BASKiT]">
+                      {fmtPct(pctChangeFromStart)}
                     </Text>
-                  </TouchableOpacity>
-                );
-              })}
+                </View>
+
+                {/* Graph */}
+                <View className="w-full h-[15rem]" style={{ overflow: "visible" }}>
+                  <LineGraph
+                    points={filteredData}
+                    animated
+                    color="#8AC3F9"
+                    enablePanGesture
+                    verticalPadding={30}
+                    horizontalPadding={30}
+                    onPointSelected={handlePointSelected}
+                    onGestureEnd={handleGestureEnd}
+                    selectionDotShadowColor="rgba(0,0,0,0.2)"
+                    style={{
+                      flex: 1,
+                      marginHorizontal: 10,
+                      marginVertical: 10,
+                      overflow: "visible",
+                      height: 150,
+                    }}
+                  />
+                </View>
+
+                {/* Range pills */}
+                <View className="mt-[10px] w-full flex flex-row justify-center gap-[1.3rem]">
+                  {(["3M", "6M", "1Y", "ALL"] as RangeKey[]).map((key) => {
+                    const active = range === key;
+                    return (
+                      <TouchableOpacity
+                        key={key}
+                        onPress={() => setRange(key)}
+                        activeOpacity={0.8}
+                        style={{
+                          paddingHorizontal: 14,
+                          paddingVertical: 6,
+                          borderRadius: 999,
+                          borderWidth: 1,
+                          borderColor: active ? "#ECF86E" : "#F3F3F1",
+                          backgroundColor: active ? "#ECF86E" : "#F3F3F1",
+                        }}
+                      >
+                        <Text style={{ color: "#000000", fontWeight: "600", fontSize: 15, }}
+                          className="font-[BASKiT-Light]"
+                        >
+                          {key}
+                        </Text>
+                      </TouchableOpacity>
+                    );
+                  })}
+                </View>
+              </View>
             </View>
+            <View className="gap-[24px] pt-[16px]">
+              <View
+                className="w-full rounded-[16px] bg-white py-[1.5rem] border-b-[1px] border-b-[#F3F3F1]"
+              >
+                <View className="flex-row justify-between border-b-[1px] border-b-[#F3F3F1] pb-[1rem]">
+                  <Text className="text-[1.3rem] text-[#231F20] font-[BASKiT]">
+                    Investment Returns
+                  </Text>
+                </View>
+
+                <View className="mt-[12px] gap-[10px]">
+                  <View className="flex-row justify-between">
+                    <Text className="text-[1.1rem] text-[#231F20] font-[BASKiT]">
+                      Total Return
+                    </Text>
+                    <Text className="text-[1.1rem] text-[#231F20] font-[BASKiT]">
+                      {fmtPct(lastPercentage)}
+                    </Text>
+                  </View>
+                  <View className="flex-row justify-between">
+                    <Text className="text-[1.1rem] text-[#231F20] font-[BASKiT]">
+                      Increased Savings
+                    </Text>
+                    <Text className="text-[1.1rem] text-[#231F20] font-[BASKiT]">
+                      {fmtCurrency(lastValue)}
+                    </Text>
+                  </View>
+                  <View className="pt-[0.5rem] flex-row justify-between">
+                    <Text className="text-[1.1rem] font-[BASKiT-Light]">
+                      By investing your savings in our growth fund, we’re able to maximise your cover
+                    </Text>
+                  </View>
+                </View>
+              </View>
+
+              <TouchableOpacity
+                className="w-full rounded-[1rem] bg-[#ECF86E] py-[0.5rem] px-[1.3rem]"
+                onPress={() => handleShare()}
+              >
+                <View className={`flex-row align-center ${Platform.OS === 'ios' ? 'pt-[0.5rem]' : ''}`}>
+                  <Text className="font-[BASKiT-Medium] text-[1.3rem] pt-[0.6rem] text-[#231F20]">
+                    Share your growth with others!
+                    </Text>
+                  <View className="h-[3rem] w-[3rem] ml-[3rem] pt-[0.1rem] flex">
+                    <WideSVG />
+                  </View>
+                </View>
+              </TouchableOpacity>
+            </View>
+
           </View>
+
         </View>
-        <View className="gap-[24px] px-[16px] pt-[16px]">
-          <View
-            className="w-full rounded-[16px] bg-white px-[2rem] py-[1.5rem]"
-            style={{
-              shadowColor: '#000',
-              shadowOffset: { width: 0, height: 0 },
-              shadowOpacity: 0.38,
-              shadowRadius: 10,
-              elevation: 10,
-            }}
-          >
-            <View className="flex-row justify-between">
-              <Text className="font-poppins text-[1.5rem] text-[#105E49] font-medium">
-                Investment Returns
-              </Text>
-            </View>
 
-            <View className="mt-[12px] gap-[10px]">
-              <View className="flex-row justify-between">
-                <Text className="font-poppins text-[1.3rem] text-[#105E49] font-light">
-                  Total Return
-                </Text>
-                <Text className="font-poppins text-[1.3rem] text-[#105E49]">
-                  {fmtPct(lastPercentage)}
-                </Text>
-              </View>
-              <View className="flex-row justify-between">
-                <Text className="font-poppins text-[1.3rem] text-[#105E49] font-light">
-                  Increased Savings
-                </Text>
-                <Text className="font-poppins text-[1.3rem] text-[#105E49]">
-                  {fmtCurrency(lastValue)}
-                </Text>
-              </View>
-              <View className="pt-[0.5rem] flex-row justify-between">
-                <Text className="text-[1.2rem]">
-                  By investing your savings in our growth fund, we’re able to maximise your cover
-                </Text>
-              </View>
-            </View>
-          </View>
-
-          <View
-            className="w-full rounded-[16px] bg-white px-[2rem] py-[1rem]"
-            style={{
-              shadowColor: '#000',
-              shadowOffset: { width: 0, height: 0 },
-              shadowOpacity: 0.38,
-              shadowRadius: 13,
-              elevation: 10,
-            }}
-          >
-            <View className="flex-row align-center">
-              <Text className="font-poppins text-[1.4rem] pt-[0.5rem] text-[#105E49] font-medium">
-                Share your growth with others!
-                </Text>
-              <View className="h-[3rem] w-[3rem] ml-[3rem] pt-[0.1rem] flex">
-                <ShareSVG onPress={handleShare}/>
-              </View>
-            </View>
-          </View>
-        </View>
-
-      </View>
+      </ScrollView>
     </View>
   );
 }

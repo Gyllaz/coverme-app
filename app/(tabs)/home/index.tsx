@@ -91,6 +91,7 @@ export default function Index() {
             <WideSVG />
           </TouchableOpacity>
         </View>
+        
         <View className={`mt-[2rem] ${isCard ? 'hidden' : ''} flex align-content gap-[1rem] px-7 `}>
           <Text className="text-[1.5rem] font-[BASKiT]">Current tasks</Text>
           <View className="w-fit h-[13rem] rounded-[1rem] overflow-hidden">
