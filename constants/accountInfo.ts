@@ -33,13 +33,13 @@ export const policyInfo = {
   policyPerson: ['John Conner'],
   policyName: 'Basic Extras Only',
   startYear: '2025',
-  joined: '19th Jan 2025',
+  joined: '19/01/2025',
   monthlyTotal: '$35',
   frequency: 'Monthly',
-  invoice: '15th May 2025',
+  invoice: '15th May',
   payment: 'Direct Debit',
   monthlyDeposit: '$35',
-  monthlyPolicy: 'FREE',
+  monthlyPolicy: 'Free',
   totalBenefits: 500,
   remainBenefits: 300,
 }
@@ -268,16 +268,22 @@ export const notificationAlerts = [
 ]
 
 export const receipts = [
-  {type: 'Dental', status: 'Processing', date: '06/10/25', members: 'John Connor', charge: 199.75, benefits: 114.63,},
-  {type: 'Psychology', status: 'Processing', date: '03/10/25', members: 'John Connor', charge: 199.75, benefits: 114.63,},
-  {type: 'Physio', status: 'Claimed', date: '25/09/25', members: 'John Connor', charge: 99.95, benefits: 45.55,},
-  {type: 'Optical', status: 'Claimed', date: '13/05/25', members: 'John Connor', charge: 99.95, benefits: 45.55,}
+  {type: 'Dental', status: 'Processing', date: '06/10/2025', members: 'John Connor', charge: 199.75, benefits: 114.63,},
+  {type: 'Psychology', status: 'Processing', date: '03/10/2025', members: 'John Connor', charge: 199.75, benefits: 114.63,},
+  {type: 'Physio', status: 'Claimed', date: '25/09/2025', members: 'John Connor', charge: 99.95, benefits: 45.55,},
+  {type: 'Optical', status: 'Claimed', date: '13/05/2025', members: 'John Connor', charge: 99.95, benefits: 45.55,}
 ]
 
 export const offers = [
   {id: '1', isNew: true, img: require('@/assets/images/Toothpaste.png'), title: 'Save 10% on skin products'},
   {id: '2', isNew: false, img: require('@/assets/images/Apple.png'), title: 'Get $5 cashback on your groceries'},
   {id: '3', isNew: false, img: require('@/assets/images/Stethoscope.png'), title: 'Book in your annual GP check'}
+]
+
+export const myExtras = [
+  {id: '1', title: 'Dental', total: 1200, remain: 387, img: require('@/assets/images/Tooth.png')},
+  {id: '2', title: 'General health', total: 1200, remain: 900, img: require('@/assets/images/Stethoscope.png')},
+  {id: '3', title: 'Psychology', total: 900, remain: 440, img: require('@/assets/images/Notebook.png')},
 ]
 
 export const cardPoints = [
@@ -315,4 +321,27 @@ export const formatDate = (rawDate: string) => {
   const monthName = new Intl.DateTimeFormat('en-GB', { month: 'long' }).format(date);
 
   return `${weekday}, ${getOrdinal(day)} ${monthName}`;
+};
+
+export const cleanDate = (rawDate: string) => {
+  // 1. Split '25/05/25' into [25, 05, 25]
+  const [day, month, year] = rawDate.split('/').map(Number);
+  
+  // 2. Create Date (Year 2025, Month is 0-indexed so 5-1=4, Day 25)
+  const date = new Date(2000 + year, month - 1, day);
+
+  // 3. Get the ordinal suffix logic
+  const getOrdinal = (d: number) => {
+    if (d > 3 && d < 21) return d + 'th';
+    switch (d % 10) {
+      case 1:  return d + "st";
+      case 2:  return d + "nd";
+      case 3:  return d + "rd";
+      default: return d + "th";
+    }
+  };
+
+  const monthName = new Intl.DateTimeFormat('en-GB', { month: 'long' }).format(date);
+
+  return `${getOrdinal(day)} ${monthName} ${year}`;
 };
