@@ -77,18 +77,17 @@ export default function Pin() {
   );
 
   return (
-    <View className="bg-[#105E49] h-full w-full pt-[12%]">
+    <View className="bg-[#105E49] h-full w-full pt-[17%]">
       {/* Top bar */}
       <View className="flex-row justify-end pr-[1.5rem]">
         <TouchableOpacity onPress={onClose} accessibilityLabel="Close">
-          <CloseSVG />
+          <CloseSVG colour='white'/>
         </TouchableOpacity>
       </View>
 
       {/* Title */}
-      <View className="px-[2rem] pt-[1.5rem]">
-        <Text className="text-white text-[2.3rem] font-light">Enter your PIN</Text>
-        <Text className="text-white/80 text-[1.1rem] mt-[0.3rem]">We just want to make sure it’s you</Text>
+      <View className="w-full flex flex-row justify-center px-[2rem] pt-[1.5rem]">
+        <Text className="text-white text-[1.7rem] font-[BASKiT]">Enter your PIN for access</Text>
       </View>
 
       {/* PIN display */}
@@ -100,7 +99,7 @@ export default function Pin() {
           className="flex-row justify-center gap-[1.5rem] px-[1rem] py-[0.9rem] rounded-[14px] bg-white/10"
           style={{
             borderWidth: 2,
-            borderColor: error ? '#FF6B6B' : 'rgba(255,255,255,0.35)',
+            borderColor: error ? '#8AC3F9' : 'rgba(255,255,255,0.35)',
           }}
         >
           {Array.from({ length: REQUIRED_LEN }).map((_, i) => {
@@ -108,10 +107,10 @@ export default function Pin() {
             return (
               <View
                 key={i}
-                className="w-[3.5rem] h-[3.6rem] rounded-[10px] bg-[#E4E4F7] justify-center items-center"
+                className="w-[3.5rem] h-[3.6rem] rounded-[10px] bg-white justify-center items-center"
                 style={{
                   borderWidth: 2,
-                  borderColor: error ? '#FF6B6B' : '#105E49',
+                  borderColor: error ? '#8AC3F9' : '#105E49',
                 }}
               >
                 <Text className="text-[2.5rem] text-[#105E49] ">
@@ -123,14 +122,14 @@ export default function Pin() {
         </View>
 
         {error && (
-          <Text className="text-[#FFDFDF] mt-[0.8rem]">Incorrect PIN. Try again.</Text>
+          <Text className="text-[#8AC3F9] mt-[0.8rem]">Incorrect PIN. Try again.</Text>
         )}
       </Animated.View>
 
       {/* Keypad */}
-      <View className="mt-[3rem] px-[2rem]">
+      <View className="mt-[4rem] px-[2rem]">
         {keypad.map((row, rIdx) => (
-          <View key={rIdx} className="flex-row justify-between mb-[1.5rem]">
+          <View key={rIdx} className="flex-row justify-center items-center gap-[1rem] mb-[1.5rem]">
             {row.map((key, cIdx) => {
               if (key === 'x') {
                 return <View key={cIdx} className="w-[30%]" />; // spacer
@@ -153,7 +152,7 @@ export default function Pin() {
                     elevation: 8,
                   }}
                 >
-                  <View className='w-full h-[5.2rem] rounded-[14px] items-center justify-center bg-white'>
+                  <View className={`w-full h-[5.2rem] rounded-[14px] items-center justify-center     ${isBack ? 'bg-[#ECF86E]' : 'bg-white'}`}>
                     {isBack ? (
                       <BackSpaceSVG />
                     ) : (
@@ -167,6 +166,10 @@ export default function Pin() {
           </View>
         ))}
       </View>
+      
+      <TouchableOpacity className='w-full flex flex-row justify-center mt-[2rem]'>
+        <Text className='font-[BASKiT] text-white text-[1.1rem] underline underline-offset-8'>Forgot your PIN?</Text>
+      </TouchableOpacity>
 
       {/* Hint / Footer */}
       <View className="mt-auto pb-[6%] items-center">

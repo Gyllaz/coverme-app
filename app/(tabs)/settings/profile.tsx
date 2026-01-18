@@ -1,7 +1,7 @@
 import { View, Text, TouchableOpacity } from 'react-native'
 import React from 'react'
 import { useRouter } from 'expo-router'
-import { NarrowSVG, NewBackArrow } from '@/components'
+import { NarrowSVG, NewBackArrow, CloseSVG } from '@/components'
 import { account } from '@/constants/accountInfo'
 
 const { userId, firstname, lastname, email, phone, address } = account;
@@ -11,86 +11,59 @@ export default function profile() {
   const router = useRouter();
 
   return (
-    <View className="bg-white h-full flex gap-[0.1rem] pt-[10%]">
-      <TouchableOpacity onPress={() => router.push('/(tabs)/settings')}>
-        <NewBackArrow />    
-      </TouchableOpacity>
-      
-      <View className="flex flex-row pt-[2.5rem] gap-[1.5rem] w-full pl-[15%]">
-        <Text className="text-[#105E49] font-poppins text-[2rem] font-medium">Profile</Text>
-      </View>
+    <View className={`bg-[#F3F3F1] h-full flex`}>
+      <View className='bg-white flex flex-col gap-[1rem] h-full w-full mt-[15%] px-[2rem] pt-[4%] pb-[5rem] rounded-t-[1rem]'>
+        <TouchableOpacity className='w-full flex flex-row justify-end'
+          onPress={() => router.push('/(tabs)/settings')}
+        >
+          <CloseSVG  colour='black'/>
+        </TouchableOpacity>
+        <View className='flex flex-row w-full h-fit pt-[1rem] pb-[1rem]'>
+          <Text className="font-[BASKiT-Medium] text-[#231F20]  text-[1.7rem]">
+            My profile
+          </Text>
+        </View>
 
-      <View className="flex gap-[1.5rem] pt-[2.5rem]">
-        <View className=" w-full flex justify-center items-center">
-          <View className="bg-white w-[90%] border-[3px] border-white flex gap-[1rem] py-[2rem] px-[2rem] rounded-[15px]"
-              style={{
-                shadowColor: '#000',
-                shadowOffset: { width: 0, height: 8 },
-                shadowOpacity: 0.38,
-                shadowRadius: 16,
-                elevation: 10, // Android
-              }}
-          >
-            <View className="flex flex-row">
-              <TouchableOpacity className='flex flex-col  items-center mr-[2.5rem]'>
-                <View className='w-[5rem] h-[5rem] rounded-full bg-[#4B91A1] flex fex-row justify-center items-center mb-[1rem]'>
-                  <Text className='text-[2.3rem] text-white'>{firstname[0]}</Text>
-                </View>
-                <Text className='text-[1.3rem] text-[#1E1E1E]'>Profile</Text>
-                <Text className='text-[1.3rem] text-[#1E1E1E]'>Photo</Text>
+        <View className="w-fit h-[15rem] flex flex-col justify-between bg-sun-100 px-[1.5rem] pt-[1rem] pb-[2rem] rounded-[1rem]">
+          <View className="w-full flex flex-col gap-[0.5rem] pt-[1rem]">
+            <Text className="font-[BASKiT-Medium] text-[1.8rem]">
+              {firstname} {lastname}
+            </Text>
+             <TouchableOpacity>
+              <Text className='font-[BASKiT] underline underline-offset-8'>View Profile</Text>
               </TouchableOpacity>
-
-              <View className='flex flex-col gap-[2rem] pr-[4rem]'>
-                <View className='flex flex-col gap-[0.5rem]'>
-                  <Text className='text-[1.2rem] font-light text-[#105E49]'>Name</Text>
-                  <TouchableOpacity className='flex flex-row gap-[1.5rem]'>
-                    <Text className='text-[1.2rem] text-[#1E1E1E] font-semibold'>{firstname} {lastname}</Text>
-                    <View className='pt-[0.2rem]'>
-                      <NarrowSVG/>
-                    </View>
-                  </TouchableOpacity>
-                </View>
-                <View className='flex flex-col gap-[0.5rem]'>
-                  <Text className='text-[1.2rem] font-light text-[#105E49]'>Username</Text>
-                  <TouchableOpacity className='flex flex-row gap-[1.5rem]'>
-                    <Text className='text-[1.2rem] text-[#1E1E1E] font-semibold'>{userId}</Text>
-                  </TouchableOpacity>
-                </View>
-                <View className='flex flex-col gap-[0.5rem]'>
-                  <Text className='text-[1.2rem] font-light text-[#105E49]'>Email</Text>
-                  <TouchableOpacity className='flex flex-row gap-[1.5rem]'>
-                    <Text className='text-[1.2rem] text-[#1E1E1E] font-semibold'>{email}</Text>
-                    <View className='pt-[0.2rem]'>
-                      <NarrowSVG/>
-                    </View>
-                  </TouchableOpacity>
-                </View>
-                <View className='flex flex-col gap-[0.5rem]'>
-                  <Text className='text-[1.2rem] font-light text-[#105E49]'>Phone</Text>
-                  <TouchableOpacity className='flex flex-row gap-[1.5rem]'>
-                    <Text className='text-[1.2rem] text-[#1E1E1E] font-semibold'>{phone}</Text>
-                    <View className='pt-[0.2rem]'>
-                      <NarrowSVG/>
-                    </View>
-                  </TouchableOpacity>
-                </View>
-                <View className='flex flex-col gap-[0.5rem]'>
-                  <Text className='text-[1.2rem] font-light text-[#105E49]'>Address</Text>
-                  <TouchableOpacity className='flex flex-row gap-[1.5rem]'>
-                    <Text className='text-[1.2rem] text-[#1E1E1E] font-semibold'>{address}</Text>
-                    <View className='pt-[0.2rem]'>
-                      <NarrowSVG/>
-                    </View>
-                  </TouchableOpacity>
-                </View>
-
+          </View>
+        </View>
+        <View className='w-full mt-[2rem] flex flex-col gap-[2rem] border-b-[1px] border-b-[#F3F3F1] pb-[1rem]'>
+          <View>
+            <Text className='font-[BASKiT-Medium] text-[1.3rem] border-b-[1px] border-b-[#F3F3F1] pb-[1rem]'>Details</Text>
+            <View className='w-full flex flex-col gap-[0.5rem] pt-[1rem] px-[0.5rem]'>
+              <View className='w-full flex flex-row justify-between '>
+                <Text className='font-[BASKiT] text-[1.1rem]'>Name</Text>
+                <Text className='font-[BASKiT-Light] text-[1.1rem] text-[#231F20]'>{firstname} {lastname}</Text>
               </View>
-
+              <View className='w-full flex flex-row justify-between '>
+                 <Text className='font-[BASKiT] text-[1.1rem]'>Username</Text>
+                 <Text className='font-[BASKiT-Light] text-[1.1rem] text-[#231F20]'>{userId}</Text>
+              </View>
+              <View className='w-full flex flex-row justify-between '>
+                <Text className='font-[BASKiT] text-[1.1rem]'>Email</Text>
+                <Text className='font-[BASKiT-Light] text-[1.1rem] text-[#231F20]'>{email}</Text>
+              </View>
+              <View className='w-full flex flex-row justify-between '>
+                <Text className='font-[BASKiT] text-[1.1rem]'>Phone</Text>
+                <Text className='font-[BASKiT-Light] text-[1.1rem] text-[#231F20]'>{phone}</Text>
+              </View>
+              <View className='w-full flex flex-row justify-between '>
+                <Text className='font-[BASKiT] text-[1.1rem]'>Address</Text>
+                <Text className='font-[BASKiT-Light] text-[1.1rem] text-[#231F20]'>{address}</Text>
+              </View>
             </View>
           </View>
         </View>
-
-
+        <TouchableOpacity>
+          <Text className='font-[BASKiT] text-[1.1rem] underline underline-offset-8'>Update information</Text>
+        </TouchableOpacity>
       </View>
     </View>
   )

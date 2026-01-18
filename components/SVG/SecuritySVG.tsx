@@ -1,13 +1,23 @@
 import { View, Text } from 'react-native'
-import { Svg, Path, G, Defs, Rect } from 'react-native-svg';
+import { Svg, Path, G, Defs, Rect, ClipPath } from 'react-native-svg';
 
-export default function SecuritySVG() {
+type SVGprops = {
+  colour: string;
+};
+
+export default function SecuritySVG(props: SVGprops) {
   return (
-    <Svg width="30" height="64" viewBox="0 0 56 64" fill="none" >
-      <Path d="M23.5958 3.5043L9.04176 8.95843C5.68759 10.2126 2.94592 14.1792 2.94592 17.7667V39.4375C2.94592 42.8791 5.22098 47.4 7.99181 49.4708L20.5334 58.8336C24.6458 61.9252 31.4125 61.9252 35.525 58.8336L48.0667 49.4708C50.8375 47.4 53.1125 42.8791 53.1125 39.4375V17.7667C53.1125 14.1792 50.3708 10.2126 47.0167 8.95843L32.4625 3.5043C29.9833 2.60013 26.0167 2.60013 23.5958 3.5043Z" stroke="#105E49" strokeWidth="4.3" strokeLinecap="round" strokeLinejoin="round"/>
-      <Path d="M28.0003 28.8496C27.8837 28.8496 27.7378 28.8496 27.6212 28.8496C24.8795 28.7621 22.692 26.4871 22.692 23.7164C22.692 20.8872 24.9962 18.583 27.8253 18.583C30.6545 18.583 32.9587 20.8872 32.9587 23.7164C32.9295 26.5163 30.742 28.7621 28.0003 28.8496Z" stroke="#105E49" strokeWidth="4.3" strokeLinecap="round" strokeLinejoin="round"/>
-      <Path d="M22.1959 37.0168C19.396 38.8835 19.396 41.946 22.1959 43.8126C25.375 45.9418 30.5959 45.9418 33.775 43.8126C36.575 41.946 36.575 38.8835 33.775 37.0168C30.625 34.8876 25.4042 34.8876 22.1959 37.0168Z" stroke="#105E49" strokeWidth="4.3" strokeLinecap="round" strokeLinejoin="round"/>
+    <Svg width="27" height="58" viewBox="0 0 52 58" fill="none">
+      <G clipPath="url(#clip0_1_720)">
+      <Path d="M52 10.3041C48.0107 6.28028 45.7736 4.0238 41.7843 0H10.2156C6.22638 4.0238 3.98927 6.28028 0 10.3041V15.003C0.0514851 25.6337 3.18378 35.1555 9.31383 43.3069C10.8052 45.2904 12.4461 47.1699 14.2265 48.949C17.6445 52.363 21.5806 55.3917 26.005 58C31.8361 54.5893 36.8933 50.3946 41.0802 45.5031C41.4489 45.0726 41.8126 44.6387 42.168 44.1965C48.6917 36.0818 52 26.349 52 15.2693C52 15.1805 51.995 15.0934 51.995 15.0046H52V10.3057V10.3041Z" fill={props.colour}/>
+      </G>
+      <Defs>
+      <ClipPath id="clip0_1_720">
+      <Rect width="52" height="58" fill="white"/>
+      </ClipPath>
+      </Defs>
     </Svg>
+
 
   )
 }

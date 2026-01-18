@@ -15,14 +15,15 @@ export default function Policy1() {
 
       <ScrollView>
         <View className="w-full px-[2rem] pb-[7rem]">
+          
           <View className="pt-[4rem] pb-[1rem]">
             <View className='flex flex-row w-full h-fit pt-[1rem] pb-[1rem]'>
               <Text className="font-[BASKiT-Medium] text-[#231F20]  text-[1.7rem]">
                 My policy
               </Text>
-
             </View>
           </View>
+
           {/* Body */}
           <View className="w-fit h-[21rem] flex flex-col justify-between bg-sun-100 px-[1.5rem] pt-[1rem] pb-[2rem] rounded-[1rem]">
             <View className="w-full flex flex-col gap-[0.5rem]">
