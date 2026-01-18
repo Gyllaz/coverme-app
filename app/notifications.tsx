@@ -21,7 +21,7 @@ export default function notifications() {
             <TouchableOpacity
               onPress={() => router.push('/home')}
             >
-              <CloseSVG />
+              <CloseSVG colour='white'/>
             </TouchableOpacity>
           </View>
           <Notifications/>
